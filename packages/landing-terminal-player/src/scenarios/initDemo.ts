@@ -1,0 +1,32 @@
+import type { SceneDefinition } from '../player/types'
+
+export const initDemoScene: SceneDefinition = {
+  title: '/init demo',
+  description: 'A standalone landing-page playback scene that feels like a real Formax terminal run.',
+  steps: [
+    { type: 'type_command', text: '/init', cps: 22 },
+    { type: 'submit' },
+    { type: 'wait', ms: 360 },
+    { type: 'assistant_stream', text: 'I’ll inspect this workspace and prepare the project scaffold for you.' },
+    { type: 'wait', ms: 220 },
+    { type: 'tool_start', label: 'Scanning repository structure' },
+    { type: 'shell_chunk', text: '$ ls\r\nAGENTS.md  CODEMAP.md  docs  packages  scripts\r\n', cps: 160 },
+    { type: 'tool_end', label: 'Scanning repository structure', outcome: 'completed' },
+    { type: 'wait', ms: 260 },
+    { type: 'tool_start', label: 'Checking package entrypoints' },
+    { type: 'shell_chunk', text: '$ rg --files packages | head -n 6\r\npackages/core/src/entrypoints/cli.tsx\r\npackages/web-reference-react/src/App.tsx\r\npackages/shared/src/index.ts\r\n', cps: 160 },
+    { type: 'tool_end', label: 'Checking package entrypoints', outcome: 'completed' },
+    { type: 'wait', ms: 240 },
+    { type: 'assistant_stream', text: 'Found a clean workspace layout. I’m creating a terminal-first landing demo package with isolated playback logic.' },
+    { type: 'wait', ms: 180 },
+    { type: 'note', text: 'No app-server connection required. This scene is fully scripted.', tone: 'info' },
+    { type: 'wait', ms: 220 },
+    { type: 'tool_start', label: 'Writing terminal player scaffold' },
+    { type: 'shell_chunk', text: '$ mkdir -p packages/landing-terminal-player/src/{components,player,scenarios}\r\n$ touch packages/landing-terminal-player/src/App.tsx\r\n', cps: 150 },
+    { type: 'tool_end', label: 'Writing terminal player scaffold', outcome: 'completed' },
+    { type: 'wait', ms: 240 },
+    { type: 'assistant_stream', text: 'Initial scaffold is ready. Next I can add more scenes, richer ANSI styling, or export hooks for embedding on the landing page.' },
+    { type: 'wait', ms: 180 },
+    { type: 'finish' },
+  ],
+}
