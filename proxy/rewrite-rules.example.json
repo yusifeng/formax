@@ -1,0 +1,33 @@
+{
+  "enabled": true,
+  "match": {
+    "methods": ["POST"],
+    "pathRegex": "^/v1/messages$"
+  },
+  "templateFile": "",
+  "rewrite": {
+    "headers": {
+      "set": {
+        "x-stainless-runtime-version": "v24.3.0",
+        "x-stainless-timeout": "3000",
+        "accept": "application/json",
+        "accept-encoding": "gzip, deflate, br, zstd"
+      },
+      "remove": ["accept-language", "sec-fetch-mode"]
+    },
+    "body": {
+      "set": {
+        "max_tokens": 32000,
+        "thinking": {
+          "type": "adaptive"
+        }
+      },
+      "removePaths": [],
+      "copyFromTemplate": [
+        { "from": "request.body.system", "to": "system" },
+        { "from": "request.body.tools", "to": "tools" }
+      ]
+    },
+    "preserveOriginalPaths": ["messages", "metadata"]
+  }
+}
