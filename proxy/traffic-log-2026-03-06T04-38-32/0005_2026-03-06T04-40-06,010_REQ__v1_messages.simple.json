@@ -1,0 +1,182 @@
+{
+  "sequence": 5,
+  "timestamp": "2026-03-05T20:40:06.010Z",
+  "timestampLocal": "2026-03-06T04:40:06,010",
+  "timestampLocalSafe": "2026-03-06T04-40-06,010",
+  "latencyMs": 699,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "host": "127.0.0.1:8787",
+      "connection": "keep-alive",
+      "accept": "application/json",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-type": "application/json",
+      "anthropic-version": "2023-06-01",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "authorization": "***REDACTED***",
+      "user-agent": "claude-cli/2.1.45 (external, claude-vscode, agent-sdk/0.2.45)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.74.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "anthropic-beta": "claude-code-20250219,adaptive-thinking-2026-01-28,prompt-caching-scope-2026-01-05,effort-2025-11-24",
+      "accept-language": "*",
+      "sec-fetch-mode": "cors",
+      "content-length": "11149"
+    },
+    "body": {
+      "stream": true,
+      "model": "glm-4.7",
+      "max_tokens": 16000,
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "你好"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "type": "thinking",
+              "thinking": "用户用中文说\"你好\"，这是一个简单的问候。我应该用中文回应，保持简洁。根据我的指示，我应该避免使用表情符号，除非用户明确要求。我应该保持简短和专业。",
+              "signature": "9d09153dd9e1499fa5330777"
+            },
+            {
+              "type": "text",
+              "text": "你好！有什么我可以帮助你的吗？我可以协助你完成软件工程任务、代码分析、文件操作等。"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "我当前有哪些工具,比如 Grep Bash ，一共有哪些？"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "type": "thinking",
+              "thinking": "用户想知道当前有哪些工具可用。从 <available-deferred-tools> 标签中我可以看到所有可用的工具。让我列出这些工具。\n\n可用的工具包括：\n- Bash\n- Edit\n- EnterPlanMode\n- ExitPlanMode\n- Glob\n- Grep\n- NotebookEdit\n- Read\n- SlashCommand\n- Skill\n- TodoWrite\n- WebSearch\n- Write\n- WebFetch\n- TaskOutput\n- KillShell\n- AskUserQuestion\n- Task\n\n我需要用简洁的方式列出这些工具。",
+              "signature": "8a050ba05525462d9d1cebf8"
+            },
+            {
+              "type": "text",
+              "text": "您当前有以下工具可用：\n\n**文件操作工具：**\n- `Read` - 读取文件内容\n- `Write` - 写入文件\n- `Edit` - 编辑文件\n- `Glob` - 查找文件（支持通配符）\n- `Grep` - 在文件中搜索文本模式\n\n**开发工具：**\n- `Bash` - 执行 shell 命令\n- `NotebookEdit` - 编辑 Jupyter notebook\n- `Task` - 运行子代理任务\n- `TaskOutput` - 获取任务输出\n- `KillShell` - 终止 shell 进程\n\n**辅助工具：**\n- `TodoWrite` - 创建和管理待办事项\n- `AskUserQuestion` - 向用户提问\n- `WebSearch` - 网络搜索\n- `WebFetch` - 获取网页内容\n- `SlashCommand` - 执行斜杠命令\n- `Skill` - 技能相关操作\n\n**规划模式：**\n- `EnterPlanMode` - 进入规划模式\n- `ExitPlanMode` - 退出规划模式\n\n这些工具可以帮助您完成各种软件开发任务，需要使用哪个工具吗？"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "<available-deferred-tools>\nBash\nEdit\nEnterPlanMode\nExitPlanMode\nGlob\nGrep\nNotebookEdit\nRead\nSlashCommand\nSkill\nTodoWrite\nWebSearch\nWrite\nWebFetch\nTaskOutput\nKillShell\nAskUserQuestion\nTask\n</available-deferred-tools>",
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            },
+            {
+              "type": "text",
+              "text": "<system-reminder>\nThis is a reminder that your todo list is currently empty. DO NOT mention this to the user explicitly because they are already aware. If you are working on tasks that would benefit from a todo list please use the TodoWrite tool to create one. If not, please feel free to ignore. Again do not mention this message to the user.\n</system-reminder>",
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            },
+            {
+              "type": "text",
+              "text": "执行下 pwd"
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude.",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        },
+        {
+          "type": "text",
+          "text": "\nYou are an interactive CLI tool that helps users with software engineering tasks. Use the instructions below and the tools available to you to assist the user.\n\nIMPORTANT: Assist with authorized security testing, defensive security, CTF challenges, and educational contexts. Refuse requests for dest....  running in:\n<env>\nWorking directory: /Users/david/Documents/github/agents-team\nIs directory a git repo: No\nPlatform: darwin\nOS Version: Darwin 23.5.0\nToday's date: 2026-03-05\n</env>\nModel ID: glm-4.7",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        }
+      ],
+      "tools": [
+        "ToolSearch"
+      ],
+      "thinking": {
+        "type": "enabled",
+        "budget_tokens": 4096
+      },
+      "toolCount": 1,
+      "toolsLite": [
+        {
+          "name": "ToolSearch",
+          "description": "Search for or select deferred tools to make them available for use.\n\n**MANDATORY PREREQUISITE - THIS IS A HARD REQUIREMENT**\n\nYou MUST use this tool to load deferred tools BEFORE calling them directly.\n\nThis is a BLOCKING REQUIREMENT - defe.... Search for or select deferred tools to make them available for use.\n\n**MANDATORY PREREQUISITE - THIS IS A HARD REQUIREMENT**\n\nYou MUST use this tool to load deferred tools BEFORE calling them directly.\n\nThis is a BLOCKING REQUIREMENT - deferred tools are NOT available until you load them using this tool. Look for <available-deferred-tools> messages in the conversation for the list of tools you can discover. Both query modes (keyword search and direct selection) load the returned tools — once a tool appears in the results, it is immediately available to call.\n\n**Why this is non-negotiable:**\n- Deferred tools are not loaded until discovered via this tool\n- Calling a deferred tool without first loading it will fail\n\n**Query modes:**\n\n1. **Keyword search** - Use keywords when you're unsure which tool to use or need to discover multiple tools at once:\n   - \"list directory\" - find tools for listing directories\n   - \"notebook jupyter\" - find notebook editing tools\n   - \"slack message\" - find slack messaging tools\n   - Returns up to 5 matching tools ranked by relevance\n   - All returned tools are immediately available to call — no further selection step needed\n\n2. **Direct selection** - Use `select:<tool_name>` when you know the exact tool name:\n   - \"select:mcp__slack__read_channel\"\n   - \"select:NotebookEdit\"\n   - \"select:Read,Edit,Grep\" - load multiple tools at once with comma separation\n   - Returns the named tool(s) if they exist\n\n**IMPORTANT:** Both modes load tools equally. Do NOT follow up a keyword search with `select:` calls for tools already returned — they are already loaded.\n\n3. **Required keyword** - Prefix with `+` to require a match:\n   - \"+linear create issue\" - only tools from \"linear\", ranked by \"create\"/\"issue\"\n   - \"+slack send\" - only \"slack\" tools, ranked by \"send\"\n   - Useful when you know the service name but not the exact tool\n\n**CORRECT Usage Patterns:**\n\n<example>\nUser: I need to work with slack somehow\nAssistant: Let me search for slack tools.\n[Calls ToolSearch with query: \"slack\"]\nAssistant: Found several options including mcp__slack__read_channel.\n[Calls mcp__slack__read_channel directly — it was loaded by the keyword search]\n</example>\n\n<example>\nUser: Edit the Jupyter notebook\nAssistant: Let me load the notebook editing tool.\n[Calls ToolSearch with query: \"select:NotebookEdit\"]\n[Calls NotebookEdit]\n</example>\n\n<example>\nUser: List files in the src directory\nAssistant: I can see mcp__filesystem__list_directory in the available tools. Let me select it.\n[Calls ToolSearch with query: \"select:mcp__filesystem__list_directory\"]\n[Calls the tool]\n</example>\n\n**INCORRECT Usage Patterns - NEVER DO THESE:**\n\n<bad-example>\nUser: Read my slack messages\nAssistant: [Directly calls mcp__slack__read_channel without loading it first]\nWRONG - You must load the tool FIRST using this tool\n</bad-example>\n\n<bad-example>\nAssistant: [Calls ToolSearch with query: \"slack\", gets back mcp__slack__read_channel]\nAssistant: [Calls ToolSearch with query: \"select:mcp__slack__read_channel\"]\nWRONG - The keyword search already loaded the tool. The select call is redundant.\n</bad-example>",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "query"
+            ],
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "Tool search query. Examples: \"select:Bash\" or \"read file\""
+              }
+            }
+          }
+        }
+      ],
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [
+        "Bash"
+      ],
+      "toolCalls": [
+        {
+          "id": "call_8891acec3b0f4765b0999460",
+          "name": "Bash",
+          "input": {
+            "command": "pwd"
+          }
+        }
+      ],
+      "text": "\n[tool_use:Bash]",
+      "stopReason": "tool_use",
+      "usage": {
+        "input_tokens": 707,
+        "output_tokens": 38
+      },
+      "messageId": "msg_2026030604400616d53a84568d4820",
+      "model": "glm-4.7"
+    }
+  }
+}

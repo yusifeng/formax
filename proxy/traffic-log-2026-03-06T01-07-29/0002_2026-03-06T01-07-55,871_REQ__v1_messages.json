@@ -1,0 +1,83 @@
+{
+  "sequence": 2,
+  "timestamp": "2026-03-05T17:07:55.871Z",
+  "timestampLocal": "2026-03-06T01:07:55,871",
+  "timestampLocalSafe": "2026-03-06T01-07-55,871",
+  "latencyMs": 3549,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "accept": "application/json",
+      "anthropic-beta": "interleaved-thinking-2025-05-14",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "anthropic-version": "2023-06-01",
+      "authorization": "***REDACTED***",
+      "content-type": "application/json",
+      "user-agent": "claude-cli/2.0.67 (external, cli)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-helper-method": "stream",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.70.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "connection": "keep-alive",
+      "host": "127.0.0.1:8787",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "929"
+    },
+    "body": {
+      "model": "claude-haiku-4-5-20251001",
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Files modified by user:\n\n\nFiles modified by other users:\n"
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude."
+        },
+        {
+          "type": "text",
+          "text": "You are an expert at analyzing git history. Given a list of files and their modification counts, return exactly five filenames that are frequently modified and represent core application logic (not auto-generated files, dependencies, or configuration). Make sure filenames are diverse, not all in the same folder, and are a mix of user and other users. Return only the filenames' basenames (without the path) separated by newlines with no explanation."
+        }
+      ],
+      "tools": [],
+      "metadata": {
+        "user_id": "user_69bb2abd11d5acd0fc0540b8f84d0940fc050ad409005ab0779f80ea9cb047a4_account__session_372c0425-6aa5-49ad-ae91-7a8d706ad02b"
+      },
+      "max_tokens": 32000,
+      "stream": true
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "_raw": "event: message_start\ndata: {\"type\":\"message_start\",\"message\":{\"model\":\"claude-haiku-4-5-20251001\",\"id\":\"msg_01FvNWgtGcSwMJ16gsc3kZsn\",\"type\":\"message\",\"role\":\"assistant\",\"content\":[],\"stop_reason\":null,\"stop_sequence\":null,\"usage\":{\"input_tokens\":123,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":0,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":0},\"output_tokens\":2,\"service_tier\":\"standard\",\"inference_geo\":\"not_available\"}}        }\n\n\nevent: content_block_start\ndata: {\"type\":\"content_block_start\",\"index\":0,\"content_block\":{\"type\":\"text\",\"text\":\"\"}}\n\n\nevent: ping\ndata: {\"type\": \"ping\"}\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\"I don\"}       }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\"'t have any\"}               }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" file\"}}\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" modification data to\"}           }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" analyze. The\"}    }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" lists\"}        }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" provided\"}     }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" are empty -\"}               }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" there are no files modified\"}               }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" by the\"}               }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" user or\"}       }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" by\"}            }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" other users.\"}             }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\"\\n\\nTo help you identify\"}            }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" the five\"}           }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" most frequently modified core\"}   }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" application files, please\"}     }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" provide:\\n1. A\"}   }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" list of files with\"}  }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" their modification counts from\"}        }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" your git history\\n2. Information\"}              }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" about which files\"}            }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" were modified by which\"}          }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" users\\n\\nOnce you provide this data,\"}            }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" I can\"}        }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" analyze it and return the five\"}          }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" most\"}}\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" relevant\"}           }\n\n\nevent: content_block_delta\ndata: {\"type\":\"content_block_delta\",\"index\":0,\"delta\":{\"type\":\"text_delta\",\"text\":\" filenames.\"}     }\n\n\nevent: content_block_stop\ndata: {\"type\":\"content_block_stop\",\"index\":0  }\n\n\nevent: message_delta\ndata: {\"type\":\"message_delta\",\"delta\":{\"stop_reason\":\"end_turn\",\"stop_sequence\":null},\"usage\":{\"input_tokens\":123,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":0,\"output_tokens\":97}}\n\n\nevent: message_stop\ndata: {\"type\":\"message_stop\"              }\n\n\n",
+      "_note": "non-json or unknown"
+    },
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [],
+      "text": "I don't have any file modification data to analyze. The lists provided are empty - there are no files modified by the user or by other users.\n\nTo help you identify the five most frequently modified core application files, please provide:\n1. A list of files with their modification counts from your git history\n2. Information about which files were modified by which users\n\nOnce you provide this data, I can analyze it and return the five most relevant filenames.",
+      "assistantText": "I don't have any file modification data to analyze. The lists provided are empty - there are no files modified by the user or by other users.\n\nTo help you identify the five most frequently modified core application files, please provide:\n1. A list of files with their modification counts from your git history\n2. Information about which files were modified by which users\n\nOnce you provide this data, I can analyze it and return the five most relevant filenames.",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 123,
+        "output_tokens": 97
+      },
+      "messageId": "msg_01FvNWgtGcSwMJ16gsc3kZsn",
+      "model": "claude-haiku-4-5-20251001"
+    }
+  }
+}

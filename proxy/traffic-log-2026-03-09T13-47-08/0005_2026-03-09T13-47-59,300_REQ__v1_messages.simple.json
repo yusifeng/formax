@@ -1,0 +1,191 @@
+{
+  "sequence": 5,
+  "timestamp": "2026-03-09T05:47:59.300Z",
+  "timestampLocal": "2026-03-09T13:47:59,300",
+  "timestampLocalSafe": "2026-03-09T13-47-59,300",
+  "latencyMs": 4267,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "host": "127.0.0.1:8787",
+      "connection": "keep-alive",
+      "accept": "application/json",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-type": "application/json",
+      "anthropic-version": "2023-06-01",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "authorization": "***REDACTED***",
+      "user-agent": "claude-cli/2.1.45 (external, claude-vscode, agent-sdk/0.2.45)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.74.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "anthropic-beta": "claude-code-20250219,adaptive-thinking-2026-01-28,prompt-caching-scope-2026-01-05,effort-2025-11-24",
+      "accept-language": "*",
+      "sec-fetch-mode": "cors",
+      "content-length": "18186"
+    },
+    "body": {
+      "stream": true,
+      "model": "glm-4.7",
+      "max_tokens": 16000,
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "你好"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "type": "thinking",
+              "thinking": "用户说\"你好\"，这是一个简单的问候。我应该简短地回应，不需要使用任何工具。根据我的指示，我应该保持简洁直接。",
+              "signature": "2f7ae17e3fb24395a4f4a734"
+            },
+            {
+              "type": "text",
+              "text": "你好！有什么我可以帮助你的吗？我可以协助你进行软件工程任务，比如代码编写、调试、文件操作等。"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "你好"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "type": "thinking",
+              "thinking": "用户说\"你好\"，这是一个简单的问候。我应该友好地回应，并询问他们需要什么帮助。\n\n我看到有一个系统消息告诉我有可用的延迟工具，但用户只是打招呼，不需要使用任何工具。",
+              "signature": "c06c54b775ed43e6ada3ed1e"
+            },
+            {
+              "type": "text",
+              "text": "你好！有什么我可以帮你的吗？我可以帮你处理软件开发相关的任务，比如代码编写、调试、文件操作、代码库探索等等。"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "你知道我喜欢吃啥吗"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "type": "thinking",
+              "thinking": "用户在问我是否知道他们喜欢吃什么。这是一个非常个人化的问题，而且我不应该有任何关于这个的信息。我应该诚实地回答我不知道，并询问他们想要我帮助处理什么任务。\n\n这不是一个关于软件工程或编程的问题，所以我不需要使用任何工具。",
+              "signature": "f94971f6364843efabda56e4"
+            },
+            {
+              "type": "text",
+              "text": "我不知道你喜欢吃什么。我们的对话不会保存你的个人偏好信息。\n\n不过，我注意到我现在有很多可用的工具可以帮助你处理软件工程任务。如果你需要帮助处理代码、文件操作、或者其他的开发工作，请告诉我！",
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "<available-deferred-tools>\nBash\nEdit\nEnterPlanMode\nExitPlanMode\nGlob\nGrep\nNotebookEdit\nRead\nSlashCommand\nSkill\nTodoWrite\nWebSearch\nWrite\nWebFetch\nTaskOutput\nKillShell\nAskUserQuestion\nTask\n</available-deferred-tools>"
+            },
+            {
+              "type": "text",
+              "text": "你当前有哪些工具",
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude.",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        },
+        {
+          "type": "text",
+          "text": "\nYou are an interactive agent that helps users with software engineering tasks. Use the instructions below and the tools available to you to assist the user.\n\nIMPORTANT: Assist with authorized security testing, defensive security, CTF challenges, and educational contexts. Refuse requests for destruc....  running in:\n<env>\nWorking directory: /Users/david/Documents/github/agents-team\nIs directory a git repo: No\nPlatform: darwin\nOS Version: Darwin 23.5.0\nToday's date: 2026-03-09\n</env>\nModel ID: glm-4.7",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        }
+      ],
+      "tools": [
+        "ToolSearch"
+      ],
+      "thinking": {
+        "type": "enabled",
+        "budget_tokens": 4096
+      },
+      "toolCount": 1,
+      "toolsLite": [
+        {
+          "name": "ToolSearch",
+          "description": "Search for or select deferred tools to make them available for use.\n\n**MANDATORY PREREQUISITE - THIS IS A HARD REQUIREMENT**\n\nYou MUST use this tool to load deferred tools BEFORE calling them directly.\n\nThis is a BLOCKING REQUIREMENT - defe.... Search for or select deferred tools to make them available for use.\n\n**MANDATORY PREREQUISITE - THIS IS A HARD REQUIREMENT**\n\nYou MUST use this tool to load deferred tools BEFORE calling them directly.\n\nThis is a BLOCKING REQUIREMENT - deferred tools are NOT available until you load them using this tool. Look for <available-deferred-tools> messages in the conversation for the list of tools you can discover. Both query modes (keyword search and direct selection) load the returned tools — once a tool appears in the results, it is immediately available to call.\n\n**Why this is non-negotiable:**\n- Deferred tools are not loaded until discovered via this tool\n- Calling a deferred tool without first loading it will fail\n\n**Query modes:**\n\n1. **Keyword search** - Use keywords when you're unsure which tool to use or need to discover multiple tools at once:\n   - \"list directory\" - find tools for listing directories\n   - \"notebook jupyter\" - find notebook editing tools\n   - \"slack message\" - find slack messaging tools\n   - Returns up to 5 matching tools ranked by relevance\n   - All returned tools are immediately available to call — no further selection step needed\n\n2. **Direct selection** - Use `select:<tool_name>` when you know the exact tool name:\n   - \"select:mcp__slack__read_channel\"\n   - \"select:NotebookEdit\"\n   - \"select:Read,Edit,Grep\" - load multiple tools at once with comma separation\n   - Returns the named tool(s) if they exist\n\n**IMPORTANT:** Both modes load tools equally. Do NOT follow up a keyword search with `select:` calls for tools already returned — they are already loaded.\n\n3. **Required keyword** - Prefix with `+` to require a match:\n   - \"+linear create issue\" - only tools from \"linear\", ranked by \"create\"/\"issue\"\n   - \"+slack send\" - only \"slack\" tools, ranked by \"send\"\n   - Useful when you know the service name but not the exact tool\n\n**CORRECT Usage Patterns:**\n\n<example>\nUser: I need to work with slack somehow\nAssistant: Let me search for slack tools.\n[Calls ToolSearch with query: \"slack\"]\nAssistant: Found several options including mcp__slack__read_channel.\n[Calls mcp__slack__read_channel directly — it was loaded by the keyword search]\n</example>\n\n<example>\nUser: Edit the Jupyter notebook\nAssistant: Let me load the notebook editing tool.\n[Calls ToolSearch with query: \"select:NotebookEdit\"]\n[Calls NotebookEdit]\n</example>\n\n<example>\nUser: List files in the src directory\nAssistant: I can see mcp__filesystem__list_directory in the available tools. Let me select it.\n[Calls ToolSearch with query: \"select:mcp__filesystem__list_directory\"]\n[Calls the tool]\n</example>\n\n**INCORRECT Usage Patterns - NEVER DO THESE:**\n\n<bad-example>\nUser: Read my slack messages\nAssistant: [Directly calls mcp__slack__read_channel without loading it first]\nWRONG - You must load the tool FIRST using this tool\n</bad-example>\n\n<bad-example>\nAssistant: [Calls ToolSearch with query: \"slack\", gets back mcp__slack__read_channel]\nAssistant: [Calls ToolSearch with query: \"select:mcp__slack__read_channel\"]\nWRONG - The keyword search already loaded the tool. The select call is redundant.\n</bad-example>",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "query"
+            ],
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "Tool search query. Examples: \"select:Bash\" or \"read file\""
+              }
+            }
+          }
+        }
+      ],
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [],
+      "text": "我目前可以使用以下工具：\n\n**文件操作**\n- `Read` - 读取文件内容\n- `Write` - 写入文件\n- `Edit` - 编辑文件\n- `Glob` - 查找文件模式匹配\n- `Grep` - 在文件中搜索文本\n\n**开发工具**\n- `Bash` - 执行shell命令\n- `NotebookEdit` - 编辑Jupyter notebook\n- `KillShell` - 终止shell进程\n\n**搜索和获取**\n- `WebSearch` - 网页搜索\n- `WebFetch` - 获取网页内容\n- `ToolSearch` - 搜索和加载延迟工具\n\n**任务管理**\n- `Task` - 启动子代理执行特定任务\n- `TaskOutput` - 获取任务输出\n- `TodoWrite` - 创建和管理待办事项\n- `SlashCommand` - 执行斜杠命令\n- `Skill` - 使用特定技能\n\n**交互**\n- `AskUserQuestion` - 向用户提问以获取澄清\n- `EnterPlanMode` - 进入规划模式\n- `ExitPlanMode` - 退出规划模式\n\n这些工具让我能够帮你完成各种软件工程任务，比如代码开发、文件管理、搜索、任务规划等。有什么我可以帮你的吗？",
+      "assistantText": "我目前可以使用以下工具：\n\n**文件操作**\n- `Read` - 读取文件内容\n- `Write` - 写入文件\n- `Edit` - 编辑文件\n- `Glob` - 查找文件模式匹配\n- `Grep` - 在文件中搜索文本\n\n**开发工具**\n- `Bash` - 执行shell命令\n- `NotebookEdit` - 编辑Jupyter notebook\n- `KillShell` - 终止shell进程\n\n**搜索和获取**\n- `WebSearch` - 网页搜索\n- `WebFetch` - 获取网页内容\n- `ToolSearch` - 搜索和加载延迟工具\n\n**任务管理**\n- `Task` - 启动子代理执行特定任务\n- `TaskOutput` - 获取任务输出\n- `TodoWrite` - 创建和管理待办事项\n- `SlashCommand` - 执行斜杠命令\n- `Skill` - 使用特定技能\n\n**交互**\n- `AskUserQuestion` - 向用户提问以获取澄清\n- `EnterPlanMode` - 进入规划模式\n- `ExitPlanMode` - 退出规划模式\n\n这些工具让我能够帮你完成各种软件工程任务，比如代码开发、文件管理、搜索、任务规划等。有什么我可以帮你的吗？",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 245,
+        "output_tokens": 300
+      },
+      "messageId": "msg_202603091347598e8d7b8412dc429d",
+      "model": "glm-4.7"
+    }
+  }
+}

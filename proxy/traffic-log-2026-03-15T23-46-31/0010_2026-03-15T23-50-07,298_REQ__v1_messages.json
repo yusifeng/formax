@@ -1,0 +1,83 @@
+{
+  "sequence": 10,
+  "timestamp": "2026-03-15T15:50:07.298Z",
+  "timestampLocal": "2026-03-15T23:50:07,298",
+  "timestampLocalSafe": "2026-03-15T23-50-07,298",
+  "latencyMs": 602,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "accept": "application/json",
+      "anthropic-beta": "interleaved-thinking-2025-05-14",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "anthropic-version": "2023-06-01",
+      "authorization": "***REDACTED***",
+      "content-type": "application/json",
+      "user-agent": "claude-cli/2.0.67 (external, cli)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-helper-method": "stream",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.70.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "connection": "keep-alive",
+      "host": "127.0.0.1:8787",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "3037"
+    },
+    "body": {
+      "model": "claude-haiku-4-5-20251001",
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Command: ls -la\nOutput: total 656\ndrwxr-xr-x   25 david  staff     800  3 15 23:48 .\ndrwxr-xr-x    6 david  staff     192  3 15 15:42 ..\ndrwxr-xr-x    7 david  staff     224  3 15 23:48 .claude\n-rw-r--r--    1 david  staff     142  3 15 17:42 .env.example\ndrwxr-xr-x   14 david  staff     448  3 15 23:49 .git\n-rw-r--r--    1 david  staff     480  3 15 15:42 .gitignore\ndrwxr-xr-x   10 david  staff     320  3 15 20:06 .next\n-rw-r--r--    1 david  staff    1450  3 15 15:42 README.md\ndrwxr-xr-x   12 david  staff     384  3 15 21:48 app\n-rw-r--r--    1 david  staff  163602  3 15 18:26 bun.lock\ndrwxr-xr-x    3 david  staff      96  3 15 18:26 components\n-rw-r--r--    1 david  staff     516  3 15 18:25 components.json\n-rw-r--r--    1 david  staff     465  3 15 15:42 eslint.config.mjs\ndrwxr-xr-x    3 david  staff      96  3 15 18:26 hooks\ndrwxr-xr-x    9 david  staff     288  3 15 20:05 lib\n-rw-r--r--    1 david  staff    1652  3 15 19:10 middleware.ts\n-rw-r--r--    1 david  staff     251  3 15 19:19 next-env.d.ts\n-rw-r--r--    1 david  staff     400  3 15 22:57 next.config.ts\ndrwxr-xr-x  480 david  staff   15360  3 15 18:25 node_modules\n-rw-r--r--    1 david  staff  118317  3 15 18:32 package-lock.json\n-rw-r--r--    1 david  staff     893  3 15 18:26 package.json\n-rw-r--r--    1 david  staff      94  3 15 15:42 postcss.config.mjs\ndrwxr-xr-x    8 david  staff     256  3 15 22:24 public\n-rw-r--r--    1 david  staff    6839  3 15 23:48 todo.md\n-rw-r--r--    1 david  staff     666  3 15 15:42 tsconfig.json\n\n"
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude."
+        },
+        {
+          "type": "text",
+          "text": "Extract any file paths that this command reads or modifies. For commands like \"git diff\" and \"cat\", include the paths of files being shown. Use paths verbatim -- don't add any slashes or try to resolve them. Do not try to infer paths that were not explicitly listed in the command output.\n\nIMPORTANT: Commands that do not display the contents of the files should not return any filepaths. For eg. \"ls\", pwd\", \"find\". Even more complicated commands that don't display the contents should not be considered: eg \"find . -type f -exec ls -la {} + | sort -k5 -nr | head -5\"\n\nFirst, determine if the command displays the contents of the files. If it does, then <is_displaying_contents> tag should be true. If it does not, then <is_displaying_contents> tag should be false.\n\nFormat your response as:\n<is_displaying_contents>\ntrue\n</is_displaying_contents>\n\n<filepaths>\npath/to/file1\npath/to/file2\n</filepaths>\n\nIf no files are read or modified, return empty filepaths tags:\n<filepaths>\n</filepaths>\n\nDo not include any other text in your response."
+        }
+      ],
+      "tools": [],
+      "metadata": {
+        "user_id": "user_69bb2abd11d5acd0fc0540b8f84d0940fc050ad409005ab0779f80ea9cb047a4_account__session_182d07f9-f9c2-4211-b03a-72d35630af66"
+      },
+      "max_tokens": 32000,
+      "stream": true
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "_raw": "event: message_start\ndata: {\"type\": \"message_start\", \"message\": {\"id\": \"msg_202603152350073119f28269a74190\", \"type\": \"message\", \"role\": \"assistant\", \"model\": \"glm-4.5-air\", \"content\": [], \"stop_reason\": null, \"stop_sequence\": null, \"usage\": {\"input_tokens\": 0, \"output_tokens\": 0}}}\n\nevent: ping\ndata: {\"type\": \"ping\"}\n\nevent: content_block_start\ndata: {\"type\": \"content_block_start\", \"index\": 0, \"content_block\": {\"type\": \"text\", \"text\": \"\"}}\n\nevent: content_block_delta\ndata: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"<is_displaying_contents>\\n\"}}\n\nevent: content_block_delta\ndata: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"false\\n\"}}\n\nevent: content_block_delta\ndata: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"</is_displaying_contents\"}}\n\nevent: content_block_delta\ndata: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \">\\n\\n<file\"}}\n\nevent: content_block_delta\ndata: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"paths>\\n\"}}\n\nevent: content_block_delta\ndata: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"</filepaths>\"}}\n\nevent: content_block_stop\ndata: {\"type\": \"content_block_stop\", \"index\": 0}\n\nevent: message_delta\ndata: {\"type\": \"message_delta\", \"delta\": {\"stop_reason\": \"end_turn\", \"stop_sequence\": null}, \"usage\": {\"input_tokens\": 1109, \"output_tokens\": 40, \"cache_read_input_tokens\": 427, \"server_tool_use\": {\"web_search_requests\": 0}, \"service_tier\": \"standard\"}}\n\nevent: message_stop\ndata: {\"type\": \"message_stop\"}\n\n",
+      "_note": "non-json or unknown"
+    },
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [],
+      "text": "<is_displaying_contents>\nfalse\n</is_displaying_contents>\n\n<filepaths>\n</filepaths>",
+      "assistantText": "<is_displaying_contents>\nfalse\n</is_displaying_contents>\n\n<filepaths>\n</filepaths>",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 1109,
+        "output_tokens": 40
+      },
+      "messageId": "msg_202603152350073119f28269a74190",
+      "model": "glm-4.5-air"
+    }
+  }
+}

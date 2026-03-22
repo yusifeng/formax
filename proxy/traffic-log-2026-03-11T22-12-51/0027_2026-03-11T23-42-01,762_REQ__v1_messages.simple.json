@@ -1,0 +1,82 @@
+{
+  "sequence": 27,
+  "timestamp": "2026-03-11T15:42:01.762Z",
+  "timestampLocal": "2026-03-11T23:42:01,762",
+  "timestampLocalSafe": "2026-03-11T23-42-01,762",
+  "latencyMs": 659,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "accept": "application/json",
+      "anthropic-beta": "interleaved-thinking-2025-05-14",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "anthropic-version": "2023-06-01",
+      "authorization": "***REDACTED***",
+      "content-type": "application/json",
+      "user-agent": "claude-cli/2.0.67 (external, cli)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-helper-method": "stream",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.70.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "connection": "keep-alive",
+      "host": "127.0.0.1:8787",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "3052"
+    },
+    "body": {
+      "model": "claude-haiku-4-5-20251001",
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Please write a 5-10 word title for the following conversation:\n\nUser: 你好\n\nClaude: 你好！很高兴见到你。我可以帮你处理软件工程任务，比如：\n\n- 编写或修改代码\n- 调试问题\n- 重构代码\n- 解释代码逻辑\n- 运行测试或构建\n\n有什么我可以帮你的吗？\n\nUser: 你有哪些工具啊\n\nClaude: 我有很多工具可以帮助你完成各种任务：\n\n## 文件操作\n- **Read** - 读取文件内容\n- **Write** - 创建新文件\n- **Edit** - 编辑现有文件\n- **Glob** - 按模式查找文件（如 `**/*.js`）\n- **Grep** - 在文件中搜索内容\n\n## 终端操作\n- **Bash** - 运行 shell 命令（git、npm、测试等）\n\n## 代理工具\n- **Agent** - 启动专门的子代理处理复杂任务\n  - **Explore** - 快速探索代码库\n  - **Plan** - 设计实现方案\n  - **general-purpose** - 通用任务\n  - **claude-code-guide** - 回答关于 Claude Code 的问题\n\n## 任务管理\n- **TodoWrite** - 创建和管理任务列表\n- **EnterPlanMode** - 进入计划模式，设计实现方案\n\n## 团队协作\n- **TeamCreate** - 创建多代理团队\n- **SendMessage** - 与团队成员通信\n\n## 其他\n- **WebSearch** - 网络搜索\n- **AskUserQuestion** - 询问你问题以澄清需求\n- **Skill** - 执行特定技能（如 /commit）\n- **mcp__4_5v_mcp__analyze_image** - 分析图片\n- **mcp__web_reader__webReader** - 读取网页内容\n\n需要我帮你做什么吗？\n\nUser: 你叫什么名字\n\nClaude: 我是 Claude Code，Anthropic 官方的 Claude 命令行界面工具。\n\n你可以直接叫我 Claude，或者用任何你觉得方便的方式称呼我。有什么可以帮到你的吗？\n\nUser: 你和openai 谁厉害？\n\nClaude: 我是由 Anthropic 开发的 AI 助手，专注于帮助你完成软件工程任务。每个 AI 模型都有其独特的特点和优势，我不太适合做这种比较。\n\n更重要的是，我能为你做些什么？我可以帮你：\n\n- 编写和调试代码\n- 探索和理解代码库\n- 运行测试和构建\n- 创建 git 提交\n- 设计前端界面\n- 解决技术问题\n\n你有什么具体的编程任务需要帮助吗？\n\nUser: 调用下 pwd\n\nUser: \n\nClaude: 当前工作目录是 `/Users/david/Documents/github/formax`，这是一个 GitHub 仓库。\n\nUser: 谢谢\n\nClaude: 不客气！如果还有其他需要帮助的地方，随时告诉我。\n\nRespond with the title for the conversation and nothing else."
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude."
+        },
+        {
+          "type": "text",
+          "text": "Summarize this coding conversation in under 50 characters.\nCapture the main task, key files, problems addressed, and current status."
+        }
+      ],
+      "tools": [],
+      "max_tokens": 32000,
+      "stream": true,
+      "toolCount": 0,
+      "toolsLite": [],
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [],
+      "text": "Claude Code CLI Tools Discussion",
+      "assistantText": "Claude Code CLI Tools Discussion",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 940,
+        "output_tokens": 15
+      },
+      "messageId": "msg_20260311234201c983972e00724ff4",
+      "model": "glm-4.5-air"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "sequence": 22,
+  "timestamp": "2026-03-05T20:31:52.085Z",
+  "timestampLocal": "2026-03-06T04:31:52,085",
+  "timestampLocalSafe": "2026-03-06T04-31-52,085",
+  "latencyMs": 432,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "host": "127.0.0.1:8787",
+      "connection": "keep-alive",
+      "accept": "application/json",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-type": "application/json",
+      "anthropic-version": "2023-06-01",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "authorization": "***REDACTED***",
+      "user-agent": "claude-cli/2.1.45 (external, claude-vscode, agent-sdk/0.2.45)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.74.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "accept-language": "*",
+      "sec-fetch-mode": "cors",
+      "content-length": "671"
+    },
+    "body": {
+      "stream": true,
+      "model": "glm-4.7",
+      "max_tokens": 16000,
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Please write a 5-10 word title for the following conversation:\n\nUser: 你好\n\nUse the same language as the user's message.\nRespond with the title for the conversation and nothing else."
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude."
+        },
+        {
+          "type": "text",
+          "text": "Summarize this coding conversation in under 50 characters. Capture the main task, key files, problems addressed, and current status."
+        },
+        {
+          "type": "text",
+          "text": "Always output the title in the same language as the user's latest message."
+        }
+      ],
+      "tools": [],
+      "toolCount": 0,
+      "toolsLite": [],
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 401
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "sequence": 8,
+  "timestamp": "2026-03-07T17:50:35.482Z",
+  "timestampLocal": "2026-03-08T01:50:35,482",
+  "timestampLocalSafe": "2026-03-08T01-50-35,482",
+  "latencyMs": 486,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "host": "127.0.0.1:8787",
+      "connection": "keep-alive",
+      "accept": "application/json",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-type": "application/json",
+      "anthropic-version": "2023-06-01",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "authorization": "***REDACTED***",
+      "user-agent": "claude-cli/2.1.45 (external, claude-vscode, agent-sdk/0.2.45)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.74.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "anthropic-beta": "claude-code-20250219,prompt-caching-scope-2026-01-05,effort-2025-11-24",
+      "accept-language": "*",
+      "sec-fetch-mode": "cors",
+      "content-length": "994"
+    },
+    "body": {
+      "stream": true,
+      "model": "glm-4.7",
+      "max_tokens": 16000,
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Please write a 5-10 word title for the following conversation:\n\nUser: 你好\nAssistant: 你好！很高兴见到你。我可以帮你处理软件工程任务，比如编写代码、调试问题、搜索代码库等。有什么我可以帮你的吗？\n\nUse the same language as the user's message.\nRespond with the title for the conversation and nothing else.",
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude.",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        },
+        {
+          "type": "text",
+          "text": "Summarize this coding conversation in under 50 characters. Capture the main task, key files, problems addressed, and current status.",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        },
+        {
+          "type": "text",
+          "text": "Always output the title in the same language as the user's latest message.",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        }
+      ],
+      "tools": [],
+      "toolCount": 0,
+      "toolsLite": [],
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [],
+      "text": "中文对话问候",
+      "assistantText": "中文对话问候",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 134,
+        "output_tokens": 4
+      },
+      "messageId": "msg_202603080150354212cba1d19c462f",
+      "model": "glm-4.7"
+    }
+  }
+}

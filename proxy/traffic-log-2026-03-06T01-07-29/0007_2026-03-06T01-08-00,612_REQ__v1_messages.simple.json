@@ -1,0 +1,81 @@
+{
+  "sequence": 7,
+  "timestamp": "2026-03-05T17:08:00.612Z",
+  "timestampLocal": "2026-03-06T01:08:00,612",
+  "timestampLocalSafe": "2026-03-06T01-08-00,612",
+  "latencyMs": 578,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "accept": "application/json",
+      "anthropic-beta": "claude-code-20250219,interleaved-thinking-2025-05-14",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "anthropic-version": "2023-06-01",
+      "authorization": "***REDACTED***",
+      "content-type": "application/json",
+      "user-agent": "claude-cli/2.0.67 (external, cli)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.70.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "connection": "keep-alive",
+      "host": "127.0.0.1:8787",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "14873"
+    },
+    "body": {
+      "model": "claude-sonnet-4-5-20250929",
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "<system-reminder>\nAs you answer the user's questions, you can use the following context:\n# claudeMd\nCodebase and user instructions are shown below. Be sure to adhere to these instructions. IMPORTANT: These instructions OVERRIDE any default behavior and you MUST follow them exactly as written.\n\nConte.... events or screen regions\n\n\n      IMPORTANT: this context may or may not be relevant to your tasks. You should not respond to this context unless it is highly relevant to your task.\n</system-reminder>\n"
+            },
+            {
+              "type": "text",
+              "text": "Warmup",
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude.",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        },
+        {
+          "type": "text",
+          "text": "You are a software architect and planning specialist for Claude Code. Your role is to explore the codebase and design implementation plans.\n\n=== CRITICAL: READ-ONLY MODE - NO FILE MODIFICATIONS ===\nThis is a READ-ONLY planning task. You are STRICTLY PROHIBITED from:\n- Creating new files (no Write, t.... _UI.md\n?? QUICKSTART.md\n?? README.md\n?? TROUBLESHOOTING.md\n?? a.html\n?? b.html\n?? c.html\n?? conv.txt\n?? d.html\n?? f.html\n?? package-lock.json\n?? package.json\n?? src/\n?? tsconfig.json\n\nRecent commits:\n",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        }
+      ],
+      "tools": [],
+      "max_tokens": 21333,
+      "temperature": 1,
+      "toolCount": 0,
+      "toolsLite": [],
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 500
+  }
+}

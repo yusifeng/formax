@@ -1,0 +1,91 @@
+{
+  "sequence": 9,
+  "timestamp": "2026-03-15T16:12:05.537Z",
+  "timestampLocal": "2026-03-16T00:12:05,537",
+  "timestampLocalSafe": "2026-03-16T00-12-05,537",
+  "latencyMs": 1016,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "accept": "application/json",
+      "anthropic-beta": "interleaved-thinking-2025-05-14",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "anthropic-version": "2023-06-01",
+      "authorization": "***REDACTED***",
+      "content-type": "application/json",
+      "user-agent": "claude-cli/2.0.67 (external, cli)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-helper-method": "stream",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.70.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "connection": "keep-alive",
+      "host": "127.0.0.1:8787",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "855"
+    },
+    "body": {
+      "model": "claude-haiku-4-5-20251001",
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "你到底是谁"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "type": "text",
+              "text": "{"
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude."
+        },
+        {
+          "type": "text",
+          "text": "Analyze if this message indicates a new conversation topic. If it does, extract a 2-3 word title that captures the new topic. Format your response as a JSON object with two fields: 'isNewTopic' (boolean) and 'title' (string, or null if isNewTopic is false). Only include these fields, no other text. ONLY generate the JSON object, no other text (eg. no markdown)."
+        }
+      ],
+      "tools": [],
+      "max_tokens": 32000,
+      "stream": true,
+      "toolCount": 0,
+      "toolsLite": [],
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [],
+      "text": "{\"isNewTopic\": true, \"title\": \"身份确认\"}",
+      "assistantText": "{\"isNewTopic\": true, \"title\": \"身份确认\"}",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 17,
+        "output_tokens": 28
+      },
+      "messageId": "msg_20260316001206d2ad33c632ec40a2",
+      "model": "glm-4.5-air"
+    }
+  }
+}

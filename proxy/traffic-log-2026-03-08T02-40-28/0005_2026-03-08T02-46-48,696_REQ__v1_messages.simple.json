@@ -1,0 +1,287 @@
+{
+  "sequence": 5,
+  "timestamp": "2026-03-07T18:46:48.696Z",
+  "timestampLocal": "2026-03-08T02:46:48,696",
+  "timestampLocalSafe": "2026-03-08T02-46-48,696",
+  "latencyMs": 3180,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "accept": "application/json",
+      "authorization": "***REDACTED***",
+      "content-type": "application/json",
+      "user-agent": "claude-cli/2.1.69 (external, claude-vscode, agent-sdk/0.2.69)",
+      "x-stainless-arch": "arm64",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.74.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "anthropic-beta": "claude-code-20250219,adaptive-thinking-2026-01-28,prompt-caching-scope-2026-01-05,advanced-tool-use-2025-11-20,effort-2025-11-24",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "anthropic-version": "2023-06-01",
+      "x-app": "cli",
+      "connection": "keep-alive",
+      "host": "127.0.0.1:8787",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "35771"
+    },
+    "body": {
+      "model": "claude-sonnet-4-6",
+      "messages": [
+        {
+          "role": "user",
+          "content": "<available-deferred-tools>\nAgent\nAskUserQuestion\nBash\nEdit\nEnterPlanMode\nEnterWorktree\nExitPlanMode\nGlob\nGrep\nNotebookEdit\nRead\nSendMessage\nSkill\nTaskOutput\nTaskStop\nTeamCreate\nTeamDelete\nTodoWrite\nWebFetch\nWebSearch\nWrite\n</available-deferred-tools>"
+        },
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "<system-reminder>\nThe following skills are available for use with the Skill tool:\n\n- simplify: Review changed code for reuse, quality, and efficiency, then fix any issues found.\n- claude-api: Build apps with the Claude API or Anthropic SDK.\nTRIGGER when: code imports `anthropic`/`@anthropic-ai/sdk`/`claude_agent_sdk`, or user asks to use Claude API, Anthropic SDKs, or Agent SDK.\nDO NOT TRIGGER when: code imports `openai`/other AI SDK, general programming, or ML/data-science tasks.\n- frontend-design: Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications (examples include websites, landing pages, dashboards, React components, HTML/CSS layouts, or when styling/beautifying any web UI). Generates creative, polished code and UI design that avoids generic AI aesthetics.\n- status: 输出：project\n- git:status: Custom command\n</system-reminder>"
+            },
+            {
+              "type": "text",
+              "text": "<system-reminder>\nAs you answer the user's questions, you can use the following context:\n# claudeMd\nCodebase and user instructions are shown below. Be sure to adhere to these instructions. IMPORTANT: These instructions OVERRIDE any default behavior and you MUST follow them exactly as written.\n\nConte.... day's date is 2026-03-08.\n\n      IMPORTANT: this context may or may not be relevant to your tasks. You should not respond to this context unless it is highly relevant to your task.\n</system-reminder>\n"
+            },
+            {
+              "type": "text",
+              "text": "你是谁啊"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "type": "thinking",
+              "thinking": "用户在问\"你是谁啊\"（Who are you?），这是一个简单的问题。我应该简洁地回答我的身份。",
+              "signature": ""
+            },
+            {
+              "type": "text",
+              "text": "你好！我是 **Claude Code**，这是 Anthropic 官方的 CLI 助手，运行在 VSCode 扩展环境中。\n\n我可以帮你处理软件工程任务，比如：\n- 编写、修改和调试代码\n- 解释代码逻辑\n- 重构和优化代码\n- 运行命令和测试\n- 搜索和分析代码库\n\n你目前在一个名为 **capture-terminal** 的项目中，这是一个用于捕获终端 UI 快照的工具。\n\n有什么我可以帮你的吗？"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "<ide_opened_file>The user opened the file /Users/david/Documents/github/capture-terminal/.claude/settings.local.json in the IDE. This may or may not be related to the current task.</ide_opened_file>"
+            },
+            {
+              "type": "text",
+              "text": "你当前的记忆文件是哪个"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "type": "thinking",
+              "thinking": "用户在问我当前的记忆文件是哪个。根据系统信息，我有一个持久的自动记忆目录位于 `/Users/david/.claude/projects/-Users-david-Documents-github-capture-terminal/memory/`。\n\n我应该告诉用户记忆文件的位置，以及主要的记忆文件是什么。",
+              "signature": ""
+            },
+            {
+              "type": "text",
+              "text": "根据系统配置，我的持久化记忆目录位于：\n\n```\n/Users/david/.claude/projects/-Users-david-Documents-github-capture-terminal/memory/\n```\n\n主要的记忆文件是：\n- **`MEMORY.md`** - 主记忆文件，会被自动加载到对话上下文中\n- 其他按主题分类的文件（如 `debugging.md`、`patterns.md` 等）\n\n需要我查看一下当前记忆文件的内容吗？或者你想让我记住什么特定的信息？"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "随便写点东西到记忆文件"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "type": "thinking",
+              "thinking": "用户想让我在记忆文件中写点东西。我应该先读取现有的记忆文件，看看里面有什么内容，然后添加一些有用的信息。\n\n让我先读取 MEMORY.md 文件。",
+              "signature": ""
+            },
+            {
+              "type": "tool_use",
+              "id": "call_768a4ad3770c4d04bed7b8be",
+              "name": "Read",
+              "input": {
+                "path": "/Users/david/.claude/projects/-Users-david-Documents-github-capture-terminal/memory/MEMORY.md"
+              }
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "tool_result",
+              "content": "<tool_use_error>InputValidationError: Read failed due to the following issues:\nThe required parameter `file_path` is missing\nAn unexpected parameter `path` was provided</tool_use_error>",
+              "is_error": true,
+              "tool_use_id": "call_768a4ad3770c4d04bed7b8be"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "type": "thinking",
+              "thinking": "我用错了参数名，应该是 `file_path` 而不是 `path`。让我重新调用。",
+              "signature": ""
+            },
+            {
+              "type": "tool_use",
+              "id": "call_e332f930311b4ce7a1200703",
+              "name": "Read",
+              "input": {
+                "file_path": "/Users/david/.claude/projects/-Users-david-Documents-github-capture-terminal/memory/MEMORY.md"
+              }
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "tool_result",
+              "content": "File does not exist. Note: your current working directory is /Users/david/Documents/github/capture-terminal.",
+              "is_error": true,
+              "tool_use_id": "call_e332f930311b4ce7a1200703",
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude, running within the Claude Agent SDK.",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        },
+        {
+          "type": "text",
+          "text": "\nYou are an interactive agent that helps users with software engineering tasks. Use the instructions below and the tools available to you to assist the user.\n\nIMPORTANT: Assist with authorized security testing, defensive security, CTF challenges, and educational contexts. Refuse requests for destruc.... _UI.md\n?? QUICKSTART.md\n?? README.md\n?? TROUBLESHOOTING.md\n?? a.html\n?? b.html\n?? c.html\n?? conv.txt\n?? d.html\n?? f.html\n?? package-lock.json\n?? package.json\n?? src/\n?? tsconfig.json\n\nRecent commits:\n",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        }
+      ],
+      "tools": [
+        "ToolSearch"
+      ],
+      "max_tokens": 32000,
+      "thinking": {
+        "type": "adaptive"
+      },
+      "output_config": {
+        "effort": "medium"
+      },
+      "stream": true,
+      "toolCount": 1,
+      "toolsLite": [
+        {
+          "name": "ToolSearch",
+          "description": "Search for or select deferred tools to make them available for use.\n\n**MANDATORY PREREQUISITE - THIS IS A HARD REQUIREMENT**\n\nYou MUST use this tool to load deferred tools BEFORE calling them directly.\n\nThis is a BLOCKING REQUIREMENT - defe.... Search for or select deferred tools to make them available for use.\n\n**MANDATORY PREREQUISITE - THIS IS A HARD REQUIREMENT**\n\nYou MUST use this tool to load deferred tools BEFORE calling them directly.\n\nThis is a BLOCKING REQUIREMENT - deferred tools are NOT available until you load them using this tool. Look for <available-deferred-tools> messages in the conversation for the list of tools you can discover. Both query modes (keyword search and direct selection) load the returned tools — once a tool appears in the results, it is immediately available to call.\n\n**Why this is non-negotiable:**\n- Deferred tools are not loaded until discovered via this tool\n- Calling a deferred tool without first loading it will fail\n\n**Query modes:**\n\n1. **Keyword search** - Use keywords when you're unsure which tool to use or need to discover multiple tools at once:\n   - \"list directory\" - find tools for listing directories\n   - \"notebook jupyter\" - find notebook editing tools\n   - \"slack message\" - find slack messaging tools\n   - Returns up to 5 matching tools ranked by relevance\n   - All returned tools are immediately available to call — no further selection step needed\n\n2. **Direct selection** - Use `select:<tool_name>` when you know the exact tool name:\n   - \"select:mcp__slack__read_channel\"\n   - \"select:NotebookEdit\"\n   - \"select:Read,Edit,Grep\" - load multiple tools at once with comma separation\n   - Returns the named tool(s) if they exist\n\n**IMPORTANT:** Both modes load tools equally. Do NOT follow up a keyword search with `select:` calls for tools already returned — they are already loaded.\n\n3. **Required keyword** - Prefix with `+` to require a match:\n   - \"+linear create issue\" - only tools from \"linear\", ranked by \"create\"/\"issue\"\n   - \"+slack send\" - only \"slack\" tools, ranked by \"send\"\n   - Useful when you know the service name but not the exact tool\n\n**CORRECT Usage Patterns:**\n\n<example>\nUser: I need to work with slack somehow\nAssistant: Let me search for slack tools.\n[Calls ToolSearch with query: \"slack\"]\nAssistant: Found several options including mcp__slack__read_channel.\n[Calls mcp__slack__read_channel directly — it was loaded by the keyword search]\n</example>\n\n<example>\nUser: Edit the Jupyter notebook\nAssistant: Let me load the notebook editing tool.\n[Calls ToolSearch with query: \"select:NotebookEdit\"]\n[Calls NotebookEdit]\n</example>\n\n<example>\nUser: List files in the src directory\nAssistant: I can see mcp__filesystem__list_directory in the available tools. Let me select it.\n[Calls ToolSearch with query: \"select:mcp__filesystem__list_directory\"]\n[Calls the tool]\n</example>\n\n**INCORRECT Usage Patterns - NEVER DO THESE:**\n\n<bad-example>\nUser: Read my slack messages\nAssistant: [Directly calls mcp__slack__read_channel without loading it first]\nWRONG - You must load the tool FIRST using this tool\n</bad-example>\n\n<bad-example>\nAssistant: [Calls ToolSearch with query: \"slack\", gets back mcp__slack__read_channel]\nAssistant: [Calls ToolSearch with query: \"select:mcp__slack__read_channel\"]\nWRONG - The keyword search already loaded the tool. The select call is redundant.\n</bad-example>",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "query",
+              "max_results"
+            ],
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "Query to find deferred tools. Use \"select:<tool_name>\" for direct selection, or keywords to search."
+              },
+              "max_results": {
+                "type": "number",
+                "description": "Maximum number of results to return (default: 5)"
+              }
+            }
+          }
+        }
+      ],
+      "requestToolCallCount": 2,
+      "requestToolCalls": [
+        {
+          "messageIndex": 6,
+          "id": "call_768a4ad3770c4d04bed7b8be",
+          "name": "Read",
+          "input": {
+            "type": "object",
+            "keys": [
+              "path"
+            ]
+          }
+        },
+        {
+          "messageIndex": 8,
+          "id": "call_e332f930311b4ce7a1200703",
+          "name": "Read",
+          "input": {
+            "type": "object",
+            "keys": [
+              "file_path"
+            ]
+          }
+        }
+      ],
+      "requestToolResultCount": 2,
+      "requestToolResults": [
+        {
+          "messageIndex": 7,
+          "tool_call_id": "call_768a4ad3770c4d04bed7b8be",
+          "isError": true,
+          "contentPreview": "<tool_use_error>InputValidationError: Read failed due to the following issues:\nThe required parameter `file_path` is missing\nAn unexpected parameter `path` was provided</tool_use_error>"
+        },
+        {
+          "messageIndex": 9,
+          "tool_call_id": "call_e332f930311b4ce7a1200703",
+          "isError": true,
+          "contentPreview": "File does not exist. Note: your current working directory is /Users/david/Documents/github/capture-terminal."
+        }
+      ]
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [
+        "Write"
+      ],
+      "toolCalls": [
+        {
+          "id": "call_4164d2955d48485fa0c55aca",
+          "name": "Write",
+          "input": {
+            "file_path": "/Users/david/.claude/projects/-Users-david-Documents-github-capture-terminal/memory/MEMORY.md",
+            "content": "# Capture Terminal 项目记忆\n\n## 项目概述\n- **项目名称**: capture-terminal\n- **描述**: 终端 UI 快照捕获工具，用于记录终端应用的 ANSI 颜色、选择状态和按键序列\n- **主要用途**: 帮助记录终端应用，以便 AI 能够用 React + Ink 重新创建它们\n\n## 关键技术栈\n- **node-pty**: 在伪终端中生成进程\n- **@xterm/headless**: 无头 xterm.js 终端用于缓冲区管理\n- **Ink + React**: TUI 框架（用于 hooks 配置 UI）\n- **TypeScript**: 主要开发语言\n\n## 快捷键（实际实现）\n- `Ctrl+]` - 拍摄快照\n- `Ctrl+\\` - 导出 spec.md\n- `Ctrl+Q` - 退出\n- `Ctrl+C` - 强制退出（紧急退出）\n\n## 开发命令\n- `npm run dev -- -- <command>` - 开发模式运行（无需构建）\n- `npm run build` 或 `tsc` - 构建 TypeScript 到 dist/\n- `npm start -- -- <command>` - 运行构建版本\n- `npm run dev:hooks` - 运行 hooks 演示 UI\n\n## 项目结构\n- `src/index.ts` - 主 CLI 入口（400+ 行）\n- `src/hooks/` - React + Ink hooks 配置 UI\n- `src/pages/` - hooks 演示入口点\n\n## 输出位置\n- 快照存储在 `snapshots/<timestamp>/` 目录\n- 包含 session.json, events.jsonl, screens/ 和 spec.md\n"
+          }
+        }
+      ],
+      "text": "\n[tool_use:Write]",
+      "stopReason": "tool_use",
+      "usage": {
+        "input_tokens": 94,
+        "output_tokens": 421
+      },
+      "messageId": "msg_202603080246482956b29a01df4162",
+      "model": "glm-4.7"
+    }
+  }
+}

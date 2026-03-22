@@ -1,0 +1,49 @@
+{
+  "sequence": 20,
+  "timestamp": "2026-03-05T20:30:45.771Z",
+  "timestampLocal": "2026-03-06T04:30:45,771",
+  "timestampLocalSafe": "2026-03-06T04-30-45,771",
+  "latencyMs": 456,
+  "path": "/v1/chat/completions",
+  "request": {
+    "headers": {
+      "host": "127.0.0.1:8787",
+      "connection": "keep-alive",
+      "accept": "text/event-stream, application/json",
+      "content-type": "application/json",
+      "authorization": "***REDACTED***",
+      "accept-language": "*",
+      "sec-fetch-mode": "cors",
+      "user-agent": "node",
+      "accept-encoding": "gzip, deflate",
+      "content-length": "635"
+    },
+    "body": {
+      "model": "deepseek-reasoner",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Claude Code, Anthropic's official CLI for Claude.\n\nSummarize this coding conversation in under 50 characters. Capture the main task, key files, problems addressed, and current status.\n\nAlways output the title in the same language as the user's latest message."
+        },
+        {
+          "role": "user",
+          "content": "Please write a 5-10 word title for the following conversation:\n\nUser: 你还\n\nUse the same language as the user's message.\nRespond with the title for the conversation and nothing else."
+        }
+      ],
+      "max_tokens": 16000,
+      "stream": true,
+      "stream_options": {
+        "include_usage": true
+      }
+    }
+  },
+  "response": {
+    "status": 401,
+    "body": {
+      "error": {
+        "message": "无效的令牌 (request id: 20260306043046236576396yzoePYzF)",
+        "type": "new_api_error"
+      }
+    }
+  }
+}

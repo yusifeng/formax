@@ -1,0 +1,61 @@
+{
+  "kind": "formax_toolsearch_alignment_report_v1",
+  "createdAt": "2026-03-05T23:08:09.503Z",
+  "cwd": "/Users/david/Documents/github/formax",
+  "provider": "anthropic",
+  "deferredToolExposureEnabled": true,
+  "toolName": "Bash",
+  "outputDir": "/Users/david/Documents/github/formax/proxy/request-preview/toolsearch-alignment-2026-03-06T07-08-09",
+  "turnSummaries": [
+    {
+      "turn": 1,
+      "toolNames": [
+        "ToolSearch"
+      ],
+      "toolCount": 1,
+      "hasDeferredToolsBlock": true,
+      "hasSkillsReminder": true,
+      "hasToolReferenceForTarget": false,
+      "targetToolDeferLoading": false
+    },
+    {
+      "turn": 2,
+      "toolNames": [
+        "ToolSearch",
+        "Bash"
+      ],
+      "toolCount": 2,
+      "hasDeferredToolsBlock": true,
+      "hasSkillsReminder": true,
+      "hasToolReferenceForTarget": true,
+      "targetToolDeferLoading": true
+    }
+  ],
+  "checks": [
+    {
+      "id": "turn1_only_toolsearch_exposed",
+      "pass": true,
+      "detail": "turn1 tools: ToolSearch"
+    },
+    {
+      "id": "turn1_contains_available_deferred_tools_block",
+      "pass": true,
+      "detail": "turn1 has <available-deferred-tools>: true"
+    },
+    {
+      "id": "turn2_contains_tool_reference_for_target",
+      "pass": true,
+      "detail": "turn2 has tool_reference(Bash): true"
+    },
+    {
+      "id": "turn2_exposes_target_tool_and_toolsearch",
+      "pass": true,
+      "detail": "turn2 tools: ToolSearch, Bash"
+    },
+    {
+      "id": "turn2_target_tool_marked_defer_loading",
+      "pass": true,
+      "detail": "turn2 Bash.defer_loading: true"
+    }
+  ]
+}

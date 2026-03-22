@@ -1,0 +1,82 @@
+{
+  "sequence": 11,
+  "timestamp": "2026-03-11T15:11:42.794Z",
+  "timestampLocal": "2026-03-11T23:11:42,794",
+  "timestampLocalSafe": "2026-03-11T23-11-42,794",
+  "latencyMs": 655,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "accept": "application/json",
+      "anthropic-beta": "interleaved-thinking-2025-05-14",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "anthropic-version": "2023-06-01",
+      "authorization": "***REDACTED***",
+      "content-type": "application/json",
+      "user-agent": "claude-cli/2.0.67 (external, cli)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-helper-method": "stream",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.70.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "connection": "keep-alive",
+      "host": "127.0.0.1:8787",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "1999"
+    },
+    "body": {
+      "model": "claude-haiku-4-5-20251001",
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Please write a 5-10 word title for the following conversation:\n\nUser: 你好\n\nClaude: 你好！我可以帮你处理这个 capture-terminal 项目的任何任务。你需要什么帮助？\n\nUser: 你当前有什么工具？\n\nClaude: 我目前有这些工具可用：\n\n**文件操作**\n- **Read** - 读取文件内容\n- **Write** - 创建新文件\n- **Edit** - 编辑现有文件\n- **Glob** - 查找文件（按模式匹配）\n- **Grep** - 搜索文件内容\n\n**开发工具**\n- **Bash** - 执行 shell 命令\n- **NotebookEdit** - 编辑 Jupyter notebook\n- **Skill** - 执行特定技能（如 git、frontend-design 等）\n\n**协作与规划**\n- **Agent** - 启动子代理处理复杂任务\n- **AskUserQuestion** - 向你提问确认\n- **TodoWrite** - 管理待办事项\n- **TaskOutput/TaskStop** - 任务控制\n- **TeamCreate/TeamDelete** - 团队管理\n\n**网络工具**\n- **WebSearch** - 网页搜索\n- **WebFetch** - 获取网页内容\n- **SendMessage** - 发送消息\n\n**模式切换**\n- **EnterPlanMode** - 进入规划模式\n- **ExitPlanMode** - 退出规划模式\n- **EnterWorktree** - 切换工作分支\n\n对于你的 capture-terminal 项目，我常用的是文件操作、Bash 和搜索工具。需要我帮你做什么吗？\n\nUser: 执行下 pwd\n\nUser: \n\nClaude: 当前目录是 `/Users/david/Documents/github/capture-terminal`\n\nRespond with the title for the conversation and nothing else."
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude."
+        },
+        {
+          "type": "text",
+          "text": "Summarize this coding conversation in under 50 characters.\nCapture the main task, key files, problems addressed, and current status."
+        }
+      ],
+      "tools": [],
+      "max_tokens": 32000,
+      "stream": true,
+      "toolCount": 0,
+      "toolsLite": [],
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [],
+      "text": "Terminal Project Setup and Navigation",
+      "assistantText": "Terminal Project Setup and Navigation",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 557,
+        "output_tokens": 14
+      },
+      "messageId": "msg_20260311231142678f1cab732e4cdb",
+      "model": "glm-4.5-air"
+    }
+  }
+}

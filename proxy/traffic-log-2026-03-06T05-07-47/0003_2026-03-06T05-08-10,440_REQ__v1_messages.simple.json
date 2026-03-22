@@ -1,0 +1,160 @@
+{
+  "sequence": 3,
+  "timestamp": "2026-03-05T21:08:10.440Z",
+  "timestampLocal": "2026-03-06T05:08:10,440",
+  "timestampLocalSafe": "2026-03-06T05-08-10,440",
+  "latencyMs": 1420,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "host": "127.0.0.1:8787",
+      "connection": "keep-alive",
+      "accept": "application/json",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-type": "application/json",
+      "anthropic-version": "2023-06-01",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "authorization": "***REDACTED***",
+      "user-agent": "claude-cli/2.1.45 (external, claude-vscode, agent-sdk/0.2.45)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.74.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "anthropic-beta": "claude-code-20250219,adaptive-thinking-2026-01-28,prompt-caching-scope-2026-01-05,effort-2025-11-24",
+      "accept-language": "*",
+      "sec-fetch-mode": "cors",
+      "content-length": "9794"
+    },
+    "body": {
+      "stream": true,
+      "model": "glm-4.7",
+      "max_tokens": 16000,
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "你好"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "type": "thinking",
+              "thinking": "用户说\"你好\"，这是中文的问候语，意思是\"Hello\"。我应该用中文回应，并询问我能如何帮助他们。\n\n我不需要使用任何工具来回应这个简单的问候。",
+              "signature": "20d3b38e0b834301ba6db870"
+            },
+            {
+              "type": "text",
+              "text": "你好！我是 Claude Code，一个交互式命令行工具，可以帮助你完成软件工程任务。\n\n我可以帮助你：\n- 阅读和编辑代码文件\n- 搜索代码库\n- 运行命令和脚本\n- 调试和分析代码\n- 使用 Jupyter notebooks\n- 进行网络搜索和获取\n- 管理任务清单\n\n你需要什么帮助吗？"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "<available-deferred-tools>\nBash\nEdit\nEnterPlanMode\nExitPlanMode\nGlob\nGrep\nNotebookEdit\nRead\nSlashCommand\nSkill\nTodoWrite\nWebSearch\nWrite\nWebFetch\nTaskOutput\nKillShell\nAskUserQuestion\nTask\n</available-deferred-tools>",
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            },
+            {
+              "type": "text",
+              "text": "<system-reminder>\nThis is a reminder that your todo list is currently empty. DO NOT mention this to the user explicitly because they are already aware. If you are working on tasks that would benefit from a todo list please use the TodoWrite tool to create one. If not, please feel free to ignore. Again do not mention this message to the user.\n</system-reminder>",
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            },
+            {
+              "type": "text",
+              "text": "你现在一共有哪些工具？"
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude.",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        },
+        {
+          "type": "text",
+          "text": "\nYou are an interactive CLI tool that helps users with software engineering tasks. Use the instructions below and the tools available to you to assist the user.\n\nIMPORTANT: Assist with authorized security testing, defensive security, CTF challenges, and educational contexts. Refuse requests for dest....  running in:\n<env>\nWorking directory: /Users/david/Documents/github/agents-team\nIs directory a git repo: No\nPlatform: darwin\nOS Version: Darwin 23.5.0\nToday's date: 2026-03-05\n</env>\nModel ID: glm-4.7",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        }
+      ],
+      "tools": [
+        "ToolSearch"
+      ],
+      "thinking": {
+        "type": "enabled",
+        "budget_tokens": 4096
+      },
+      "toolCount": 1,
+      "toolsLite": [
+        {
+          "name": "ToolSearch",
+          "description": "Search for or select deferred tools to make them available for use.\n\n**MANDATORY PREREQUISITE - THIS IS A HARD REQUIREMENT**\n\nYou MUST use this tool to load deferred tools BEFORE calling them directly.\n\nThis is a BLOCKING REQUIREMENT - defe.... Search for or select deferred tools to make them available for use.\n\n**MANDATORY PREREQUISITE - THIS IS A HARD REQUIREMENT**\n\nYou MUST use this tool to load deferred tools BEFORE calling them directly.\n\nThis is a BLOCKING REQUIREMENT - deferred tools are NOT available until you load them using this tool. Look for <available-deferred-tools> messages in the conversation for the list of tools you can discover. Both query modes (keyword search and direct selection) load the returned tools — once a tool appears in the results, it is immediately available to call.\n\n**Why this is non-negotiable:**\n- Deferred tools are not loaded until discovered via this tool\n- Calling a deferred tool without first loading it will fail\n\n**Query modes:**\n\n1. **Keyword search** - Use keywords when you're unsure which tool to use or need to discover multiple tools at once:\n   - \"list directory\" - find tools for listing directories\n   - \"notebook jupyter\" - find notebook editing tools\n   - \"slack message\" - find slack messaging tools\n   - Returns up to 5 matching tools ranked by relevance\n   - All returned tools are immediately available to call — no further selection step needed\n\n2. **Direct selection** - Use `select:<tool_name>` when you know the exact tool name:\n   - \"select:mcp__slack__read_channel\"\n   - \"select:NotebookEdit\"\n   - \"select:Read,Edit,Grep\" - load multiple tools at once with comma separation\n   - Returns the named tool(s) if they exist\n\n**IMPORTANT:** Both modes load tools equally. Do NOT follow up a keyword search with `select:` calls for tools already returned — they are already loaded.\n\n3. **Required keyword** - Prefix with `+` to require a match:\n   - \"+linear create issue\" - only tools from \"linear\", ranked by \"create\"/\"issue\"\n   - \"+slack send\" - only \"slack\" tools, ranked by \"send\"\n   - Useful when you know the service name but not the exact tool\n\n**CORRECT Usage Patterns:**\n\n<example>\nUser: I need to work with slack somehow\nAssistant: Let me search for slack tools.\n[Calls ToolSearch with query: \"slack\"]\nAssistant: Found several options including mcp__slack__read_channel.\n[Calls mcp__slack__read_channel directly — it was loaded by the keyword search]\n</example>\n\n<example>\nUser: Edit the Jupyter notebook\nAssistant: Let me load the notebook editing tool.\n[Calls ToolSearch with query: \"select:NotebookEdit\"]\n[Calls NotebookEdit]\n</example>\n\n<example>\nUser: List files in the src directory\nAssistant: I can see mcp__filesystem__list_directory in the available tools. Let me select it.\n[Calls ToolSearch with query: \"select:mcp__filesystem__list_directory\"]\n[Calls the tool]\n</example>\n\n**INCORRECT Usage Patterns - NEVER DO THESE:**\n\n<bad-example>\nUser: Read my slack messages\nAssistant: [Directly calls mcp__slack__read_channel without loading it first]\nWRONG - You must load the tool FIRST using this tool\n</bad-example>\n\n<bad-example>\nAssistant: [Calls ToolSearch with query: \"slack\", gets back mcp__slack__read_channel]\nAssistant: [Calls ToolSearch with query: \"select:mcp__slack__read_channel\"]\nWRONG - The keyword search already loaded the tool. The select call is redundant.\n</bad-example>",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "query"
+            ],
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "Tool search query. Examples: \"select:Bash\" or \"read file\""
+              }
+            }
+          }
+        }
+      ],
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [
+        "ToolSearch"
+      ],
+      "toolCalls": [
+        {
+          "id": "call_424345bb766b40bb99b1be2b",
+          "name": "ToolSearch",
+          "input": {
+            "query": "select:Bash,Edit,EnterPlanMode,ExitPlanMode,Glob,Grep,NotebookEdit,Read,SlashCommand,Skill,TodoWrite,WebSearch,Write,WebFetch,TaskOutput,KillShell,AskUserQuestion,Task"
+          }
+        }
+      ],
+      "text": "让我先加载可用的工具：\n[tool_use:ToolSearch]",
+      "assistantText": "让我先加载可用的工具：",
+      "stopReason": "tool_use",
+      "usage": {
+        "input_tokens": 382,
+        "output_tokens": 129
+      },
+      "messageId": "msg_2026030605081030bc0fce1a5544b1",
+      "model": "glm-4.7"
+    }
+  }
+}

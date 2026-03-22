@@ -1,0 +1,36 @@
+{
+  "kind": "formax_cache_control_alignment_report_v1",
+  "createdAt": "2026-03-06T18:19:31.574Z",
+  "targetDir": "/Users/david/Documents/github/formax/proxy/request-preview/traffic-log-2026-03-07T02-19-06",
+  "includeSimple": false,
+  "totalFiles": 1,
+  "passedFiles": 0,
+  "failedFiles": 1,
+  "failures": [
+    {
+      "file": "0001_2026-03-07T02-19-06,276_REQ__v1_messages.json",
+      "rule": "message-nonlast-no-cache-control",
+      "detail": "messages[0].content[0] should not carry cache_control"
+    },
+    {
+      "file": "0001_2026-03-07T02-19-06,276_REQ__v1_messages.json",
+      "rule": "message-nonlast-no-cache-control",
+      "detail": "messages[0].content[1] should not carry cache_control"
+    },
+    {
+      "file": "0001_2026-03-07T02-19-06,276_REQ__v1_messages.json",
+      "rule": "message-nonlast-no-cache-control",
+      "detail": "messages[0].content[2] should not carry cache_control"
+    },
+    {
+      "file": "0001_2026-03-07T02-19-06,276_REQ__v1_messages.json",
+      "rule": "message-nonlast-no-cache-control",
+      "detail": "messages[0].content[3] should not carry cache_control"
+    },
+    {
+      "file": "0001_2026-03-07T02-19-06,276_REQ__v1_messages.json",
+      "rule": "message-last-ephemeral",
+      "detail": "messages[0].content[4] should be cache_control.type=ephemeral"
+    }
+  ]
+}

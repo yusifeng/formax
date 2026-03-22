@@ -1,0 +1,83 @@
+{
+  "sequence": 31,
+  "timestamp": "2026-03-11T15:42:03.781Z",
+  "timestampLocal": "2026-03-11T23:42:03,781",
+  "timestampLocalSafe": "2026-03-11T23-42-03,781",
+  "latencyMs": 425,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "accept": "application/json",
+      "anthropic-beta": "interleaved-thinking-2025-05-14",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "anthropic-version": "2023-06-01",
+      "authorization": "***REDACTED***",
+      "content-type": "application/json",
+      "user-agent": "claude-cli/2.0.67 (external, cli)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-helper-method": "stream",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.70.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "connection": "keep-alive",
+      "host": "127.0.0.1:8787",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "949"
+    },
+    "body": {
+      "model": "claude-haiku-4-5-20251001",
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Please write a 5-10 word title for the following conversation:\n\nUser: 你好\n\nClaude: 你好！很高兴见到你。我可以帮你处理软件工程方面的任务，比如：\n\n- 编写或修改代码\n- 调试问题\n- 重构代码\n- 解释代码功能\n- 运行测试和构建\n- Git 操作\n\n你需要我帮忙做什么？\n\nRespond with the title for the conversation and nothing else."
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude."
+        },
+        {
+          "type": "text",
+          "text": "Summarize this coding conversation in under 50 characters.\nCapture the main task, key files, problems addressed, and current status."
+        }
+      ],
+      "tools": [],
+      "metadata": {
+        "user_id": "user_69bb2abd11d5acd0fc0540b8f84d0940fc050ad409005ab0779f80ea9cb047a4_account__session_dde0ad57-a2bc-4c24-87ac-e669ccc01245"
+      },
+      "max_tokens": 32000,
+      "stream": true
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "_raw": "event: message_start\ndata: {\"type\": \"message_start\", \"message\": {\"id\": \"msg_202603112342034303e8e7b42249d4\", \"type\": \"message\", \"role\": \"assistant\", \"model\": \"glm-4.5-air\", \"content\": [], \"stop_reason\": null, \"stop_sequence\": null, \"usage\": {\"input_tokens\": 0, \"output_tokens\": 0}}}\n\nevent: ping\ndata: {\"type\": \"ping\"}\n\nevent: content_block_start\ndata: {\"type\": \"content_block_start\", \"index\": 0, \"content_block\": {\"type\": \"text\", \"text\": \"\"}}\n\nevent: content_block_delta\ndata: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"Chinese Coding Help Conversation\"}}\n\nevent: content_block_stop\ndata: {\"type\": \"content_block_stop\", \"index\": 0}\n\nevent: message_delta\ndata: {\"type\": \"message_delta\", \"delta\": {\"stop_reason\": \"end_turn\", \"stop_sequence\": null}, \"usage\": {\"input_tokens\": 92, \"output_tokens\": 12, \"cache_read_input_tokens\": 124, \"server_tool_use\": {\"web_search_requests\": 0}, \"service_tier\": \"standard\"}}\n\nevent: message_stop\ndata: {\"type\": \"message_stop\"}\n\n",
+      "_note": "non-json or unknown"
+    },
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [],
+      "text": "Chinese Coding Help Conversation",
+      "assistantText": "Chinese Coding Help Conversation",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 92,
+        "output_tokens": 12
+      },
+      "messageId": "msg_202603112342034303e8e7b42249d4",
+      "model": "glm-4.5-air"
+    }
+  }
+}

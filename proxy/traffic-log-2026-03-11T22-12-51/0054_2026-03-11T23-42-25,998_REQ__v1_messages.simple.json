@@ -1,0 +1,82 @@
+{
+  "sequence": 54,
+  "timestamp": "2026-03-11T15:42:25.998Z",
+  "timestampLocal": "2026-03-11T23:42:25,998",
+  "timestampLocalSafe": "2026-03-11T23-42-25,998",
+  "latencyMs": 343,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "accept": "application/json",
+      "anthropic-beta": "interleaved-thinking-2025-05-14",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "anthropic-version": "2023-06-01",
+      "authorization": "***REDACTED***",
+      "content-type": "application/json",
+      "user-agent": "claude-cli/2.0.67 (external, cli)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-helper-method": "stream",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.70.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "connection": "keep-alive",
+      "host": "127.0.0.1:8787",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "804"
+    },
+    "body": {
+      "model": "claude-haiku-4-5-20251001",
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Please write a 5-10 word title for the following conversation:\n\nUser: 退出 planMode\n\nClaude: I'll exit plan mode for you.\n\nUser: \n\nUser: [Request interrupted by user for tool use]\n\nRespond with the title for the conversation and nothing else."
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude."
+        },
+        {
+          "type": "text",
+          "text": "Summarize this coding conversation in under 50 characters.\nCapture the main task, key files, problems addressed, and current status."
+        }
+      ],
+      "tools": [],
+      "max_tokens": 32000,
+      "stream": true,
+      "toolCount": 0,
+      "toolsLite": [],
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [],
+      "text": "Exiting Plan Mode",
+      "assistantText": "Exiting Plan Mode",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 65,
+        "output_tokens": 10
+      },
+      "messageId": "msg_20260311234226a043f53a4b4c41ec",
+      "model": "glm-4.5-air"
+    }
+  }
+}

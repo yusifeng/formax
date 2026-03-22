@@ -1,0 +1,152 @@
+{
+  "sequence": 8,
+  "timestamp": "2026-03-15T16:02:37.117Z",
+  "timestampLocal": "2026-03-16T00:02:37,117",
+  "timestampLocalSafe": "2026-03-16T00-02-37,117",
+  "latencyMs": 6307,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "accept": "application/json",
+      "anthropic-beta": "claude-code-20250219,interleaved-thinking-2025-05-14",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "anthropic-version": "2023-06-01",
+      "authorization": "***REDACTED***",
+      "content-type": "application/json",
+      "user-agent": "claude-cli/2.0.67 (external, cli)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-helper-method": "stream",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.70.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "connection": "keep-alive",
+      "host": "127.0.0.1:8787",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "9776"
+    },
+    "body": {
+      "model": "claude-sonnet-4-5-20250929",
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "<system-reminder>\nThis is a reminder that your todo list is currently empty. DO NOT mention this to the user explicitly because they are already aware. If you are working on tasks that would benefit from a todo list please use the TodoWrite tool to create one. If not, please feel free to ignore. Again do not mention this message to the user.\n</system-reminder>"
+            },
+            {
+              "type": "text",
+              "text": "<system-reminder>\nThe user selected the lines 3 to 3 from /Users/david/Documents/github/tmp2/tour-next/.claude/settings.local.json:\nANTHROPIC_BASE_URL\n\nThis may or may not be related to the current task.\n</system-reminder>"
+            },
+            {
+              "type": "text",
+              "text": "你好"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "type": "thinking",
+              "thinking": "The user just greeted me with \"你好\" which is \"Hello\" in Chinese. I should respond politely and briefly in a similar way, then offer to help with their project. I should keep it concise and professional.\n\nI can see from the context that this is a Next.js 16 blog/CMS application with JWT authentication. The user has some uncommitted changes and there's a todo.md file that's been modified. They also have some selected lines from a settings file showing ANTHROPIC_BASE_URL.\n\nI should greet them back and ask how I can help with their Next.js project.",
+              "signature": "755e5b39335d413db5ffce1a"
+            },
+            {
+              "type": "text",
+              "text": "你好！\n\n我可以帮你处理这个 Next.js 博客/CMS 项目的相关任务。从 git status 看，你有一些未提交的更改，包括登录页面、文章页面、认证逻辑等文件。\n\n有什么我可以帮你的吗？比如：\n- 修复某个问题\n- 添加新功能\n- 代码审查\n- 其他开发任务",
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Your task is to create a detailed summary of the conversation so far, paying close attention to the user's explicit requests and your previous actions.\nThis summary should be thorough in capturing technical details, code patterns, and architectural decisions that would be essential for continuing de.... stakes you made and how you fixed them.\n</example>\n\n<example>\n# Summary instructions\nWhen you are using compact - please focus on test output and code changes. Include file reads verbatim.\n</example>\n",
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude.",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        },
+        {
+          "type": "text",
+          "text": "You are a helpful AI assistant tasked with summarizing conversations.",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        }
+      ],
+      "tools": [
+        "Read"
+      ],
+      "max_tokens": 20000,
+      "stream": true,
+      "toolCount": 1,
+      "toolsLite": [
+        {
+          "name": "Read",
+          "description": "Reads a file from the local filesystem. You can access any file directly by using this tool.\nAssume this tool is able to read all files on the machine. If the User provides a path to a file assume that path is valid. It is okay to read a fi.... Reads a file from the local filesystem. You can access any file directly by using this tool.\nAssume this tool is able to read all files on the machine. If the User provides a path to a file assume that path is valid. It is okay to read a file that does not exist; an error will be returned.\n\nUsage:\n- The file_path parameter must be an absolute path, not a relative path\n- By default, it reads up to 2000 lines starting from the beginning of the file\n- You can optionally specify a line offset and limit (especially handy for long files), but it's recommended to read the whole file by not providing these parameters\n- Any lines longer than 2000 characters will be truncated\n- Results are returned using cat -n format, with line numbers starting at 1\n- This tool allows Claude Code to read images (eg PNG, JPG, etc). When reading an image file the contents are presented visually as Claude Code is a multimodal LLM.\n- This tool can read PDF files (.pdf). PDFs are processed page by page, extracting both text and visual content for analysis.\n- This tool can read Jupyter notebooks (.ipynb files) and returns all cells with their outputs, combining code, text, and visualizations.\n- This tool can only read files, not directories. To read a directory, use an ls command via the Bash tool.\n- You can call multiple tools in a single response. It is always better to speculatively read multiple potentially useful files in parallel.\n- You will regularly be asked to read screenshots. If the user provides a path to a screenshot, ALWAYS use this tool to view the file at the path. This tool will work with all temporary file paths.\n- If you read a file that exists but has empty contents you will receive a system reminder warning in place of file contents.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "file_path"
+            ],
+            "properties": {
+              "file_path": {
+                "type": "string",
+                "description": "The absolute path to the file to read"
+              },
+              "offset": {
+                "type": "number",
+                "description": "The line number to start reading from. Only provide if the file is too large to read at once"
+              },
+              "limit": {
+                "type": "number",
+                "description": "The number of lines to read. Only provide if the file is too large to read at once."
+              }
+            }
+          }
+        }
+      ],
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [],
+      "text": "<analysis>\nLet me analyze this conversation chronologically:\n\n1. **Initial greeting**: The user sent \"你好\" (Hello in Chinese), a simple greeting\n2. **My response**: I responded in Chinese, acknowledging the Next.js blog/CMS project context and offering to help with various tasks\n3. **System reminders.... ext Step:\n   - Await the user's first actual request or question about the project\n   - The conversation has just begun, so the next step depends entirely on what the user wants to work on\n\n</summary>",
+      "assistantText": "<analysis>\nLet me analyze this conversation chronologically:\n\n1. **Initial greeting**: The user sent \"你好\" (Hello in Chinese), a simple greeting\n2. **My response**: I responded in Chinese, acknowledging the Next.js blog/CMS project context and offering to help with various tasks\n3. **System reminders**: Two system reminders were shown:\n   - One about an empty todo list (which I should not mention to the user)\n   - One about the user selecting line 3 from `/Users/david/Documents/github/tmp2/tour-next/.claude/settings.local.json` showing `ANTHROPIC_BASE_URL`\n4. **Summary request**: The user then immediately asked for a detailed conversation summary\n\nThis is a very short conversation with minimal technical work performed. The user has:\n- Only sent one non-tool message (\"你好\")\n- Selected a line in a settings file (ANTHROPIC_BASE_URL)\n- Asked for a summary\n\nThere has been no actual development work, file reads, code modifications, or problem-solving in this conversation. The conversation just started with a greeting and immediately moved to a summary request.\n</analysis>\n\n<summary>\n1. Primary Request and Intent:\n   - The user greeted with \"你好\" (Hello in Chinese)\n   - No specific development requests have been made yet\n   - The user selected line 3 from `.claude/settings.local.json` showing `ANTHROPIC_BASE_URL` configuration\n   - The user then requested a conversation summary\n\n2. Key Technical Concepts:\n   - Next.js 16 (blog/CMS application based on project context)\n   - Chinese language communication\n   - No specific technical concepts have been discussed yet\n\n3. Files and Code Sections:\n   - `/Users/david/Documents/github/tmp2/tour-next/.claude/settings.local.json`\n     - User selected line 3 containing `ANTHROPIC_BASE_URL`\n     - This file appears to contain Claude/Anthropic API configuration settings\n     - No file reads or modifications have been performed\n\n4. Errors and fixes:\n   - No errors encountered yet\n\n5. Problem Solving:\n   - No problems have been presented or solved yet\n\n6. All user messages:\n   - \"你好\" (Hello in Chinese)\n   - [Summary request message - the current message]\n\n7. Pending Tasks:\n   - No explicit tasks have been assigned yet\n\n8. Current Work:\n   - Just started the conversation with a greeting\n   - No active development work is in progress\n   - Acknowledged the Next.js blog/CMS project context and offered assistance\n\n9. Optional Next Step:\n   - Await the user's first actual request or question about the project\n   - The conversation has just begun, so the next step depends entirely on what the user wants to work on\n\n</summary>",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 1233,
+        "output_tokens": 574
+      },
+      "messageId": "msg_202603160002372fbb5e85e4c145a4",
+      "model": "glm-4.7"
+    }
+  }
+}

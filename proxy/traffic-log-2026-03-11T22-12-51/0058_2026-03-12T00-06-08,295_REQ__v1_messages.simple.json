@@ -1,0 +1,91 @@
+{
+  "sequence": 58,
+  "timestamp": "2026-03-11T16:06:08.295Z",
+  "timestampLocal": "2026-03-12T00:06:08,295",
+  "timestampLocalSafe": "2026-03-12T00-06-08,295",
+  "latencyMs": 1947,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "accept": "application/json",
+      "anthropic-beta": "claude-code-20250219,interleaved-thinking-2025-05-14",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "anthropic-version": "2023-06-01",
+      "authorization": "***REDACTED***",
+      "content-type": "application/json",
+      "user-agent": "claude-cli/2.0.67 (external, cli)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-helper-method": "stream",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.70.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "connection": "keep-alive",
+      "host": "127.0.0.1:8787",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "3918"
+    },
+    "body": {
+      "model": "claude-sonnet-4-5-20250929",
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Warmup",
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude.",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        },
+        {
+          "type": "text",
+          "text": "You are a software architect and planning specialist for Claude Code. Your role is to explore the codebase and design implementation plans.\n\n=== CRITICAL: READ-ONLY MODE - NO FILE MODIFICATIONS ===\nThis is a READ-ONLY planning task. You are STRICTLY PROHIBITED from:\n- Creating new files (no Write, t.... 0929.\n\nAssistant knowledge cutoff is January 2025.\n\n<claude_background_info>\nThe most recent frontier Claude model is Claude Opus 4.5 (model ID: 'claude-opus-4-5-20251101').\n</claude_background_info>\n",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        }
+      ],
+      "tools": [],
+      "max_tokens": 32000,
+      "stream": true,
+      "toolCount": 0,
+      "toolsLite": [],
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [],
+      "text": "I'm ready to help you explore codebases and design implementation plans! \n\nAs your planning specialist, I can:\n\n1. **Explore** - Read files, search code patterns, understand architecture using read-only tools (Glob, Grep, Read, Bash for ls/cat/find/git log etc.)\n\n2. **Analyze** - Identify patterns, conventions, and existing implementations to follow\n\n3. **Design** - Create detailed implementation plans with step-by-step strategies\n\n4. **Guide** - Provide clear architectural decisions and anticipate challenges\n\n**Important**: I operate in READ-ONLY mode. I explore and plan but never modify files directly.\n\nWhat would you like me to help you plan? Please share:\n- Your requirements or feature request\n- Any specific perspective you'd like me to take (e.g., security-focused, performance-oriented, maintainability-first)\n- Any relevant context about the codebase\n\nI'm ready when you are!",
+      "assistantText": "I'm ready to help you explore codebases and design implementation plans! \n\nAs your planning specialist, I can:\n\n1. **Explore** - Read files, search code patterns, understand architecture using read-only tools (Glob, Grep, Read, Bash for ls/cat/find/git log etc.)\n\n2. **Analyze** - Identify patterns, conventions, and existing implementations to follow\n\n3. **Design** - Create detailed implementation plans with step-by-step strategies\n\n4. **Guide** - Provide clear architectural decisions and anticipate challenges\n\n**Important**: I operate in READ-ONLY mode. I explore and plan but never modify files directly.\n\nWhat would you like me to help you plan? Please share:\n- Your requirements or feature request\n- Any specific perspective you'd like me to take (e.g., security-focused, performance-oriented, maintainability-first)\n- Any relevant context about the codebase\n\nI'm ready when you are!",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 783,
+        "output_tokens": 190
+      },
+      "messageId": "msg_20260312000608be08960f84cf443b",
+      "model": "glm-4.7"
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "sequence": 2,
+  "timestamp": "2026-03-05T21:06:27.895Z",
+  "timestampLocal": "2026-03-06T05:06:27,895",
+  "timestampLocalSafe": "2026-03-06T05-06-27,895",
+  "latencyMs": 345,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "host": "127.0.0.1:8787",
+      "connection": "keep-alive",
+      "accept": "application/json",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-type": "application/json",
+      "anthropic-version": "2023-06-01",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "authorization": "***REDACTED***",
+      "user-agent": "claude-cli/2.1.45 (external, claude-vscode, agent-sdk/0.2.45)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.74.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "accept-language": "*",
+      "sec-fetch-mode": "cors",
+      "content-length": "718"
+    },
+    "body": {
+      "stream": true,
+      "model": "glm-4.7",
+      "max_tokens": 16000,
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Please write a 5-10 word title for the following conversation:\n\nUser: 你好\nAssistant: 你好！How can I help you today?\n\nUse the same language as the user's message.\nRespond with the title for the conversation and nothing else."
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude."
+        },
+        {
+          "type": "text",
+          "text": "Summarize this coding conversation in under 50 characters. Capture the main task, key files, problems addressed, and current status."
+        },
+        {
+          "type": "text",
+          "text": "Always output the title in the same language as the user's latest message."
+        }
+      ],
+      "tools": [],
+      "toolCount": 0,
+      "toolsLite": [],
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [],
+      "text": "友好问候与初步交流",
+      "assistantText": "友好问候与初步交流",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 112,
+        "output_tokens": 6
+      },
+      "messageId": "msg_202603060506289130ec87b4c24f50",
+      "model": "glm-4.7"
+    }
+  }
+}

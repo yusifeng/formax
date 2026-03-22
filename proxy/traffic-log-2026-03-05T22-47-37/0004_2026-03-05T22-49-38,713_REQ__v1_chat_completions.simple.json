@@ -1,0 +1,61 @@
+{
+  "sequence": 4,
+  "timestamp": "2026-03-05T14:49:38.713Z",
+  "timestampLocal": "2026-03-05T22:49:38,713",
+  "timestampLocalSafe": "2026-03-05T22-49-38,713",
+  "latencyMs": 19055,
+  "path": "/v1/chat/completions",
+  "request": {
+    "headers": {
+      "host": "127.0.0.1:8787",
+      "connection": "keep-alive",
+      "accept": "text/event-stream, application/json",
+      "content-type": "application/json",
+      "authorization": "***REDACTED***",
+      "accept-language": "*",
+      "sec-fetch-mode": "cors",
+      "user-agent": "node",
+      "accept-encoding": "gzip, deflate",
+      "content-length": "715"
+    },
+    "body": {
+      "model": "deepseek-reasoner",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Claude Code, Anthropic's official CLI for Claude.\n\nAnalyze if this message indicates a new conversation topic. If it does, extract a 2-3 word title that captures the new topic. Format your response as a JSON object with two fields: 'isNewTopic' (boolean) and 'title' (string, or null if isNewTopic is false). Only include these fields, no other text. ONLY generate the JSON object, no other text (eg. no markdown)."
+        },
+        {
+          "role": "user",
+          "content": "类似于Bash Grep， 你现在一共有哪些Tool 可以调用\n\nThe first character of your response must be '{'."
+        }
+      ],
+      "max_tokens": 16000,
+      "stream": true,
+      "stream_options": {
+        "include_usage": true
+      },
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "openai",
+      "toolUses": [],
+      "text": "{\"isNewTopic\": true, \"title\": \"Available Tools\"}",
+      "assistantText": "{\"isNewTopic\": true, \"title\": \"Available Tools\"}",
+      "reasoningContent": "First, the user is asking: \"类似于Bash Grep， 你现在一共有哪些Tool 可以调用\" which translates to \"Similar to Bash Grep, how many tools do you have now that can be called?\" or \"What tools can you call now, similar to Bash Grep?\"\n\nI need to analyze if this indicates a new conversation topic. The previous conversation history isn't provided, so I have to base this solely on this message. Since this is the first message in this interaction, it likely starts a new topic.\n\nNow, extract a 2-3 word title that captures the new topic. The topic is about the tools I can call, specifically referencing Bash Grep. A concise title could be \"Available Tools\" or \"Tool Inquiry\".\n\nI need to format the response as a JSON object with two fields: 'isNewTopic' (boolean) and 'title' (string, or null if isNewTopic is false).\n\nSince this seems like a new topic, isNewTopic should be true, and title should be a string like \"Available Tools\".\n\nEnsure the title is 2-3 words. \"Available Tools\" is two words, which fits.\n\nMy response must be only the JSON object, starting with '{'. No other text, no markdown.\n\nSo, the JSON should be: {\"isNewTopic\": true, \"title\": \"Available Tools\"}\n\nBut let me confirm if this is indeed a new topic. The user is asking about my capabilities, which might be a continuation if the previous context was about tools. However, since no history is given, I'll assume it's new.\n\nThe instruction says: \"Analyze if this message indicates a new conversation topic.\" Based on the message alone, it's introducing a query about tools, so it's likely new.\n\nFinally, output only the JSON.",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 131,
+        "output_tokens": 388
+      },
+      "messageId": "8481f654-1afe-4d71-acd6-5a7395aed572",
+      "model": "deepseek-reasoner"
+    }
+  }
+}

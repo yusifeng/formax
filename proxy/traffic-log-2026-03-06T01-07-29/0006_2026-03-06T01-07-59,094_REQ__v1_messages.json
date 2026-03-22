@@ -1,0 +1,85 @@
+{
+  "sequence": 6,
+  "timestamp": "2026-03-05T17:07:59.094Z",
+  "timestampLocal": "2026-03-06T01:07:59,094",
+  "timestampLocalSafe": "2026-03-06T01-07-59,094",
+  "latencyMs": 457,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "accept": "application/json",
+      "anthropic-beta": "claude-code-20250219,interleaved-thinking-2025-05-14",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "anthropic-version": "2023-06-01",
+      "authorization": "***REDACTED***",
+      "content-type": "application/json",
+      "user-agent": "claude-cli/2.0.67 (external, cli)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.70.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "connection": "keep-alive",
+      "host": "127.0.0.1:8787",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "14873"
+    },
+    "body": {
+      "model": "claude-sonnet-4-5-20250929",
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "<system-reminder>\nAs you answer the user's questions, you can use the following context:\n# claudeMd\nCodebase and user instructions are shown below. Be sure to adhere to these instructions. IMPORTANT: These instructions OVERRIDE any default behavior and you MUST follow them exactly as written.\n\nContents of /Users/david/Documents/github/capture-terminal/CLAUDE.md (project instructions, checked into the codebase):\n\n# CLAUDE.md\nThis file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.\n\n## Build, Test, and Development Commands\n\n- `npm install` or `bun install` - Install dependencies (links `snapui` command globally)\n- `npm run build` or `tsc` - Build TypeScript to `dist/` directory\n- `npm run dev -- -- <command>` - Run snapshot capture in dev mode (no build required, uses tsx)\n- `npm start -- -- <command>` - Run built version from `dist/index.js`\n- `npm run dev:hooks` - Run hooks demo UI (development entry point)\n- `npm run dev -- --export <session-dir>` - Export spec.md from an existing session directory\n\n**Note**: No linting or testing commands are currently configured. To add linting, install ESLint/Prettier and add scripts to package.json.\n\n**Important**: The `--` double dash separator is required to pass arguments to the target command. Everything after `--` is executed as the target TUI program.\n\n## High-Level Architecture\n\nCapture Terminal is a tool for capturing terminal UI snapshots with full ANSI color preservation, selection states, and key sequence tracking. It's designed to help document terminal applications so AI can recreate them in React + Ink.\n\n### Key Concepts\n\n**Snapshot Capture Flow**:\n1. Spawns a target TUI application in a pseudo-terminal (node-pty)\n2. Mirrors output to both stdout (for user visibility) and a headless xterm.js buffer\n3. Captures keyboard input and passes it through to the target application\n4. On hotkey trigger, serializes the xterm buffer to ANSI and plain text\n5. Records keystroke sequences between snapshots for navigation flow documentation\n\n**Hotkeys** (configurable, defaults):\n- `Ctrl+]` - Take snapshot (most reliable across terminals)\n- `Ctrl+\\` - Export spec.md\n- `Ctrl+Q` - Quit\n- `Ctrl+C` - Force quit (emergency exit)\n- `F5`/`F6`/`F7` - Alternative hotkeys (less portable)\n\n### Key Files (Quick Reference)\n\n- **`src/index.ts`** - Main CLI (400+ lines, all core logic)\n- **`package.json`** - Dependencies and scripts\n- **`tsconfig.json`** - TypeScript configuration\n- **`src/hooks/reducer.ts`** - Hooks UI state machine\n- **`src/hooks/ui.tsx`** - All hooks UI view components\n- **`README.md`** - User-facing documentation (Chinese)\n\n### Core Components\n\n**`src/index.ts`** - Main CLI entry point\n- Shebang `#!/usr/bin/env node` for direct execution\n- Parses CLI arguments (`snapui -- <command>` or `snapui --export <session-dir>`)\n- Spawns target command in node-pty pseudo-terminal (with shell fallback)\n- Creates headless xterm.js terminal with SerializeAddon\n- Handles keyboard input interception and hotkey detection\n- Writes snapshots as JSON (ANSI + plain text) and event logs (JSONL)\n- Exports structured `spec.md` for AI consumption\n- Installed as `snapui` command globally after `npm install` via `package.json` bin field\n\n**`src/hooks/`** - React + Ink based hooks configuration UI (experimental/demo)\n- `HooksDialog.tsx` - Main dialog component with navigation state\n- `reducer.ts` - State machine for UI flow (IDLE → EVENT_LIST → MATCHER_LIST → ADD_MATCHER → ADD_HOOK → SAVE_HOOK)\n- `ui.tsx` - View components for each state (EventListView, MatcherListView, etc.)\n- `constants.ts` - Color palette, event types, save locations, matcher values\n- `utils.ts` - Utility functions (e.g., `clamp()` for numeric bounds checking)\n- `index.ts` - Re-exports HooksDialog component\n\n**`src/pages/`** - Entry point for hooks demo\n- `index.tsx` - Minimal wrapper that renders HooksDialog\n\n### Output Structure\n\nEach capture session creates a directory under `snapshots/`:\n```\nsnapshots/\n  2026-01-24_153012/\n    session.json          # Session metadata (timestamp, command, terminal size)\n    events.jsonl          # Event log (pty.out, key, snapshot, interrupt, quit)\n    screens/\n      0001_snapshot_001.json  # Snapshot with ANSI, plain text, keys since last\n      0001_snapshot_001.txt   # Plain text version for human reading\n      0002_snapshot_002.json\n      ...\n    spec.md               # Structured specification document\n```\n\n### Snapshot JSON Format\n\n```json\n{\n  \"id\": \"0001\",\n  \"label\": \"snapshot_001\",\n  \"ts\": \"2026-01-24T15:30:12.000Z\",\n  \"cols\": 120,\n  \"rows\": 40,\n  \"ansi\": \"\\x1b[0m...\",        // Full ANSI sequence preserving colors/styles\n  \"plain\": \"Text content...\",  // Stripped text version\n  \"keysSinceLastSnapshot\": [\"\\t\", \"ArrowUp\", \"Enter\"]  // Keystroke navigation path\n}\n```\n\n### Technical Stack\n\n- **node-pty**: Spawns processes in a pseudo-terminal for proper TUI support\n- **@xterm/headless**: Headless xterm.js terminal for buffer management\n- **@xterm/addon-serialize**: Serializes terminal state to ANSI sequences\n- **Ink + React**: TUI framework for the hooks configuration UI\n- **TypeScript**: Main language (ES2022 target, ESM modules)\n\n### Key Patterns\n\n**PTY Output Handling**:\n- Child process output is piped to both xterm buffer (for capture) and stdout (for visibility)\n- Uses `outputPaused` flag to suppress display during label input prompts\n\n**Keystroke Tracking**:\n- `keyBuffer` accumulates keystrokes between snapshots\n- Cleared after each snapshot to segment navigation flows\n- Special keys are normalized (Tab, Enter, Esc, Ctrl+X)\n\n**Snapshot Timing**:\n- 80ms delay before capture to avoid UI redraw artifacts\n- Auto-incrementing labels (`snapshot_001`, `snapshot_002`, etc.)\n\n**Hotkey Detection**:\n- Single-byte control characters (0x11 = Ctrl+Q, 0x1C = Ctrl+\\, 0x1D = Ctrl+])\n- Escape sequence detection for function keys (less portable)\n- SIGINT handler for Ctrl+C as emergency exit\n\n### TypeScript Configuration\n\n- **Target**: ES2022 with ES2022 modules\n- **Output**: `dist/` directory with `.js` extensions (even though source is `.ts`)\n- **Features**: Declaration maps, source maps, strict mode enabled\n- **JSX**: `react-jsx` (automatic runtime for Ink components)\n- Import statements use `.js` extensions in compiled code despite `.ts` source files\n\n### Testing\n\nCurrently no test infrastructure exists. To add testing:\n\n**Setup Vitest** (recommended):\n```bash\nnpm install -D vitest @vitest/ui\n```\n\nAdd to `package.json` scripts:\n```json\n\"test\": \"vitest\",\n\"test:ui\": \"vitest --ui\",\n\"test:coverage\": \"vitest --coverage\"\n```\n\nCreate `vitest.config.ts`:\n```typescript\nimport { defineConfig } from 'vitest/config'\n\nexport default defineConfig({\n  test: {\n    globals: true,\n    environment: 'node',\n  }\n})\n```\n\n**Test recommendations**:\n- Use Vitest for unit tests (fast, ESM-compatible)\n- Use `ink-testing-library` for React/Ink component tests\n- For PTY/integration tests, spawn simple TUI programs (`top`, `htop`, `vim`)\n- Mock `node-pty` and `xterm` in unit tests to avoid PTY dependencies\n\n**Example test command** (once configured):\n- `npm test` - Run all tests\n- `npm test -- src/index.test.ts` - Run a single test file\n\n### Development Workflow\n\n1. Make changes to source files in `src/`\n2. Run `npm run dev -- -- <test-command>` to test without building\n3. Run `npm run build` to compile TypeScript to `dist/`\n4. Run `npm start -- -- <test-command>` to test built version\n5. Check generated snapshots in `snapshots/` directory\n\n**Debugging tips**:\n- Add `console.log()` statements - they appear in stdout during capture\n- Check `events.jsonl` for event timeline and debugging hotkey detection\n- View `.txt` files in `screens/` for human-readable snapshot verification\n- Use `xxd` or `od` to inspect ANSI sequences in `.json` files if needed\n\n### Common Tasks\n\n**Add a new hotkey**: Add detection in `process.stdin.on('data')` handler in `src/index.ts`\n\n**Customize snapshot format**: Modify `Snapshot` type and `takeSnapshot()` function\n\n**Add new view to hooks UI**: Add view to `HooksState` type, create component in `ui.tsx`, handle transition in `reducer.ts`\n\n**Change spec.md export format**: Modify `exportSpec()` function in `src/index.ts`\n\n**Add utility functions**: Add to `src/hooks/utils.ts` and export from appropriate modules\n\n**Understand import paths**: TypeScript compiles `.ts` files to `.js` files, so imports within `src/` use `.js` extensions even when importing from `.ts` source files. Example:\n```typescript\n// In src/hooks/index.ts\nexport { HooksDialog } from './HooksDialog.js';  // Note .js extension\n```\n\n### Portability Considerations\n\n- Function key escape sequences vary by terminal emulator; Control key combinations are more portable\n- Windows requires different PTY configuration (node-pty handles this)\n- Terminal size defaults to 120x40 if detection fails\n- Raw mode requires TTY; pipe-friendly mode not yet supported\n\n### Documentation Notes\n\n**Hotkey discrepancy**: The README.md and QUICKSTART.md mention Ctrl+S/Ctrl+E for snapshot/export, but the actual implementation uses:\n- **Ctrl+]** (0x1D) for snapshot\n- **Ctrl+\\** (0x1C) for export\n- **Ctrl+Q** (0x11) for quit\n\nThis was changed because Ctrl+S conflicts with terminal flow control (XOFF). The CLAUDE.md and code reflect the correct hotkeys.\n\n**Additional documentation files**:\n- `QUICKSTART.md` - Step-by-step guide for capturing Claude Code sessions (note: contains outdated hotkey info)\n- `PROMPT_FOR_HOOKS_UI.md` - Specification for implementing the hooks configuration UI\n- `TROUBLESHOOTING.md` - Common issues and solutions\n\n### Limitations\n\n- Requires TTY for raw mode input (piping input not supported)\n- Snapshot timing may miss rapid animations (80ms delay helps but isn't perfect)\n- Complex curses applications may have timing issues during capture\n- No support for capturing mouse events or screen regions\n\n\n      IMPORTANT: this context may or may not be relevant to your tasks. You should not respond to this context unless it is highly relevant to your task.\n</system-reminder>\n"
+            },
+            {
+              "type": "text",
+              "text": "Warmup",
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude.",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        },
+        {
+          "type": "text",
+          "text": "You are a software architect and planning specialist for Claude Code. Your role is to explore the codebase and design implementation plans.\n\n=== CRITICAL: READ-ONLY MODE - NO FILE MODIFICATIONS ===\nThis is a READ-ONLY planning task. You are STRICTLY PROHIBITED from:\n- Creating new files (no Write, touch, or file creation of any kind)\n- Modifying existing files (no Edit operations)\n- Deleting files (no rm or deletion)\n- Moving or copying files (no mv or cp)\n- Creating temporary files anywhere, including /tmp\n- Using redirect operators (>, >>, |) or heredocs to write to files\n- Running ANY commands that change system state\n\nYour role is EXCLUSIVELY to explore the codebase and design implementation plans. You do NOT have access to file editing tools - attempting to edit files will fail.\n\nYou will be provided with a set of requirements and optionally a perspective on how to approach the design process.\n\n## Your Process\n\n1. **Understand Requirements**: Focus on the requirements provided and apply your assigned perspective throughout the design process.\n\n2. **Explore Thoroughly**:\n   - Read any files provided to you in the initial prompt\n   - Find existing patterns and conventions using Glob, Grep, and Read\n   - Understand the current architecture\n   - Identify similar features as reference\n   - Trace through relevant code paths\n   - Use Bash ONLY for read-only operations (ls, git status, git log, git diff, find, cat, head, tail)\n   - NEVER use Bash for: mkdir, touch, rm, cp, mv, git add, git commit, npm install, pip install, or any file creation/modification\n\n3. **Design Solution**:\n   - Create implementation approach based on your assigned perspective\n   - Consider trade-offs and architectural decisions\n   - Follow existing patterns where appropriate\n\n4. **Detail the Plan**:\n   - Provide step-by-step implementation strategy\n   - Identify dependencies and sequencing\n   - Anticipate potential challenges\n\n## Required Output\n\nEnd your response with:\n\n### Critical Files for Implementation\nList 3-5 files most critical for implementing this plan:\n- path/to/file1.ts - [Brief reason: e.g., \"Core logic to modify\"]\n- path/to/file2.ts - [Brief reason: e.g., \"Interfaces to implement\"]\n- path/to/file3.ts - [Brief reason: e.g., \"Pattern to follow\"]\n\nREMEMBER: You can ONLY explore and plan. You CANNOT and MUST NOT write, edit, or modify any files. You do NOT have access to file editing tools.\n\n\nNotes:\n- Agent threads always have their cwd reset between bash calls, as a result please only use absolute file paths.\n- In your final response always share relevant file names and code snippets. Any file paths you return in your response MUST be absolute. Do NOT use relative paths.\n- For clear communication with the user the assistant MUST avoid using emojis.\n\nHere is useful information about the environment you are running in:\n<env>\nWorking directory: /Users/david/Documents/github/capture-terminal\nIs directory a git repo: Yes\nPlatform: darwin\nOS Version: Darwin 23.5.0\nToday's date: 2026-03-06\n</env>\nYou are powered by the model named Sonnet 4.5. The exact model ID is claude-sonnet-4-5-20250929.\n\nAssistant knowledge cutoff is January 2025.\n\n<claude_background_info>\nThe most recent frontier Claude model is Claude Opus 4.5 (model ID: 'claude-opus-4-5-20251101').\n</claude_background_info>\n\ngitStatus: This is the git status at the start of the conversation. Note that this status is a snapshot in time, and will not update during the conversation.\nCurrent branch: main\n\nMain branch (you will usually use this for PRs): \n\nStatus:\n?? .claude/\n?? .formax/\n?? .gitignore\n?? CLAUDE.md\n?? PROMPT_FOR_HOOKS_UI.md\n?? QUICKSTART.md\n?? README.md\n?? TROUBLESHOOTING.md\n?? a.html\n?? b.html\n?? c.html\n?? conv.txt\n?? d.html\n?? f.html\n?? package-lock.json\n?? package.json\n?? src/\n?? tsconfig.json\n\nRecent commits:\n",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        }
+      ],
+      "tools": [],
+      "metadata": {
+        "user_id": "user_69bb2abd11d5acd0fc0540b8f84d0940fc050ad409005ab0779f80ea9cb047a4_account__session_372c0425-6aa5-49ad-ae91-7a8d706ad02b"
+      },
+      "max_tokens": 21333,
+      "temperature": 1
+    }
+  },
+  "response": {
+    "status": 500,
+    "body": {
+      "error": {
+        "type": "new_api_error",
+        "message": "当前模型 claude-sonnet-4-5-20250929 负载已经达到上限，请稍后重试 (request id: 202603060107593344451533v9pGIzo)"
+      },
+      "type": "error"
+    }
+  }
+}

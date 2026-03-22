@@ -1,0 +1,95 @@
+{
+  "sequence": 23,
+  "timestamp": "2026-03-11T15:42:00.549Z",
+  "timestampLocal": "2026-03-11T23:42:00,549",
+  "timestampLocalSafe": "2026-03-11T23-42-00,549",
+  "latencyMs": 6537,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "accept": "application/json",
+      "anthropic-beta": "claude-code-20250219,interleaved-thinking-2025-05-14",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "anthropic-version": "2023-06-01",
+      "authorization": "***REDACTED***",
+      "content-type": "application/json",
+      "user-agent": "claude-cli/2.0.67 (external, cli)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-helper-method": "stream",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.70.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "connection": "keep-alive",
+      "host": "127.0.0.1:8787",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "5128"
+    },
+    "body": {
+      "model": "claude-sonnet-4-5-20250929",
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "<system-reminder>\nAs you answer the user's questions, you can use the following context:\n# claudeMd\nCodebase and user instructions are shown below. Be sure to adhere to these instructions. IMPORTANT: These instructions OVERRIDE any default behavior and you MUST follow them exactly as written.\n\nContents of /Users/david/Documents/github/formax/CLAUDE.md (project instructions, checked into the codebase):\n\n[AGENTS.md]\n\n      IMPORTANT: this context may or may not be relevant to your tasks. You should not respond to this context unless it is highly relevant to your task.\n</system-reminder>\n"
+            },
+            {
+              "type": "text",
+              "text": "Warmup",
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude.",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        },
+        {
+          "type": "text",
+          "text": "You are a software architect and planning specialist for Claude Code. Your role is to explore the codebase and design implementation plans.\n\n=== CRITICAL: READ-ONLY MODE - NO FILE MODIFICATIONS ===\nThis is a READ-ONLY planning task. You are STRICTLY PROHIBITED from:\n- Creating new files (no Write, t.... toolUseId in interactive prompts\n9c04a6e docs(readme): align english with zh launch format\nc845e95 refactor(prompts): extract prompt authoring helpers\nbb476e9 docs(runbook): add npm beta release guide",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        }
+      ],
+      "tools": [],
+      "max_tokens": 32000,
+      "stream": true,
+      "toolCount": 0,
+      "toolsLite": [],
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [],
+      "text": "I'll help you explore the codebase and create an implementation plan. However, I notice that you haven't provided specific requirements yet. \n\nBefore I begin exploring, could you please provide:\n\n1. **Requirements**: What feature or change needs to be implemented?\n2. **Perspective** (optional): Any specific approach or angle you'd like me to take when designing the solution?\n\nOnce you share these details, I'll:\n- Thoroughly explore the codebase using read-only operations\n- Understand existing patterns and architecture\n- Design a comprehensive implementation plan\n- Identify the critical files needed for implementation\n\nPlease share the requirements you'd like me to work on!",
+      "assistantText": "I'll help you explore the codebase and create an implementation plan. However, I notice that you haven't provided specific requirements yet. \n\nBefore I begin exploring, could you please provide:\n\n1. **Requirements**: What feature or change needs to be implemented?\n2. **Perspective** (optional): Any specific approach or angle you'd like me to take when designing the solution?\n\nOnce you share these details, I'll:\n- Thoroughly explore the codebase using read-only operations\n- Understand existing patterns and architecture\n- Design a comprehensive implementation plan\n- Identify the critical files needed for implementation\n\nPlease share the requirements you'd like me to work on!",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 412,
+        "output_tokens": 135
+      },
+      "messageId": "msg_20260311234200af5c845089114c43",
+      "model": "glm-4.7"
+    }
+  }
+}

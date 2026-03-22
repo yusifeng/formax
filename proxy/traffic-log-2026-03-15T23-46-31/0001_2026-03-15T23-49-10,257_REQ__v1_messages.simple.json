@@ -1,0 +1,91 @@
+{
+  "sequence": 1,
+  "timestamp": "2026-03-15T15:49:10.257Z",
+  "timestampLocal": "2026-03-15T23:49:10,257",
+  "timestampLocalSafe": "2026-03-15T23-49-10,257",
+  "latencyMs": 4914,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "accept": "application/json",
+      "anthropic-beta": "interleaved-thinking-2025-05-14",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "anthropic-version": "2023-06-01",
+      "authorization": "***REDACTED***",
+      "content-type": "application/json",
+      "user-agent": "claude-cli/2.0.67 (external, cli)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-helper-method": "stream",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.70.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "connection": "keep-alive",
+      "host": "127.0.0.1:8787",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "4296"
+    },
+    "body": {
+      "model": "claude-haiku-4-5-20251001",
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Warmup",
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude.",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        },
+        {
+          "type": "text",
+          "text": "You are a file search specialist for Claude Code, Anthropic's official CLI for Claude. You excel at thoroughly navigating and exploring codebases.\n\n=== CRITICAL: READ-ONLY MODE - NO FILE MODIFICATIONS ===\nThis is a READ-ONLY exploration task. You are STRICTLY PROHIBITED from:\n- Creating new files (n.... lder.svg\n\nRecent commits:\nff632d0 feat: implement custom error and not found pages, update loading states in todo\nd5852d5 step1\ne37ff84 feat: initial commit\n9029a6f Initial commit from Create Next App",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        }
+      ],
+      "tools": [],
+      "max_tokens": 32000,
+      "stream": true,
+      "toolCount": 0,
+      "toolsLite": [],
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [],
+      "text": "I'll help you warm up by exploring the codebase. Let me start by understanding the project structure and recent changes.\n\n< Glob pattern=\"**/*\" max_depth=\"2\" />\n\nBased on the git status, I can see this is a Next.js project with several modified files. Let me explore the key directories and files to understand the project structure.\n\n< Bash command=\"ls -la\" />\n\nLet me check the main directories:\n\n< Bash command=\"find . -type d -name 'app' -o -name 'lib' -o -name 'components' -o -name 'public' | head -10\" />\n\nNow let me examine some of the key files that were recently modified:\n\n< Read path=\"/Users/david/Documents/github/tmp2/tour-next/app/page.tsx\" />\n\n< Read path=\"/Users/david/Documents/github/tmp2/tour-next/app/(main)/layout.tsx\" />\n\n< Read path=\"/Users/david/Documents/github/tmp2/tour-next/lib/auth.ts\" />\n\nLet me also check the todo.md to understand the current state:\n\n< Read path=\"/Users/david/Documents/github/tmp2/tour-next/todo.md\" />\n\nAnd the recent additions:\n\n< Read path=\"/Users/david/Documents/github/tmp2/tour-next/app/(auth)/actions.ts\" />\n\n< Read path=\"/Users/david/Documents/github/tmp2/tour-next/app/(main)/posts/TriggerErrorButton.tsx\" />\n\nThis appears to be a Next.js application with:\n- Authentication pages (login)\n- Main application layout\n- Posts functionality\n- Profile pages\n- Recent work on error handling and loading states\n- Some uncommitted changes in various components\n\nThe project structure follows the Next.js app router convention with nested folders for different routes and layouts.",
+      "assistantText": "I'll help you warm up by exploring the codebase. Let me start by understanding the project structure and recent changes.\n\n< Glob pattern=\"**/*\" max_depth=\"2\" />\n\nBased on the git status, I can see this is a Next.js project with several modified files. Let me explore the key directories and files to understand the project structure.\n\n< Bash command=\"ls -la\" />\n\nLet me check the main directories:\n\n< Bash command=\"find . -type d -name 'app' -o -name 'lib' -o -name 'components' -o -name 'public' | head -10\" />\n\nNow let me examine some of the key files that were recently modified:\n\n< Read path=\"/Users/david/Documents/github/tmp2/tour-next/app/page.tsx\" />\n\n< Read path=\"/Users/david/Documents/github/tmp2/tour-next/app/(main)/layout.tsx\" />\n\n< Read path=\"/Users/david/Documents/github/tmp2/tour-next/lib/auth.ts\" />\n\nLet me also check the todo.md to understand the current state:\n\n< Read path=\"/Users/david/Documents/github/tmp2/tour-next/todo.md\" />\n\nAnd the recent additions:\n\n< Read path=\"/Users/david/Documents/github/tmp2/tour-next/app/(auth)/actions.ts\" />\n\n< Read path=\"/Users/david/Documents/github/tmp2/tour-next/app/(main)/posts/TriggerErrorButton.tsx\" />\n\nThis appears to be a Next.js application with:\n- Authentication pages (login)\n- Main application layout\n- Posts functionality\n- Profile pages\n- Recent work on error handling and loading states\n- Some uncommitted changes in various components\n\nThe project structure follows the Next.js app router convention with nested folders for different routes and layouts.",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 558,
+        "output_tokens": 565
+      },
+      "messageId": "msg_20260315234911dced75dd62d347c9",
+      "model": "glm-4.5-air"
+    }
+  }
+}

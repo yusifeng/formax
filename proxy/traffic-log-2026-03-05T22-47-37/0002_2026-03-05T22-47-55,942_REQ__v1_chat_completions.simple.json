@@ -1,0 +1,61 @@
+{
+  "sequence": 2,
+  "timestamp": "2026-03-05T14:47:55.942Z",
+  "timestampLocal": "2026-03-05T22:47:55,942",
+  "timestampLocalSafe": "2026-03-05T22-47-55,942",
+  "latencyMs": 47735,
+  "path": "/v1/chat/completions",
+  "request": {
+    "headers": {
+      "host": "127.0.0.1:8787",
+      "connection": "keep-alive",
+      "accept": "text/event-stream, application/json",
+      "content-type": "application/json",
+      "authorization": "***REDACTED***",
+      "accept-language": "*",
+      "sec-fetch-mode": "cors",
+      "user-agent": "node",
+      "accept-encoding": "gzip, deflate",
+      "content-length": "795"
+    },
+    "body": {
+      "model": "deepseek-reasoner",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Claude Code, Anthropic's official CLI for Claude.\n\nSummarize this coding conversation in under 50 characters. Capture the main task, key files, problems addressed, and current status.\n\nAlways output the title in the same language as the user's latest message."
+        },
+        {
+          "role": "user",
+          "content": "Please write a 5-10 word title for the following conversation:\n\nUser: 你好\nAssistant: 你好！我是 Claude Code，Anthropic 的官方 CLI 工具，可以帮助你处理各种软件工程任务。有什么我可以帮助你的吗？\n\nUse the same language as the user's message.\nRespond with the title for the conversation and nothing else."
+        }
+      ],
+      "max_tokens": 16000,
+      "stream": true,
+      "stream_options": {
+        "include_usage": true
+      },
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "openai",
+      "toolUses": [],
+      "text": "Claude Code 自我介绍与帮助提议",
+      "assistantText": "Claude Code 自我介绍与帮助提议",
+      "reasoningContent": "First, the user says: \"你好\" which is Chinese for \"Hello\". The assistant responds in Chinese, and the user's message is in Chinese, so I need to use the same language for the title, which is Chinese.\n\nThe task is to write a 5-10 word title summarizing the conversation. The conversation is very short: just a greeting and an introduction. The assistant introduces itself as Claude Code, Anthropic's official CLI tool, offering help with software engineering tasks.\n\nKey elements from the conversation:\n- Main task: Introduction and offer of assistance.\n- Key files: None mentioned.\n- Problems addressed: None yet; it's just an initial greeting.\n- Current status: The conversation has just started, with the assistant ready to help.\n\nI need to capture the main task, which is the assistant introducing itself and offering help. In Chinese, I should write a title that reflects this.\n\nTitle should be 5-10 words in Chinese. Since Chinese words can be characters, but typically, we count by words or phrases. In Chinese, a \"word\" can be a character or a compound word. For simplicity, I'll aim for 5-10 Chinese characters or short phrases.\n\nPossible title: \"Claude Code 介绍与帮助提供\" which means \"Claude Code Introduction and Help Offering\". That's 4 words if we count \"Claude Code\" as one, but in Chinese, it might be considered as separate. Let's think in terms of character count: \"Claude Code 介绍与帮助提供\" has characters: C-l-a-u-d-e, space, C-o-d-e, space, 介绍, 与, 帮助, 提供. That's not standard Chinese counting. Better to use pure Chinese: \"Claude Code 的介绍和帮助提议\".\n\nTo keep it within 5-10 words, I can say: \"助手自我介绍并提供帮助\" which means \"Assistant introduces itself and offers help\". That's 5 words: 助手, 自我, 介绍, 并, 提供, 帮助. But \"自我介绍\" is a compound word, so it might be 3 words: 助手, 自我介绍, 并提供帮助. Still, it's concise.\n\nThe user's message is \"你好\", and the response is an introduction. So, the title should summarize this exchange.\n\nThe instruction says: \"Summarize this coding conversation in under 50 characters.\" But in the response, it says \"write a 5-10 word title\", and in the example, it's about summarizing the conversation. Looking back at the system prompt: \"Summarize this coding conversation in under 50 characters. Capture the main task, key files, problems addressed, and current status.\" But in the user's message, it says \"Please write a 5-10 word title for the following conversation:\" and then provides the conversation.\n\nIn the system prompt, it says: \"Always output the title in the same language as the user's latest message.\" And \"Respond with the title for the conversation and nothing else.\"\n\nSo, for this specific user message, I need to write a title for the provided conversation, in Chinese, 5-10 words.\n\nThe conversation is brief: user says hello, assistant introduces and offers help. So, the title could be: \"Claude Code 的初次问候与帮助提议\" meaning \"Claude Code's initial greeting and help proposal\".\n\nTo make it 5-10 words: let's list words in Chinese: \"Claude\", \"Code\", \"的\", \"初次\", \"问候\", \"与\", \"帮助\", \"提议\" – that's 8 words if we count each separately. In Chinese, \"Claude Code\" might be considered as one entity, so perhaps \"Claude Code\" is two words, but for title purposes, I'll go with a phrase.\n\nAnother option: \"助手 Claude Code 自我介绍并询问需求\" which means \"Assistant Claude Code introduces itself and asks for needs\". That's 6 words: 助手, Claude, Code, 自我, 介绍, 并, 询问, 需求. But \"Claude Code\" is often kept as is.\n\nTo simplify, I can write: \"Claude Code 介绍及帮助提供\" – this is concise and within the word limit.\n\nNow, for the response, I need to output only the title, nothing else.\n\nFinal title: \"Claude Code 自我介绍与帮助提议\" – this means \"Claude Code self-introduction and help proposal\". It's 5 words if we break it down: Claude, Code, 自我介绍, 与, 帮助提议. But in Chinese, it flows as a phrase.\n\nI think this captures the essence: the main task is introduction, no key files or problems addressed, and current status is ready to help.\n\nSo, I'll go with that.",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 131,
+        "output_tokens": 1006
+      },
+      "messageId": "33d0dfda-f3e2-4617-90df-e65ef5acfd1c",
+      "model": "deepseek-reasoner"
+    }
+  }
+}

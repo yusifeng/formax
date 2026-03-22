@@ -1,0 +1,82 @@
+{
+  "sequence": 52,
+  "timestamp": "2026-03-11T15:42:25.221Z",
+  "timestampLocal": "2026-03-11T23:42:25,221",
+  "timestampLocalSafe": "2026-03-11T23-42-25,221",
+  "latencyMs": 359,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "accept": "application/json",
+      "anthropic-beta": "interleaved-thinking-2025-05-14",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "anthropic-version": "2023-06-01",
+      "authorization": "***REDACTED***",
+      "content-type": "application/json",
+      "user-agent": "claude-cli/2.0.67 (external, cli)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-helper-method": "stream",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.70.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "connection": "keep-alive",
+      "host": "127.0.0.1:8787",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "1281"
+    },
+    "body": {
+      "model": "claude-haiku-4-5-20251001",
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Please write a 5-10 word title for the following conversation:\n\nUser: Return JSON with company_name only\n\nClaude: I'd be happy to return JSON with a company name using the StructuredOutput tool. However, I need to know what company name you'd like me to return.\n\nCould you please provide the company name you want me to use?\n\nUser: Stop hook feedback:\nYou MUST call the StructuredOutput tool to complete this request. Call this tool now.\n\nClaude: I'll call the StructuredOutput tool now as required.\n\nUser: \n\nClaude: I've successfully called the StructuredOutput tool with the company name \"Example Company\". The structured output has been provided.\n\nRespond with the title for the conversation and nothing else."
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude."
+        },
+        {
+          "type": "text",
+          "text": "Summarize this coding conversation in under 50 characters.\nCapture the main task, key files, problems addressed, and current status."
+        }
+      ],
+      "tools": [],
+      "max_tokens": 32000,
+      "stream": true,
+      "toolCount": 0,
+      "toolsLite": [],
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [],
+      "text": "Structured JSON Output Request",
+      "assistantText": "Structured JSON Output Request",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 200,
+        "output_tokens": 12
+      },
+      "messageId": "msg_202603112342259cfe5cce914a4290",
+      "model": "glm-4.5-air"
+    }
+  }
+}

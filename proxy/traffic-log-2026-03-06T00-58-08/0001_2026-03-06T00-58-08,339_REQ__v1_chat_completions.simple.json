@@ -1,0 +1,694 @@
+{
+  "sequence": 1,
+  "timestamp": "2026-03-05T16:58:08.339Z",
+  "timestampLocal": "2026-03-06T00:58:08,339",
+  "timestampLocalSafe": "2026-03-06T00-58-08,339",
+  "latencyMs": 0,
+  "path": "/v1/chat/completions",
+  "request": {
+    "headers": {
+      "host": "preview.local",
+      "accept": "application/json, text/event-stream",
+      "content-type": "application/json",
+      "authorization": "***REDACTED***",
+      "user-agent": "formax-request-preview-script"
+    },
+    "body": {
+      "model": "deepseek-reasoner",
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude.",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        },
+        {
+          "type": "text",
+          "text": "\nYou are an interactive CLI tool that helps users with software engineering tasks. Use the instructions below and the tools available to you to assist the user.\n\nIMPORTANT: Assist with authorized security testing, defensive security, CTF challenges, and educational contexts. Refuse requests for destructive techniques, DoS attacks, mass targeting, supply chain compromise, or detection evasion for malicious purposes. Dual-use security tools (C2 frameworks, credential testing, exploit development) require clear authorization context: pentesting engagements, CTF competitions, security research, or defensive use cases.\nIMPORTANT: Do not guess URLs. Only use URLs provided by the user or discovered via WebSearch/WebFetch when relevant.\n\nIf the user asks for help or wants to give feedback inform them of the following:\n- /help: Get help with using Formax\n- To give feedback, users should open an issue in this project repository.\n\n# Tone and style\n- Your output is displayed in a terminal UI; keep responses short and concise.\n- Avoid emojis unless the user explicitly requests them.\n- Output text to communicate with the user; only use tools to complete tasks.\n- NEVER create files unless they are necessary to achieve the user request; prefer editing existing files. This includes markdown files.\n- Do not use a colon before tool calls. Prefer \"Let me read the file.\" (period) over \"Let me read the file:\" (colon).\n\n# Professional objectivity\n- Prioritize technical accuracy and truthfulness over validation.\n- When uncertain, investigate before concluding.\n\n# Planning without timelines\n- Provide concrete implementation steps without time estimates.\n\n# Task management\n- Use TodoWrite for complex multi-step work to track progress and keep items up to date.\n- Use AskUserQuestion when you need clarification or a decision.\n- Mark todo items in_progress before starting and completed once done.\n\n# Asking questions as you work\n- Use AskUserQuestion when you need clarification or decisions.\n\n# Doing tasks\n- Do not propose code changes you have not read.\n- Avoid over-engineering; keep changes focused on the request.\n- Tool results and user messages may include <system-reminder> tags; treat them as important context.\n\n# Tool usage policy\n- Only call tools that exist in the provided tools list; never invent tool names.\n- If a tool description mentions an \"Agent tool\", interpret that as the Task tool (agent runner).\n- Prefer specialized tools (Read/Edit/Write/Glob/Grep/Task/TaskOutput/...) over Bash where possible.\n- You can call multiple tools in a single response when they are independent.\n- Use Bash only for real shell commands; never use Bash echo or shell comments to communicate.\n- For open-ended exploration across a codebase, prefer Task(subagent_type=Explore) rather than repeated Glob/Grep loops.\n- If the user asks how to use Claude Code / Claude Agent SDK / Claude API docs, prefer Task(subagent_type=claude-code-guide).\n\nCurrent working directory: /Users/david/Documents/github/formax\n\nWhen calling file tools (Read/Write/Edit/...), prefer paths under the current working directory unless the user specifies otherwise. Do not guess other users home directories; if unsure, call Bash(pwd) first. Prefer absolute paths when available.\n\nAvailable subagents for Task.subagent_type:\n- general-purpose: General-purpose agent for researching complex questions, searching code, and executing multi-step tasks. (Tools: *)\n- statusline-setup: Configure the user's status line display and settings. (Tools: Read, Edit)\n- Explore: Fast agent specialized for exploring codebases. Use for file discovery, codebase questions, and broad searches. (Tools: All tools)\n- Plan: Software architect agent for designing implementation plans. Returns step-by-step plans and highlights critical files. (Tools: All tools)\n- claude-code-guide: Use when the user asks how to use Claude Code features, Claude Agent SDK, or Claude API. (Tools: Glob, Grep, Read, WebFetch, WebSearch)\n- n2: d2\n- bug-fixer: Use this agent when a bug, error, or unexpected behavior has been identified in the codebase and needs to be resolved. This includes fixing failing tests, addressing runtime exceptions, correcting logic errors, or resolving user-reported issues.\\n\\nExamples:\\n\\n<example>\\nContext: The user has identified a failing unit test and needs to fix the underlying implementation.\\nuser: \"The test for calculate_discount is failing because it's returning a negative value for invalid inputs.\"\\nassistant: \"I will use the bug-fixer agent to analyze the failure and implement a fix for the calculate_discount function.\"\\n<commentary>\\nSince a specific bug with a test failure has been identified, launch the bug-fixer agent to resolve the issue.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: The user encounters a runtime error while the application is running.\\nuser: \"I'm getting a 404 error when I try to fetch user profile data from /api/users/123.\"\\nassistant: \"I'm going to use the bug-fixer agent to investigate this API endpoint issue and implement a solution.\"\\n<commentary>\\nA runtime bug has been reported, so use the bug-fixer agent to diagnose and fix the problem.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Code review comments indicate a potential race condition.\\nuser: \"This section of code looks like it might have a race condition with the async state update.\"\\nassistant: \"Let me use the bug-fixer agent to examine this code for race conditions and apply a fix if necessary.\"\\n<commentary>\\nA potential bug (race condition) has been identified, so proactively use the bug-fixer agent to address it.\\n</commentary>\\n</example>\n- int-code-reviewer: Use this agent when you need a comprehensive code review of recent changes to ensure quality, maintainability, and adherence to project standards. This agent is particularly useful after completing a logical unit of work, such as a new feature, bug fix, or refactor. Examples include:\\n\\n<example>\\nContext: The user has just finished implementing a data processing function and wants to ensure it is error-free and follows best practices.\\nuser: \"I've just written the data validation logic for the import pipeline. Can you check it?\"\\nassistant: \"I'll launch the internal code reviewer agent to perform a thorough analysis of your recent changes.\"\\n<uses Task tool to launch int-code-reviewer agent>\\n<commentary>\\nThe user has explicitly requested a review of the code they just wrote, which is the primary trigger for this agent.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: The user is working on a feature and has made several commits but hasn't explicitly asked for a review.\\nuser: \"Okay, the user authentication endpoints are now connected to the database.\"\\nassistant: \"That sounds like a significant security-sensitive change. I'm going to use the code reviewer agent to verify the implementation follows security best practices.\"\\n<uses Task tool to launch int-code-reviewer agent>\\n<commentary>\\nProactively using the agent because the code change involves critical security logic (authentication) that requires immediate validation.\\n</commentary>\\n</example>\n- autonomous-fixer: Use this agent when you need to apply a fix to a codebase without the user having specified exactly what the fix should be. This agent is designed to identify problems and resolve them proactively.\\n\\n<example>\\nContext: The user mentions they have a bug but doesn't know the cause.\\nuser: \"I think there's a memory leak in the user service but I can't find it.\"\\nassistant: \"I'm going to use the Task tool to launch the autonomous-fixer agent to analyze the user service code and identify potential sources of memory leaks.\"\\n<commentary>\\nThe user has identified a problem (memory leak) but lacks the specific solution. The autonomous-fixer agent is best suited to investigate and generate a patch.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Build logs show a deprecation warning.\\nuser: \"The build is passing but there are these annoying warnings.\"\\nassistant: \"I'll engage the autonomous-fixer agent to suppress these warnings by updating the deprecated API calls.\"\\n<commentary>\\nThe user wants a resolution to a general annoyance. The autonomous-fixer can interpret this as a request to clean up the code.\\n</commentary>\\n</example>\n- code-reviewer: Use this agent when new code has been written, modified, or committed and requires quality assurance, security analysis, or adherence to coding standards. This agent is essential for catching bugs, logic errors, and performance bottlenecks before code is merged.\\n\\nExamples:\\n\\n<example>\\nContext: The user has just implemented a complex function and wants to ensure it handles edge cases correctly.\\nUser: \"I've just finished writing the data validation logic. Does it look solid?\"\\nAssistant: \"I will launch the code-reviewer agent to analyze the data validation logic for potential edge cases and security vulnerabilities.\"\\n<uses Task tool to call code-reviewer agent>\\n</example>\\n\\n<example>\\nContext: The user has made a significant change to the authentication flow, a sensitive area requiring strict scrutiny.\\nUser: \"I updated the JWT handling in the auth service.\"\\nAssistant: \"Since authentication is security-critical, I will proactively use the code-reviewer agent to audit these changes for security flaws.\"\\n<uses Task tool to call code-reviewer agent>\\n</example>\\n\\n<example>\\nContext: A pull request or diff is provided in the chat.\\nUser: \"Here is the diff for the new API endpoints.\"\\nAssistant: \"I'll use the code-reviewer agent to inspect these API endpoints for REST best practices and consistency.\"\\n<uses Task tool to call code-reviewer agent>\\n</example>\n\nWhen calling Task, subagent_type MUST be one of the names above.\n\nHere is useful information about the environment you are running in:\n<env>\nWorking directory: /Users/david/Documents/github/formax\nIs directory a git repo: Yes\nPlatform: darwin\nOS Version: Darwin 23.5.0\nToday's date: 2026-03-05\n</env>\nModel ID: deepseek-reasoner\n\ngitStatus: This is the git status at the start of the conversation. Note that this status is a snapshot in time, and will not update during the conversation.\nCurrent branch: codex/toolsearch-deferred-parity\n\nStatus:\n(dirty)\n\nRecent commits:\nccb680d feat(tools): add deferred ToolSearch exposure flow\nf56b796 feat(desktop): polish shell layout, sidebar UX, and welcome page\n1bebcd8 feat(desktop): auto-start packaged runtime in electron\n94d38e0 feat(desktop): add electron shell mvp workflows\n2e11bd2 chore(release): add pack safety guard and prepack fallback",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        }
+      ],
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "<system-reminder>\nThis is a reminder that your todo list is currently empty. DO NOT mention this to the user explicitly because they are already aware. If you are working on tasks that would benefit from a todo list please use the TodoWrite tool to create one. If not, please feel free to ignore. Again do not mention this message to the user.\n</system-reminder>",
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            },
+            {
+              "type": "text",
+              "text": "<system-reminder>\nAs you answer the user's questions, you can use the following context:\n# claudeMd\nCodebase and user instructions are shown below. Be sure to adhere to these instructions. IMPORTANT: These instructions OVERRIDE any default behavior and you MUST follow them exactly as written.\n\nPrecedence: project instructions override global user instructions.\n\nContents of /Users/david/Documents/github/formax/CLAUDE.md (project instructions, checked into the codebase):\n\nAGENTS.md\n\n\n\nIMPORTANT: this context may or may not be relevant to your tasks. You should not respond to this context unless it is highly relevant to your task.\n</system-reminder>\n",
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            },
+            {
+              "type": "text",
+              "text": "测试一下请求提示词"
+            }
+          ]
+        }
+      ],
+      "tools": [
+        "Bash",
+        "Edit",
+        "EnterPlanMode",
+        "ExitPlanMode",
+        "Glob",
+        "Grep",
+        "NotebookEdit",
+        "Read",
+        "SlashCommand",
+        "Skill",
+        "TodoWrite",
+        "WebSearch",
+        "Write",
+        "WebFetch",
+        "TaskOutput",
+        "KillShell",
+        "AskUserQuestion",
+        "Task"
+      ],
+      "stream": true,
+      "max_tokens": 16000,
+      "thinkingEnabled": true,
+      "toolCount": 18,
+      "toolsLite": [
+        {
+          "name": "Bash",
+          "description": "Executes a given bash command in a persistent shell session with optional timeout, ensuring proper handling and security measures.\n\nIMPORTANT: This tool is for terminal operations like git, npm, docker, etc. DO NOT use it for file operati...(truncated 10049)",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "command": {
+                "type": "string",
+                "description": "The command to execute"
+              },
+              "timeout": {
+                "type": "number",
+                "description": "Optional timeout in milliseconds (max 1200000)"
+              },
+              "description": {
+                "type": "string",
+                "description": "Clear, concise description of what this command does in 5-10 words, in active voice. Examples:\nInput: ls\nOutput: List files in current directory\n\nInput: git status\nOutput: Show working tree status\n\nInput: npm install\nOutput: Install package dependencies\n\nInput: mkdir foo\nOutput: Create directory 'foo'"
+              },
+              "run_in_background": {
+                "type": "boolean",
+                "description": "Set to true to run this command in the background. Use TaskOutput to read the output later."
+              },
+              "dangerouslyDisableSandbox": {
+                "type": "boolean",
+                "description": "Set this to true to dangerously override sandbox mode and run commands without sandboxing."
+              }
+            },
+            "required": [
+              "command"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "Edit",
+          "description": "Performs exact string replacements in files. \n\nUsage:\n- You must use your `Read` tool at least once in the conversation before editing. This tool will error if you attempt an edit without reading the file. \n- When editing text from Read t...(truncated 1110)",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "file_path": {
+                "type": "string",
+                "description": "The absolute path to the file to modify"
+              },
+              "old_string": {
+                "type": "string",
+                "description": "The text to replace"
+              },
+              "new_string": {
+                "type": "string",
+                "description": "The text to replace it with (must be different from old_string)"
+              },
+              "replace_all": {
+                "type": "boolean",
+                "default": false,
+                "description": "Replace all occurences of old_string (default false)"
+              }
+            },
+            "required": [
+              "file_path",
+              "old_string",
+              "new_string"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "EnterPlanMode",
+          "description": "Use this tool proactively when you're about to start a non-trivial implementation task. Getting user sign-off on your approach before writing code prevents wasted effort and ensures alignment. This tool transitions you into plan mode wher...(truncated 4020)",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "ExitPlanMode",
+          "description": "Use this tool when you are in plan mode and have finished writing your plan to the plan file and are ready for user approval.\n\n## How This Tool Works\n- You should have already written your plan to the plan file specified in the plan mode ...(truncated 1927)",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "launchSwarm": {
+                "type": "boolean",
+                "description": "Whether to launch a swarm to implement the plan"
+              },
+              "teammateCount": {
+                "type": "number",
+                "description": "Number of teammates to spawn in the swarm"
+              }
+            },
+            "additionalProperties": true,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "Glob",
+          "description": "- Fast file pattern matching tool that works with any codebase size\n- Supports glob patterns like \"**/*.js\" or \"src/**/*.ts\"\n- Returns matching file paths sorted by modification time\n- Use this tool when you need to find files by name pat...(truncated 530)",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "pattern": {
+                "type": "string",
+                "description": "The glob pattern to match files against"
+              },
+              "path": {
+                "type": "string",
+                "description": "The directory to search in. If not specified, the current working directory will be used. IMPORTANT: Omit this field to use the default directory. DO NOT enter \"undefined\" or \"null\" - simply omit it for the default behavior. Must be a valid directory path if provided."
+              }
+            },
+            "required": [
+              "pattern"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "Grep",
+          "description": "A powerful search tool built on ripgrep\n\n  Usage:\n  - ALWAYS use Grep for search tasks. NEVER invoke `grep` or `rg` as a Bash command. The Grep tool has been optimized for correct permissions and access.\n  - Supports full regex syntax (e....(truncated 865)",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "pattern": {
+                "type": "string",
+                "description": "The regular expression pattern to search for in file contents"
+              },
+              "path": {
+                "type": "string",
+                "description": "File or directory to search in (rg PATH). Defaults to current working directory."
+              },
+              "glob": {
+                "type": "string",
+                "description": "Glob pattern to filter files (e.g. \"*.js\", \"*.{ts,tsx}\") - maps to rg --glob"
+              },
+              "output_mode": {
+                "type": "string",
+                "enum": [
+                  "content",
+                  "files_with_matches",
+                  "count"
+                ],
+                "description": "Output mode: \"content\" shows matching lines (supports -A/-B/-C context, -n line numbers, head_limit), \"files_with_matches\" shows file paths (supports head_limit), \"count\" shows match counts (supports head_limit). Defaults to \"files_with_matches\"."
+              },
+              "-B": {
+                "type": "number",
+                "description": "Number of lines to show before each match (rg -B). Requires output_mode: \"content\", ignored otherwise."
+              },
+              "-A": {
+                "type": "number",
+                "description": "Number of lines to show after each match (rg -A). Requires output_mode: \"content\", ignored otherwise."
+              },
+              "-C": {
+                "type": "number",
+                "description": "Number of lines to show before and after each match (rg -C). Requires output_mode: \"content\", ignored otherwise."
+              },
+              "-n": {
+                "type": "boolean",
+                "description": "Show line numbers in output (rg -n). Requires output_mode: \"content\", ignored otherwise. Defaults to true."
+              },
+              "-i": {
+                "type": "boolean",
+                "description": "Case insensitive search (rg -i)"
+              },
+              "type": {
+                "type": "string",
+                "description": "File type to search (rg --type). Common types: js, py, rust, go, java, etc. More efficient than include for standard file types."
+              },
+              "head_limit": {
+                "type": "number",
+                "description": "Limit output to first N lines/entries, equivalent to \"| head -N\". Works across all output modes: content (limits output lines), files_with_matches (limits file paths), count (limits count entries). Defaults to 0 (unlimited)."
+              },
+              "offset": {
+                "type": "number",
+                "description": "Skip first N lines/entries before applying head_limit, equivalent to \"| tail -n +N | head -N\". Works across all output modes. Defaults to 0."
+              },
+              "multiline": {
+                "type": "boolean",
+                "description": "Enable multiline mode where . matches newlines and patterns can span lines (rg -U --multiline-dotall). Default: false."
+              }
+            },
+            "required": [
+              "pattern"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "NotebookEdit",
+          "description": "Completely replaces the contents of a specific cell in a Jupyter notebook (.ipynb file) with new source. Jupyter notebooks are interactive documents that combine code, text, and visualizations, commonly used for data analysis and scientif...(truncated 513)",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "notebook_path": {
+                "type": "string",
+                "description": "The absolute path to the Jupyter notebook file to edit (must be absolute, not relative)"
+              },
+              "cell_id": {
+                "type": "string",
+                "description": "The ID of the cell to edit. When inserting a new cell, the new cell will be inserted after the cell with this ID, or at the beginning if not specified."
+              },
+              "new_source": {
+                "type": "string",
+                "description": "The new source for the cell"
+              },
+              "cell_type": {
+                "type": "string",
+                "enum": [
+                  "code",
+                  "markdown"
+                ],
+                "description": "The type of the cell (code or markdown). If not specified, it defaults to the current cell type. If using edit_mode=insert, this is required."
+              },
+              "edit_mode": {
+                "type": "string",
+                "enum": [
+                  "replace",
+                  "insert",
+                  "delete"
+                ],
+                "description": "The type of edit to make (replace, insert, delete). Defaults to replace."
+              }
+            },
+            "required": [
+              "notebook_path",
+              "new_source"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "Read",
+          "description": "Reads a file from the local filesystem. You can access any file directly by using this tool.\nAssume this tool is able to read all files on the machine. If the User provides a path to a file assume that path is valid. It is okay to read a ...(truncated 1752)",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "file_path": {
+                "type": "string",
+                "description": "The absolute path to the file to read"
+              },
+              "offset": {
+                "type": "number",
+                "description": "The line number to start reading from. Only provide if the file is too large to read at once"
+              },
+              "limit": {
+                "type": "number",
+                "description": "The number of lines to read. Only provide if the file is too large to read at once."
+              }
+            },
+            "required": [
+              "file_path"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "SlashCommand",
+          "description": "Execute a slash command within the main conversation\n\nHow slash commands work:\nWhen you use this tool or when a user types a slash command, you will see <command-message>{name} is running…</command-message> followed by the expanded prompt...(truncated 1527)",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "command": {
+                "type": "string",
+                "description": "The slash command to execute with its arguments, e.g., \"/review-pr 123\""
+              }
+            },
+            "required": [
+              "command"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "Skill",
+          "description": "Execute a skill within the main conversation\n\n<skills_instructions>\nWhen users ask you to perform tasks, check if any of the available skills below can help complete the task more effectively. Skills provide specialized capabilities and d...(truncated 1051)",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "skill": {
+                "type": "string",
+                "description": "The skill name (no arguments). E.g., \"pdf\" or \"xlsx\""
+              }
+            },
+            "required": [
+              "skill"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "TodoWrite",
+          "description": "Use this tool to create and manage a structured task list for your current coding session. This helps you track progress, organize complex tasks, and demonstrate thoroughness to the user.\nIt also helps the user understand the progress of ...(truncated 9700)",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "todos": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "content": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "pending",
+                        "in_progress",
+                        "completed"
+                      ]
+                    },
+                    "activeForm": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "content",
+                    "status",
+                    "activeForm"
+                  ],
+                  "additionalProperties": false
+                },
+                "description": "The updated todo list"
+              }
+            },
+            "required": [
+              "todos"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "WebSearch",
+          "description": "\n- Allows Claude to search the web and use the results to inform responses\n- Provides up-to-date information for current events and recent data\n- Returns search result information formatted as search result blocks, including links as mark...(truncated 1337)",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "minLength": 2,
+                "description": "The search query to use"
+              },
+              "allowed_domains": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Only include search results from these domains"
+              },
+              "blocked_domains": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Never include search results from these domains"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "Write",
+          "description": "Writes a file to the local filesystem.\n\nUsage:\n- This tool will overwrite the existing file if there is one at the provided path.\n- If this is an existing file, you MUST use the Read tool first to read the file's contents. This tool will ...(truncated 622)",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "file_path": {
+                "type": "string",
+                "description": "The absolute path to the file to write (must be absolute, not relative)"
+              },
+              "content": {
+                "type": "string",
+                "description": "The content to write to the file"
+              }
+            },
+            "required": [
+              "file_path",
+              "content"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "WebFetch",
+          "description": "\n- Fetches content from a specified URL and processes it using an AI model\n- Takes a URL and a prompt as input\n- Fetches the URL content, converts HTML to markdown\n- Processes the content with the prompt using a small, fast model\n- Return...(truncated 1112)",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "format": "uri",
+                "description": "The URL to fetch content from"
+              },
+              "prompt": {
+                "type": "string",
+                "description": "The prompt to run on the fetched content"
+              }
+            },
+            "required": [
+              "url",
+              "prompt"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "TaskOutput",
+          "description": "- Retrieves output from a running or completed task (background shell, agent, or remote session)\n- Takes a task_id parameter identifying the task\n- Returns the task output along with status information\n- Use block=true (default) to wait f...(truncated 446)",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "task_id": {
+                "type": "string",
+                "description": "The task ID to get output from"
+              },
+              "block": {
+                "type": "boolean",
+                "default": true,
+                "description": "Whether to wait for completion"
+              },
+              "timeout": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 600000,
+                "default": 30000,
+                "description": "Max wait time in ms"
+              }
+            },
+            "required": [
+              "task_id"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "KillShell",
+          "description": "\n- Kills a running background bash shell by its ID\n- Takes a shell_id parameter identifying the shell to kill\n- Returns a success or failure status \n- Use this tool when you need to terminate a long-running shell\n- Shell IDs can be found ...(truncated 263)",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "shell_id": {
+                "type": "string",
+                "description": "The ID of the background shell to kill"
+              }
+            },
+            "required": [
+              "shell_id"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "AskUserQuestion",
+          "description": "Use this tool when you need to ask the user questions during execution. This allows you to:\n1. Gather user preferences or requirements\n2. Clarify ambiguous instructions\n3. Get decisions on implementation choices as you work\n4. Offer choic...(truncated 576)",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "questions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "question": {
+                      "type": "string",
+                      "description": "The complete question to ask the user. Should be clear, specific, and end with a question mark. Example: \"Which library should we use for date formatting?\" If multiSelect is true, phrase it accordingly, e.g. \"Which features do you want to enable?\""
+                    },
+                    "header": {
+                      "type": "string",
+                      "description": "Very short label displayed as a chip/tag (max 12 chars). Examples: \"Auth method\", \"Library\", \"Approach\"."
+                    },
+                    "options": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "label": {
+                            "type": "string",
+                            "description": "The display text for this option that the user will see and select. Should be concise (1-5 words) and clearly describe the choice."
+                          },
+                          "description": {
+                            "type": "string",
+                            "description": "Explanation of what this option means or what will happen if chosen. Useful for providing context about trade-offs or implications."
+                          }
+                        },
+                        "required": [
+                          "label",
+                          "description"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "minItems": 2,
+                      "maxItems": 4,
+                      "description": "The available choices for this question. Must have 2-4 options. Each option should be a distinct, mutually exclusive choice (unless multiSelect is enabled). There should be no 'Other' option, that will be provided automatically."
+                    },
+                    "multiSelect": {
+                      "type": "boolean",
+                      "description": "Set to true to allow the user to select multiple options instead of just one. Use when choices are not mutually exclusive."
+                    }
+                  },
+                  "required": [
+                    "question",
+                    "header",
+                    "options",
+                    "multiSelect"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 1,
+                "maxItems": 4,
+                "description": "Questions to ask the user (1-4 questions)"
+              },
+              "answers": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "description": "User answers collected by the permission component"
+              }
+            },
+            "required": [
+              "questions"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        {
+          "name": "Task",
+          "description": "Launch a new agent to handle complex, multi-step tasks autonomously. \n\nThe Task tool launches specialized agents (subprocesses) that autonomously handle complex tasks. Each agent type has specific capabilities and tools available to it.\n\n...(truncated 6353)",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "description": {
+                "type": "string",
+                "description": "A short (3-5 word) description of the task"
+              },
+              "prompt": {
+                "type": "string",
+                "description": "The task for the agent to perform"
+              },
+              "subagent_type": {
+                "type": "string",
+                "description": "The type of specialized agent to use for this task",
+                "enum": [
+                  "general-purpose",
+                  "statusline-setup",
+                  "Explore",
+                  "Plan",
+                  "claude-code-guide",
+                  "n2",
+                  "bug-fixer",
+                  "int-code-reviewer",
+                  "autonomous-fixer",
+                  "code-reviewer"
+                ]
+              },
+              "model": {
+                "type": "string",
+                "enum": [
+                  "sonnet",
+                  "opus",
+                  "haiku"
+                ],
+                "description": "Optional model to use for this agent. If not specified, inherits from parent. Prefer haiku for quick, straightforward tasks to minimize cost and latency."
+              },
+              "resume": {
+                "type": "string",
+                "description": "Optional agent ID to resume from. If provided, the agent will continue from the previous execution transcript."
+              },
+              "run_in_background": {
+                "type": "boolean",
+                "description": "Set to true to run this agent in the background. Use TaskOutput to read the output later."
+              }
+            },
+            "required": [
+              "description",
+              "prompt",
+              "subagent_type"
+            ],
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        }
+      ]
+    }
+  },
+  "response": {
+    "status": "dry_run",
+    "body": {
+      "note": "no network request sent",
+      "stop_reason": "dry_run"
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "sequence": 25,
+  "timestamp": "2026-03-15T15:50:27.054Z",
+  "timestampLocal": "2026-03-15T23:50:27,054",
+  "timestampLocalSafe": "2026-03-15T23-50-27,054",
+  "latencyMs": 1021,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "accept": "application/json",
+      "anthropic-beta": "interleaved-thinking-2025-05-14",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "anthropic-version": "2023-06-01",
+      "authorization": "***REDACTED***",
+      "content-type": "application/json",
+      "user-agent": "claude-cli/2.0.67 (external, cli)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.70.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "connection": "keep-alive",
+      "host": "127.0.0.1:8787",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "2149"
+    },
+    "body": {
+      "model": "claude-haiku-4-5-20251001",
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Command: find app -type f -name \"*.tsx\" -o -name \"*.ts\" | head -20\nOutput: app/layout.tsx\napp/api/auth/logout/route.ts\napp/api/auth/me/route.ts\napp/api/auth/login/route.ts\napp/api/articles/update/route.ts\napp/api/articles/delete/route.ts\napp/api/articles/route.ts\napp/api/articles/[id]/route.ts\napp/api/users/update/route.ts\napp/api/users/delete/route.ts\napp/api/users/route.ts\napp/api/users/[id]/route.ts\napp/api/hello/route.ts\napp/loading.tsx\napp/(main)/MainLayoutClient.tsx\napp/(main)/posts/TriggerErrorButton.tsx\napp/(main)/posts/new/page.tsx\napp/(main)/posts/[id]/page.tsx\napp/(main)/posts/page.tsx\napp/(main)/profile/page.tsx\n\n"
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude."
+        },
+        {
+          "type": "text",
+          "text": "Extract any file paths that this command reads or modifies. For commands like \"git diff\" and \"cat\", include the paths of files being shown. Use paths verbatim -- don't add any slashes or try to resolve them. Do not try to infer paths that were not explicitly listed in the command output.\n\nIMPORTANT: Commands that do not display the contents of the files should not return any filepaths. For eg. \"ls\", pwd\", \"find\". Even more complicated commands that don't display the contents should not be considered: eg \"find . -type f -exec ls -la {} + | sort -k5 -nr | head -5\"\n\nFirst, determine if the command displays the contents of the files. If it does, then <is_displaying_contents> tag should be true. If it does not, then <is_displaying_contents> tag should be false.\n\nFormat your response as:\n<is_displaying_contents>\ntrue\n</is_displaying_contents>\n\n<filepaths>\npath/to/file1\npath/to/file2\n</filepaths>\n\nIf no files are read or modified, return empty filepaths tags:\n<filepaths>\n</filepaths>\n\nDo not include any other text in your response."
+        }
+      ],
+      "tools": [],
+      "metadata": {
+        "user_id": "user_69bb2abd11d5acd0fc0540b8f84d0940fc050ad409005ab0779f80ea9cb047a4_account__session_182d07f9-f9c2-4211-b03a-72d35630af66"
+      },
+      "max_tokens": 21333,
+      "temperature": 1
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": "msg_2026031523502711a61398125a44a8",
+      "type": "message",
+      "role": "assistant",
+      "model": "glm-4.5-air",
+      "content": [
+        {
+          "type": "text",
+          "text": "<is_displaying_contents>\nfalse\n</is_displaying_contents>\n\n<filepaths>\n</filepaths>"
+        }
+      ],
+      "stop_reason": "end_turn",
+      "stop_sequence": null,
+      "usage": {
+        "input_tokens": 303,
+        "output_tokens": 40,
+        "cache_read_input_tokens": "***REDACTED***",
+        "server_tool_use": {
+          "web_search_requests": 0
+        },
+        "service_tier": "standard"
+      }
+    }
+  }
+}

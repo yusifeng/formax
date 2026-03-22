@@ -1,0 +1,82 @@
+{
+  "sequence": 10,
+  "timestamp": "2026-03-11T15:11:41.739Z",
+  "timestampLocal": "2026-03-11T23:11:41,739",
+  "timestampLocalSafe": "2026-03-11T23-11-41,739",
+  "latencyMs": 1050,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "accept": "application/json",
+      "anthropic-beta": "interleaved-thinking-2025-05-14",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "anthropic-version": "2023-06-01",
+      "authorization": "***REDACTED***",
+      "content-type": "application/json",
+      "user-agent": "claude-cli/2.0.67 (external, cli)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-helper-method": "stream",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.70.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "connection": "keep-alive",
+      "host": "127.0.0.1:8787",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "2458"
+    },
+    "body": {
+      "model": "claude-haiku-4-5-20251001",
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Please write a 5-10 word title for the following conversation:\n\nUser: 你是谁啊\n\nClaude: 你好！我是 **Claude Code**，这是 Anthropic 官方的 CLI 助手，运行在 VSCode 扩展环境中。\n\n我可以帮你处理软件工程任务，比如：\n- 编写、修改和调试代码\n- 解释代码逻辑\n- 重构和优化代码\n- 运行命令和测试\n- 搜索和分析代码库\n\n你目前在一个名为 **capture-terminal** 的项目中，这是一个用于捕获终端 UI 快照的工具。\n\n有什么我可以帮你的吗？\n\nUser: <ide_opened_file>The user opened the file /Users/david/Documents/github/capture-terminal/.claude/settings.local.json in the IDE. This may or may not be related to the current task.</ide_opened_file>\n\nUser: 你当前的记忆文件是哪个\n\nClaude: 根据系统配置，我的持久化记忆目录位于：\n\n```\n/Users/david/.claude/projects/-Users-david-Documents-github-capture-terminal/memory/\n```\n\n主要的记忆文件是：\n- **`MEMORY.md`** - 主记忆文件，会被自动加载到对话上下文中\n- 其他按主题分类的文件（如 `debugging.md`、`patterns.md` 等）\n\n需要我查看一下当前记忆文件的内容吗？或者你想让我记住什么特定的信息？\n\nUser: 随便写点东西到记忆文件\n\nUser: \n\nUser: \n\nUser: \n\nClaude: 已创建记忆文件！我在 `/Users/david/.claude/projects/-Users-david-Documents-github-capture-terminal/memory/MEMORY.md` 中写入了以下内容：\n\n- 项目概述和描述\n- 关键技术栈（node-pty, xterm.js, Ink, React）\n- 实际实现的快捷键（Ctrl+], Ctrl+\\, Ctrl+Q）\n- 常用开发命令\n- 项目结构说明\n- 输出位置信息\n\n这个记忆文件会在未来的对话中自动加载，帮助我更快地理解项目上下文。还需要我添加其他信息吗？\n\nRespond with the title for the conversation and nothing else."
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude."
+        },
+        {
+          "type": "text",
+          "text": "Summarize this coding conversation in under 50 characters.\nCapture the main task, key files, problems addressed, and current status."
+        }
+      ],
+      "tools": [],
+      "max_tokens": 32000,
+      "stream": true,
+      "toolCount": 0,
+      "toolsLite": [],
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [],
+      "text": "Capture Terminal CLI Project Development",
+      "assistantText": "Capture Terminal CLI Project Development",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 679,
+        "output_tokens": 14
+      },
+      "messageId": "msg_20260311231141a2a53f6ccb164bf5",
+      "model": "glm-4.5-air"
+    }
+  }
+}

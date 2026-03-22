@@ -1,0 +1,29 @@
+{
+  "enabled": true,
+  "match": {
+    "methods": ["POST"],
+    "pathRegex": "^/v1/messages$"
+  },
+  "rewrite": {
+    "headers": {
+      "set": {
+        "accept": "application/json",
+        "accept-encoding": "gzip, deflate, br, zstd",
+        "x-stainless-package-version": "0.74.0",
+        "x-stainless-runtime-version": "v24.3.0",
+        "x-stainless-timeout": "3000",
+        "anthropic-beta": "claude-code-20250219,adaptive-thinking-2026-01-28,prompt-caching-scope-2026-01-05,effort-2025-11-24"
+      },
+      "remove": [
+        "x-api-key",
+        "x-stainless-helper-method"
+      ]
+    },
+    "body": {
+      "set": {},
+      "removePaths": [],
+      "copyFromTemplate": []
+    },
+    "preserveOriginalPaths": []
+  }
+}

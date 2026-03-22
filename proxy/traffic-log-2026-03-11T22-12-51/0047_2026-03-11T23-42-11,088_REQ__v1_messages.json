@@ -1,0 +1,83 @@
+{
+  "sequence": 47,
+  "timestamp": "2026-03-11T15:42:11.088Z",
+  "timestampLocal": "2026-03-11T23:42:11,088",
+  "timestampLocalSafe": "2026-03-11T23-42-11,088",
+  "latencyMs": 509,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "accept": "application/json",
+      "anthropic-beta": "interleaved-thinking-2025-05-14",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "anthropic-version": "2023-06-01",
+      "authorization": "***REDACTED***",
+      "content-type": "application/json",
+      "user-agent": "claude-cli/2.0.67 (external, cli)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-helper-method": "stream",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.70.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "connection": "keep-alive",
+      "host": "127.0.0.1:8787",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "3978"
+    },
+    "body": {
+      "model": "claude-haiku-4-5-20251001",
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Please write a 5-10 word title for the following conversation:\n\nUser: <ide_opened_file>The user opened the file /Users/david/Documents/github/formax/.claude/settings.local.json in the IDE. This may or may not be related to the current task.</ide_opened_file>\n\nUser: 你现在有哪些工具函数？\n\nClaude: 让我先探索一下这个项目的结构，了解有哪些工具函数。\n\nUser: \n\nClaude: 让我查看项目中实际的工具函数（排除 node_modules）：\n\nUser: \n\nClaude: 让我再看看其他可能的工具函数：\n\nUser: \n\nClaude: 让我查看更多工具文件：\n\nUser: \n\nClaude: 让我读取更多工具函数：\n\nUser: \n\nClaude: 根据我对项目的探索，以下是 formax 项目中可用的工具函数，按模块分类：\n\n## 📁 **src/shared/utils/** - 核心工具函数\n\n### **[terminal.ts](src/shared/utils/terminal.ts)**\n- `clearTerminal()` - 清空终端\n- `ansiBold(text)` - 粗体 ANSI 样式\n- `ansiStrike(text)` - 删除线 ANSI 样式  \n- `ansiGray(text)` - 灰色 ANSI 样式\n\n### **[paths.ts](src/shared/utils/paths.ts)**\n- `formatPathForDisplay(filePath)` - 格式化路径用于显示（将 home 目录转为 ~）\n- `formatPathForToolCallDisplay(args)` - 格式化工具调用显示路径\n- `normalizePathForCompare(rawPath, cwd)` - 标准化路径用于比较\n- `isSameFilePath(a, b, cwd)` - 判断两个路径是否相同\n- `requireAbsolutePath(args)` - 验证并返回绝对路径\n\n### **[toolFormatting.ts](src/shared/utils/toolFormatting.ts)**\n- `formatToolCallParts(name, input, opts)` - 格式化工具调用显示部分\n- `formatToolResult(name, result, isError)` - 格式化工具执行结果\n- `stripTrailingSystemReminderBlock(raw)` - 移除系统提醒块\n\n### **[catN.ts](src/shared/utils/catN.ts)**\n- `stripCatNPrefixes(text)` - 移除 `cat -n` 格式的行号前缀\n\n### **[snippetStartLine.ts](src/shared/utils/snippetStartLine.ts)**\n- `findSnippetStartLineNumber(args)` - 在文件中查找代码片段的起始行号\n\n### **[planMode.ts](src/shared/utils/planMode.ts)**\n- `buildPlanModeSystemReminder(planPath)` - 构建计划模式系统提示\n- `buildExitedPlanModeSystemReminder(planPath)` - 构建退出计划模式提示\n\n## 📁 **src/shared/** - 其他共享工具\n\n### **[invokables/charBudget.ts](src/shared/invokables/charBudget.ts)**\n- `truncateByCharBudget(lines, limit)` - 按字符预算截断文本行\n\n### **[frontmatter.ts](src/shared/frontmatter.ts)**\n- `parseMarkdownFrontmatter(raw)` - 解析 Markdown frontmatter\n- `extractFirstMeaningfulLine(md)` - 提取首行有意义内容\n\n## 📁 **src/tools/utils/** - 工具相关\n\n### **[strictInput.ts](src/tools/utils/strictInput.ts)**\n- `requirePlainObject(value, label)` - 验证并返回纯对象\n- `assertNoExtraKeys(obj, allowed, label)` - 断言对象无额外字段\n\n## 📁 **apps/web-reference-react/src/lib/** - Web 应用工具\n\n### **[utils.ts](apps/web-reference-react/src/lib/utils.ts)**\n- `cn(...inputs)` - 合并 Tailwind CSS 类名（使用 clsx + tailwind-merge）\n\n---\n\n这些工具函数主要用于：\n- **路径处理** - 跨平台路径标准化和显示\n- **终端格式化** - ANSI 样式和终端控制\n- **工具调用展示** - 格式化工具调用的输入输出\n- **文本处理** - 截断、解析、查找等操作\n\nRespond with the title for the conversation and nothing else."
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude."
+        },
+        {
+          "type": "text",
+          "text": "Summarize this coding conversation in under 50 characters.\nCapture the main task, key files, problems addressed, and current status."
+        }
+      ],
+      "tools": [],
+      "metadata": {
+        "user_id": "user_69bb2abd11d5acd0fc0540b8f84d0940fc050ad409005ab0779f80ea9cb047a4_account__session_dde0ad57-a2bc-4c24-87ac-e669ccc01245"
+      },
+      "max_tokens": 32000,
+      "stream": true
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "_raw": "event: message_start\ndata: {\"type\": \"message_start\", \"message\": {\"id\": \"msg_2026031123421196318f78a8fe4da2\", \"type\": \"message\", \"role\": \"assistant\", \"model\": \"glm-4.5-air\", \"content\": [], \"stop_reason\": null, \"stop_sequence\": null, \"usage\": {\"input_tokens\": 0, \"output_tokens\": 0}}}\n\nevent: ping\ndata: {\"type\": \"ping\"}\n\nevent: content_block_start\ndata: {\"type\": \"content_block_start\", \"index\": 0, \"content_block\": {\"type\": \"text\", \"text\": \"\"}}\n\nevent: content_block_delta\ndata: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \"Formax Project: Tool\"}}\n\nevent: content_block_delta\ndata: {\"type\": \"content_block_delta\", \"index\": 0, \"delta\": {\"type\": \"text_delta\", \"text\": \" Functions Overview\"}}\n\nevent: content_block_stop\ndata: {\"type\": \"content_block_stop\", \"index\": 0}\n\nevent: message_delta\ndata: {\"type\": \"message_delta\", \"delta\": {\"stop_reason\": \"end_turn\", \"stop_sequence\": null}, \"usage\": {\"input_tokens\": 1158, \"output_tokens\": 17, \"cache_read_input_tokens\": 301, \"server_tool_use\": {\"web_search_requests\": 0}, \"service_tier\": \"standard\"}}\n\nevent: message_stop\ndata: {\"type\": \"message_stop\"}\n\n",
+      "_note": "non-json or unknown"
+    },
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [],
+      "text": "Formax Project: Tool Functions Overview",
+      "assistantText": "Formax Project: Tool Functions Overview",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 1158,
+        "output_tokens": 17
+      },
+      "messageId": "msg_2026031123421196318f78a8fe4da2",
+      "model": "glm-4.5-air"
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "sequence": 22,
+  "timestamp": "2026-03-11T15:42:00.319Z",
+  "timestampLocal": "2026-03-11T23:42:00,319",
+  "timestampLocalSafe": "2026-03-11T23-42-00,319",
+  "latencyMs": 1049,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "accept": "application/json",
+      "anthropic-beta": "interleaved-thinking-2025-05-14",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "anthropic-version": "2023-06-01",
+      "authorization": "***REDACTED***",
+      "content-type": "application/json",
+      "user-agent": "claude-cli/2.0.67 (external, cli)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-helper-method": "stream",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.70.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "connection": "keep-alive",
+      "host": "127.0.0.1:8787",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "3135"
+    },
+    "body": {
+      "model": "claude-haiku-4-5-20251001",
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Please write a 5-10 word title for the following conversation:\n\nUser: 你好\n\nClaude: 你好！很高兴见到你。有什么我可以帮你的吗？\n\n我可以帮助你进行软件工程任务，比如：\n- 编写或修改代码\n- 调试问题\n- 重构代码\n- 解释代码逻辑\n- 以及其他开发相关的工作\n\n请告诉我你需要什么帮助！\n\nUser: 我想知道我的记忆文件目录是什么\n\nClaude: 你的记忆文件目录位于：\n\n```\n/Users/david/.claude/projects/-Users-david-Documents-github-formax/memory/\n```\n\n这个目录中的内容会在不同的对话之间持久保存。如果你想查看这个目录中有什么文件，或者想读取、更新某些记忆文件，我可以帮你操作。\n\nUser: 我应该如何使用它\n\nClaude: 记忆文件目录可以帮助你在不同对话之间保存和共享信息。以下是一些使用方法：\n\n## 主要文件\n\n- **MEMORY.md** - 主记忆文件，会自动加载到每个对话的上下文中（超过200行会被截断，所以保持简洁）\n- 可以创建特定主题的文件，如 `debugging.md`、`patterns.md` 等，然后在 MEMORY.md 中引用它们\n\n## 适合保存的内容\n\n- ✅ 稳定的模式和约定（跨多次交互确认的）\n- ✅ 关键架构决策、重要文件路径、项目结构\n- ✅ 用户偏好（工作流程、工具、沟通风格）\n- ✅ 重复出现问题的解决方案和调试见解\n\n## 不适合保存的内容\n\n- ❌ 会话特定的上下文（当前任务详情、进行中的工作）\n- ❌ 可能不完整的信息\n- ❌ 重复的内容\n\n## 如何使用\n\n你可以直接告诉我：\n- \"记住这个：...\" 或 \"请保存到记忆中\"\n- \"查看我的记忆\" 或 \"读取 MEMORY.md\"\n- \"从记忆中删除关于X的内容\"\n\n需要我帮你读取当前的 MEMORY.md 文件看看里面有什么吗？\n\nUser: 请记住我更加喜欢组合而不喜欢继承，我更喜欢ts而不喜欢js\n\nClaude: 我来帮你记住这些偏好。让我先读取一下现有的 MEMORY.md 文件。\n\nUser: \n\nClaude: 看起来你的 MEMORY.md 文件还不存在，我来创建它并保存你的偏好。\n\nUser: \n\nClaude: 已保存！我已经记住了你的偏好：\n\n- ✅ **组合优于继承** - 在设计代码时会优先使用组合模式\n- ✅ **TypeScript 优于 JavaScript** - 会优先使用 TypeScript 编写类型安全的代码\n\n这些偏好会在未来的对话中自动加载，我会在编写代码时遵循这些原则。\n\nRespond with the title for the conversation and nothing else."
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude."
+        },
+        {
+          "type": "text",
+          "text": "Summarize this coding conversation in under 50 characters.\nCapture the main task, key files, problems addressed, and current status."
+        }
+      ],
+      "tools": [],
+      "max_tokens": 32000,
+      "stream": true,
+      "toolCount": 0,
+      "toolsLite": [],
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [],
+      "text": "User Preference Memory: TS & Composition",
+      "assistantText": "User Preference Memory: TS & Composition",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 850,
+        "output_tokens": 17
+      },
+      "messageId": "msg_202603112342003a0d55a9e7c94da2",
+      "model": "glm-4.5-air"
+    }
+  }
+}

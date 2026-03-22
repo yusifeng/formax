@@ -1,0 +1,82 @@
+{
+  "sequence": 20,
+  "timestamp": "2026-03-11T14:10:12.158Z",
+  "timestampLocal": "2026-03-11T22:10:12,158",
+  "timestampLocalSafe": "2026-03-11T22-10-12,158",
+  "latencyMs": 366,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "accept": "application/json",
+      "anthropic-beta": "interleaved-thinking-2025-05-14",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "anthropic-version": "2023-06-01",
+      "authorization": "***REDACTED***",
+      "content-type": "application/json",
+      "user-agent": "claude-cli/2.0.67 (external, cli)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-helper-method": "stream",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.70.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "connection": "keep-alive",
+      "host": "127.0.0.1:8787",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "3592"
+    },
+    "body": {
+      "model": "claude-haiku-4-5-20251001",
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "<policy_spec>\n# Claude Code Code Bash command prefix detection\n\nThis document defines risk levels for actions that the Claude Code agent may take. This classification system is part of a broader safety framework and is used to determine when additional user confirmation or oversight may be needed.\n\n....  prefix, return \"none\".\n\nONLY return the prefix. Do not return any other text, markdown markers, or other content or formatting.\n\nCommand: open /Users/david/Documents/github/tmp/snake-game/index.html\n"
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude."
+        },
+        {
+          "type": "text",
+          "text": "Your task is to process Bash commands that an AI coding agent wants to run.\n\nThis policy spec defines how to determine the prefix of a Bash command:"
+        }
+      ],
+      "tools": [],
+      "max_tokens": 32000,
+      "stream": true,
+      "toolCount": 0,
+      "toolsLite": [],
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [],
+      "text": "open",
+      "assistantText": "open",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 23,
+        "output_tokens": 7
+      },
+      "messageId": "msg_202603112210121827122a377b43a3",
+      "model": "glm-4.5-air"
+    }
+  }
+}

@@ -1,0 +1,1 @@
+{"seq":1,"time":"2026-03-05T17:22:46.005Z","timeLocal":"2026-03-06T01:22:46,005","path":"/v1/chat/completions","status":"dry_run","latencyMs":0,"model":"deepseek-reasoner","stream":true,"maxTokens":16000,"toolCount":18,"toolNames":["Bash","Edit","EnterPlanMode","ExitPlanMode","Glob"],"stopReason":"dry_run","rawFile":"0001_2026-03-06T01-22-46,005_REQ__v1_chat_completions.json"}

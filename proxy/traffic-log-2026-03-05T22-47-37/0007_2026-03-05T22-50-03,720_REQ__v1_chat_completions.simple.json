@@ -1,0 +1,61 @@
+{
+  "sequence": 7,
+  "timestamp": "2026-03-05T14:50:03.720Z",
+  "timestampLocal": "2026-03-05T22:50:03,720",
+  "timestampLocalSafe": "2026-03-05T22-50-03,720",
+  "latencyMs": 17664,
+  "path": "/v1/chat/completions",
+  "request": {
+    "headers": {
+      "host": "127.0.0.1:8787",
+      "connection": "keep-alive",
+      "accept": "text/event-stream, application/json",
+      "content-type": "application/json",
+      "authorization": "***REDACTED***",
+      "accept-language": "*",
+      "sec-fetch-mode": "cors",
+      "user-agent": "node",
+      "accept-encoding": "gzip, deflate",
+      "content-length": "665"
+    },
+    "body": {
+      "model": "deepseek-reasoner",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Claude Code, Anthropic's official CLI for Claude.\n\nAnalyze if this message indicates a new conversation topic. If it does, extract a 2-3 word title that captures the new topic. Format your response as a JSON object with two fields: 'isNewTopic' (boolean) and 'title' (string, or null if isNewTopic is false). Only include these fields, no other text. ONLY generate the JSON object, no other text (eg. no markdown)."
+        },
+        {
+          "role": "user",
+          "content": "执行下 pwd\n\nThe first character of your response must be '{'."
+        }
+      ],
+      "max_tokens": 16000,
+      "stream": true,
+      "stream_options": {
+        "include_usage": true
+      },
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "openai",
+      "toolUses": [],
+      "text": "{\"isNewTopic\": true, \"title\": \"Execute pwd\"}",
+      "assistantText": "{\"isNewTopic\": true, \"title\": \"Execute pwd\"}",
+      "reasoningContent": "First, the user said: \"执行下 pwd\". This is Chinese, meaning \"execute pwd\" in English. pwd is a command that prints the working directory.\n\nI need to analyze if this message indicates a new conversation topic. The previous context isn't provided, so I have to assume based on this message alone. Since this is the first message in this interaction, it might be the start of a new topic.\n\nHowever, the instruction is to determine if this is a new conversation topic based on the message. Without prior context, I should consider if this message introduces a new subject. pwd is a basic command, so it could be part of a broader topic like system commands or terminal usage.\n\nBut specifically, the user is asking to execute pwd, which is a specific action. If this is the beginning of the conversation, it's definitely a new topic.\n\nI need to extract a 2-3 word title that captures the new topic. Possible titles could be \"Execute Command\", \"Check Directory\", or \"Terminal Command\".\n\nThe response must be a JSON object with 'isNewTopic' (boolean) and 'title' (string or null).\n\nSince this seems like a new topic, I'll set 'isNewTopic' to true. For the title, I'll choose something concise, like \"Run pwd\" or \"Check Path\".\n\nI should make the title descriptive but short. \"Execute pwd\" is 2 words, which fits.\n\nFinally, the response must start with '{', so I'll output the JSON directly.\n\nJSON structure: {\"isNewTopic\": true, \"title\": \"Execute pwd\"}\n\nEnsure it's valid JSON.",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 121,
+        "output_tokens": 358
+      },
+      "messageId": "e849855b-f95f-4cb1-8c92-1e49d62b0ee4",
+      "model": "deepseek-reasoner"
+    }
+  }
+}

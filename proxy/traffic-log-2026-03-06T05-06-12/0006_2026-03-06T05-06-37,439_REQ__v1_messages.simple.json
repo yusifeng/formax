@@ -1,0 +1,82 @@
+{
+  "sequence": 6,
+  "timestamp": "2026-03-05T21:06:37.439Z",
+  "timestampLocal": "2026-03-06T05:06:37,439",
+  "timestampLocalSafe": "2026-03-06T05-06-37,439",
+  "latencyMs": 499,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "host": "127.0.0.1:8787",
+      "connection": "keep-alive",
+      "accept": "application/json",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-type": "application/json",
+      "anthropic-version": "2023-06-01",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "authorization": "***REDACTED***",
+      "user-agent": "claude-cli/2.1.45 (external, claude-vscode, agent-sdk/0.2.45)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.74.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "accept-language": "*",
+      "sec-fetch-mode": "cors",
+      "content-length": "679"
+    },
+    "body": {
+      "stream": true,
+      "model": "glm-4.7",
+      "max_tokens": 16000,
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "执行下 pwd\n\nThe first character of your response must be '{'."
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude."
+        },
+        {
+          "type": "text",
+          "text": "Analyze if this message indicates a new conversation topic. If it does, extract a 2-3 word title that captures the new topic. Format your response as a JSON object with two fields: 'isNewTopic' (boolean) and 'title' (string, or null if isNewTopic is false). Only include these fields, no other text. ONLY generate the JSON object, no other text (eg. no markdown)."
+        }
+      ],
+      "tools": [],
+      "toolCount": 0,
+      "toolsLite": [],
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [],
+      "text": "{\n\"isNewTopic\": false,\n\"title\": null\n}",
+      "assistantText": "{\n\"isNewTopic\": false,\n\"title\": null\n}",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 118,
+        "output_tokens": 13
+      },
+      "messageId": "msg_202603060506375b98c01d4b654d00",
+      "model": "glm-4.7"
+    }
+  }
+}

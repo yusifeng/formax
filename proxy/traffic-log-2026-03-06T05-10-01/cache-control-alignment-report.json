@@ -1,0 +1,176 @@
+{
+  "kind": "formax_cache_control_alignment_report_v1",
+  "createdAt": "2026-03-06T18:18:33.001Z",
+  "targetDir": "/Users/david/Documents/github/formax/proxy/traffic-log-2026-03-06T05-10-01",
+  "includeSimple": false,
+  "totalFiles": 9,
+  "passedFiles": 0,
+  "failedFiles": 9,
+  "failures": [
+    {
+      "file": "0001_2026-03-06T05-10-22,201_REQ__v1_messages.json",
+      "rule": "message-nonlast-no-cache-control",
+      "detail": "messages[0].content[0] should not carry cache_control"
+    },
+    {
+      "file": "0001_2026-03-06T05-10-22,201_REQ__v1_messages.json",
+      "rule": "message-nonlast-no-cache-control",
+      "detail": "messages[0].content[1] should not carry cache_control"
+    },
+    {
+      "file": "0001_2026-03-06T05-10-22,201_REQ__v1_messages.json",
+      "rule": "message-last-ephemeral",
+      "detail": "messages[0].content[2] should be cache_control.type=ephemeral"
+    },
+    {
+      "file": "0002_2026-03-06T05-10-24,256_REQ__v1_messages.json",
+      "rule": "system-text-ephemeral",
+      "detail": "system[0] missing cache_control.type=ephemeral"
+    },
+    {
+      "file": "0002_2026-03-06T05-10-24,256_REQ__v1_messages.json",
+      "rule": "system-text-ephemeral",
+      "detail": "system[1] missing cache_control.type=ephemeral"
+    },
+    {
+      "file": "0002_2026-03-06T05-10-24,256_REQ__v1_messages.json",
+      "rule": "system-text-ephemeral",
+      "detail": "system[2] missing cache_control.type=ephemeral"
+    },
+    {
+      "file": "0002_2026-03-06T05-10-24,256_REQ__v1_messages.json",
+      "rule": "message-last-ephemeral",
+      "detail": "messages[0].content[0] should be cache_control.type=ephemeral"
+    },
+    {
+      "file": "0003_2026-03-06T05-10-32,712_REQ__v1_messages.json",
+      "rule": "message-last-ephemeral",
+      "detail": "messages[1].content[1] should be cache_control.type=ephemeral"
+    },
+    {
+      "file": "0003_2026-03-06T05-10-32,712_REQ__v1_messages.json",
+      "rule": "message-nonlast-no-cache-control",
+      "detail": "messages[2].content[0] should not carry cache_control"
+    },
+    {
+      "file": "0003_2026-03-06T05-10-32,712_REQ__v1_messages.json",
+      "rule": "message-nonlast-no-cache-control",
+      "detail": "messages[2].content[1] should not carry cache_control"
+    },
+    {
+      "file": "0003_2026-03-06T05-10-32,712_REQ__v1_messages.json",
+      "rule": "message-last-ephemeral",
+      "detail": "messages[2].content[2] should be cache_control.type=ephemeral"
+    },
+    {
+      "file": "0004_2026-03-06T05-10-36,383_REQ__v1_messages.json",
+      "rule": "system-text-ephemeral",
+      "detail": "system[0] missing cache_control.type=ephemeral"
+    },
+    {
+      "file": "0004_2026-03-06T05-10-36,383_REQ__v1_messages.json",
+      "rule": "system-text-ephemeral",
+      "detail": "system[1] missing cache_control.type=ephemeral"
+    },
+    {
+      "file": "0004_2026-03-06T05-10-36,383_REQ__v1_messages.json",
+      "rule": "message-last-ephemeral",
+      "detail": "messages[0].content[0] should be cache_control.type=ephemeral"
+    },
+    {
+      "file": "0005_2026-03-06T05-10-56,123_REQ__v1_messages.json",
+      "rule": "message-last-ephemeral",
+      "detail": "messages[3].content[1] should be cache_control.type=ephemeral"
+    },
+    {
+      "file": "0005_2026-03-06T05-10-56,123_REQ__v1_messages.json",
+      "rule": "message-nonlast-no-cache-control",
+      "detail": "messages[4].content[0] should not carry cache_control"
+    },
+    {
+      "file": "0005_2026-03-06T05-10-56,123_REQ__v1_messages.json",
+      "rule": "message-nonlast-no-cache-control",
+      "detail": "messages[4].content[1] should not carry cache_control"
+    },
+    {
+      "file": "0005_2026-03-06T05-10-56,123_REQ__v1_messages.json",
+      "rule": "message-last-ephemeral",
+      "detail": "messages[4].content[2] should be cache_control.type=ephemeral"
+    },
+    {
+      "file": "0006_2026-03-06T05-10-56,905_REQ__v1_messages.json",
+      "rule": "message-nonlast-no-cache-control",
+      "detail": "messages[4].content[0] should not carry cache_control"
+    },
+    {
+      "file": "0006_2026-03-06T05-10-56,905_REQ__v1_messages.json",
+      "rule": "message-nonlast-no-cache-control",
+      "detail": "messages[4].content[1] should not carry cache_control"
+    },
+    {
+      "file": "0006_2026-03-06T05-10-56,905_REQ__v1_messages.json",
+      "rule": "message-last-ephemeral",
+      "detail": "messages[5].content[1] should be cache_control.type=ephemeral"
+    },
+    {
+      "file": "0006_2026-03-06T05-10-56,905_REQ__v1_messages.json",
+      "rule": "message-last-ephemeral",
+      "detail": "messages[6].content[0] should be cache_control.type=ephemeral"
+    },
+    {
+      "file": "0007_2026-03-06T05-11-09,817_REQ__v1_messages.json",
+      "rule": "message-nonlast-no-cache-control",
+      "detail": "messages[4].content[0] should not carry cache_control"
+    },
+    {
+      "file": "0007_2026-03-06T05-11-09,817_REQ__v1_messages.json",
+      "rule": "message-nonlast-no-cache-control",
+      "detail": "messages[4].content[1] should not carry cache_control"
+    },
+    {
+      "file": "0007_2026-03-06T05-11-09,817_REQ__v1_messages.json",
+      "rule": "message-last-ephemeral",
+      "detail": "messages[7].content[2] should be cache_control.type=ephemeral"
+    },
+    {
+      "file": "0007_2026-03-06T05-11-09,817_REQ__v1_messages.json",
+      "rule": "message-last-ephemeral",
+      "detail": "messages[8].content[0] should be cache_control.type=ephemeral"
+    },
+    {
+      "file": "0008_2026-03-06T05-11-10,646_REQ__v1_messages.json",
+      "rule": "message-nonlast-no-cache-control",
+      "detail": "messages[4].content[0] should not carry cache_control"
+    },
+    {
+      "file": "0008_2026-03-06T05-11-10,646_REQ__v1_messages.json",
+      "rule": "message-nonlast-no-cache-control",
+      "detail": "messages[4].content[1] should not carry cache_control"
+    },
+    {
+      "file": "0008_2026-03-06T05-11-10,646_REQ__v1_messages.json",
+      "rule": "message-last-ephemeral",
+      "detail": "messages[9].content[2] should be cache_control.type=ephemeral"
+    },
+    {
+      "file": "0008_2026-03-06T05-11-10,646_REQ__v1_messages.json",
+      "rule": "message-last-ephemeral",
+      "detail": "messages[10].content[0] should be cache_control.type=ephemeral"
+    },
+    {
+      "file": "0009_2026-03-06T05-11-11,253_REQ__v1_messages.json",
+      "rule": "system-text-ephemeral",
+      "detail": "system[0] missing cache_control.type=ephemeral"
+    },
+    {
+      "file": "0009_2026-03-06T05-11-11,253_REQ__v1_messages.json",
+      "rule": "system-text-ephemeral",
+      "detail": "system[1] missing cache_control.type=ephemeral"
+    },
+    {
+      "file": "0009_2026-03-06T05-11-11,253_REQ__v1_messages.json",
+      "rule": "message-last-ephemeral",
+      "detail": "messages[0].content[0] should be cache_control.type=ephemeral"
+    }
+  ]
+}

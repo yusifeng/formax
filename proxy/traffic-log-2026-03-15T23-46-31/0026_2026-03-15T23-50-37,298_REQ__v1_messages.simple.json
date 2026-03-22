@@ -1,0 +1,1111 @@
+{
+  "sequence": 26,
+  "timestamp": "2026-03-15T15:50:37.298Z",
+  "timestampLocal": "2026-03-15T23:50:37,298",
+  "timestampLocalSafe": "2026-03-15T23-50-37,298",
+  "latencyMs": 1623,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "accept": "application/json",
+      "anthropic-beta": "claude-code-20250219,interleaved-thinking-2025-05-14",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "anthropic-version": "2023-06-01",
+      "authorization": "***REDACTED***",
+      "content-type": "application/json",
+      "user-agent": "claude-cli/2.0.67 (external, cli)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-helper-method": "stream",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.70.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "connection": "keep-alive",
+      "host": "127.0.0.1:8787",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "122767"
+    },
+    "body": {
+      "model": "claude-sonnet-4-5-20250929",
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "<system-reminder>\nThis is a reminder that your todo list is currently empty. DO NOT mention this to the user explicitly because they are already aware. If you are working on tasks that would benefit from a todo list please use the TodoWrite tool to create one. If not, please feel free to ignore. Again do not mention this message to the user.\n</system-reminder>"
+            },
+            {
+              "type": "text",
+              "text": "<system-reminder>\nThe user selected the lines 3 to 3 from /Users/david/Documents/github/tmp2/tour-next/.claude/settings.local.json:\nANTHROPIC_BASE_URL\n\nThis may or may not be related to the current task.\n</system-reminder>"
+            },
+            {
+              "type": "text",
+              "text": "你好"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "type": "thinking",
+              "thinking": "The user just greeted me with \"你好\" which is \"hello\" in Chinese. I should respond with a friendly greeting. I notice the system reminder mentions that the user selected a line from a settings file about ANTHROPIC_BASE_URL, but this seems like just a casual greeting, so I don't need to do anything about that unless the user asks about it.\n\nI should keep my response short and concise as per the tone guidelines, and I shouldn't use emojis unless requested.",
+              "signature": "b60871cdbb6c415099ed179c"
+            },
+            {
+              "type": "text",
+              "text": "你好！我可以帮你处理软件工程任务。我看到你正在一个 Next.js 项目中工作。\n\n有什么我可以帮你的吗？"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "<command-message>init is analyzing your codebase…</command-message>\n<command-name>/init</command-name>"
+            },
+            {
+              "type": "text",
+              "text": "Please analyze this codebase and create a CLAUDE.md file, which will be given to future instances of Claude Code to operate in this repository.\n\nWhat to add:\n1. Commands that will be commonly used, such as how to build, lint, and run tests. Include the necessary commands to develop in this codebase, such as how to run a single test.\n2. High-level code architecture and structure so that future instances can be productive more quickly. Focus on the \"big picture\" architecture that requires reading multiple files to understand.\n\nUsage notes:\n- If there's already a CLAUDE.md, suggest improvements to it.\n- When you make the initial CLAUDE.md, do not repeat yourself and do not include obvious instructions like \"Provide helpful error messages to users\", \"Write unit tests for all new utilities\", \"Never include sensitive information (API keys, tokens) in code or commits\".\n- Avoid listing every component or file structure that can be easily discovered.\n- Don't include generic development practices.\n- If there are Cursor rules (in .cursor/rules/ or .cursorrules) or Copilot rules (in .github/copilot-instructions.md), make sure to include the important parts.\n- If there is a README.md, make sure to include the important parts.\n- Do not make up information such as \"Common Development Tasks\", \"Tips for Development\", \"Support and Documentation\" unless this is expressly included in other files that you read.\n- Be sure to prefix the file with the following text:\n\n```\n# CLAUDE.md\n\nThis file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.\n```"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "type": "tool_use",
+              "id": "call_e20b0a05564c4d7293b8036c",
+              "name": "Task",
+              "input": {
+                "description": "Analyze codebase for CLAUDE.md",
+                "prompt": "I need to analyze this codebase to create a comprehensive CLAUDE.md file. Please help me:\n\n1. Read the README.md if it exists to understand the project\n2. Check for existing .cursor/rules/, .cursorrules, or .github/copilot-instructions.md files\n3. Examine package.json to understand available scripts and dependencies\n4. Look at the project structure to understand the architecture (this appears to be a Next.js project)\n5. Examine key configuration files like next.config.ts, tsconfig.json\n6. Look at the app directory structure to understand routing and architecture\n7. Check for any existing documentation files\n\nFocus on:\n- Build, test, lint, and dev commands\n- High-level architecture patterns (authentication, database, routing, etc.)\n- Any special configuration or setup requirements\n- Key architectural decisions that require reading multiple files\n\nReturn a summary of findings including all the important information that should go into CLAUDE.md.",
+                "subagent_type": "Explore"
+              },
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "content": [
+            {
+              "tool_use_id": "call_e20b0a05564c4d7293b8036c",
+              "type": "tool_result",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "## Summary of Codebase Analysis for CLAUDE.md\n\nBased on my comprehensive analysis of the codebase, here's a summary of the important information that should go into your CLAUDE.md file:\n\n### Project Overview\nThis is a Next.js 16 project named \"tour-next\" that implements a blog/content management sys.... ax\n- Role-based route protection in middleware\n\nThis codebase provides a solid foundation for a Next.js application with authentication, ready for database integration and further feature development."
+                },
+                {
+                  "type": "text",
+                  "text": "agentId: a47aa73 (for resuming to continue this agent's work if needed)"
+                }
+              ],
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude.",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        },
+        {
+          "type": "text",
+          "text": "\nYou are an interactive CLI tool that helps users with software engineering tasks. Use the instructions below and the tools available to you to assist the user.\n\nIMPORTANT: Assist with authorized security testing, defensive security, CTF challenges, and educational contexts. Refuse requests for dest.... lder.svg\n\nRecent commits:\nff632d0 feat: implement custom error and not found pages, update loading states in todo\nd5852d5 step1\ne37ff84 feat: initial commit\n9029a6f Initial commit from Create Next App",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        }
+      ],
+      "tools": [
+        "Task",
+        "TaskOutput",
+        "Bash",
+        "Glob",
+        "Grep",
+        "ExitPlanMode",
+        "Read",
+        "Edit",
+        "Write",
+        "NotebookEdit",
+        "WebFetch",
+        "TodoWrite",
+        "WebSearch",
+        "KillShell",
+        "AskUserQuestion",
+        "Skill",
+        "SlashCommand",
+        "EnterPlanMode",
+        "mcp__pencil__batch_design",
+        "mcp__pencil__batch_get",
+        "mcp__pencil__find_empty_space_on_canvas",
+        "mcp__pencil__get_editor_state",
+        "mcp__pencil__get_guidelines",
+        "mcp__pencil__get_screenshot",
+        "mcp__pencil__get_style_guide",
+        "mcp__pencil__get_style_guide_tags",
+        "mcp__pencil__get_variables",
+        "mcp__pencil__open_document",
+        "mcp__pencil__replace_all_matching_properties",
+        "mcp__pencil__search_all_unique_properties",
+        "mcp__pencil__set_variables",
+        "mcp__pencil__snapshot_layout",
+        "mcp__ide__getDiagnostics",
+        "mcp__ide__executeCode"
+      ],
+      "max_tokens": 32000,
+      "stream": true,
+      "toolCount": 34,
+      "toolsLite": [
+        {
+          "name": "Task",
+          "description": "Launch a new agent to handle complex, multi-step tasks autonomously. \n\nThe Task tool launches specialized agents (subprocesses) that autonomously handle complex tasks. Each agent type has specific capabilities and tools available to it.\n\nAv.... Launch a new agent to handle complex, multi-step tasks autonomously. \n\nThe Task tool launches specialized agents (subprocesses) that autonomously handle complex tasks. Each agent type has specific capabilities and tools available to it.\n\nAvailable agent types and the tools they have access to:\n- general-purpose: General-purpose agent for researching complex questions, searching for code, and executing multi-step tasks. When you are searching for a keyword or file and are not confident that you will find the right match in the first few tries use this agent to perform the search for you. (Tools: *)\n- statusline-setup: Use this agent to configure the user's Claude Code status line setting. (Tools: Read, Edit)\n- Explore: Fast agent specialized for exploring codebases. Use this when you need to quickly find files by patterns (eg. \"src/components/**/*.tsx\"), search code for keywords (eg. \"API endpoints\"), or answer questions about the codebase (eg. \"how do API endpoints work?\"). When calling this agent, specify the desired thoroughness level: \"quick\" for basic searches, \"medium\" for moderate exploration, or \"very thorough\" for comprehensive analysis across multiple locations and naming conventions. (Tools: All tools)\n- Plan: Software architect agent for designing implementation plans. Use this when you need to plan the implementation strategy for a task. Returns step-by-step plans, identifies critical files, and considers architectural trade-offs. (Tools: All tools)\n- claude-code-guide: Use this agent when the user asks questions (\"Can Claude...\", \"Does Claude...\", \"How do I...\") about: (1) Claude Code (the CLI tool) - features, hooks, slash commands, MCP servers, settings, IDE integrations, keyboard shortcuts; (2) Claude Agent SDK - building custom agents; (3) Claude API (formerly Anthropic API) - API usage, tool use, Anthropic SDK usage. **IMPORTANT:** Before spawning a new agent, check if there is already a running or recently completed claude-code-guide agent that you can resume using the \"resume\" parameter. (Tools: Glob, Grep, Read, WebFetch, WebSearch)\n- code-reviewer: Use this agent when new code has been written, modified, or committed and requires quality assurance, security analysis, or adherence to coding standards. This agent is essential for catching bugs, logic errors, and performance bottlenecks before code is merged.\n\nExamples:\n\n<example>\nContext: The user has just implemented a complex function and wants to ensure it handles edge cases correctly.\nUser: \"I've just finished writing the data validation logic. Does it look solid?\"\nAssistant: \"I will launch the code-reviewer agent to analyze the data validation logic for potential edge cases and security vulnerabilities.\"\n<uses Task tool to call code-reviewer agent>\n</example>\n\n<example>\nContext: The user has made a significant change to the authentication flow, a sensitive area requiring strict scrutiny.\nUser: \"I updated the JWT handling in the auth service.\"\nAssistant: \"Since authentication is security-critical, I will proactively use the code-reviewer agent to audit these changes for security flaws.\"\n<uses Task tool to call code-reviewer agent>\n</example>\n\n<example>\nContext: A pull request or diff is provided in the chat.\nUser: \"Here is the diff for the new API endpoints.\"\nAssistant: \"I'll use the code-reviewer agent to inspect these API endpoints for REST best practices and consistency.\"\n<uses Task tool to call code-reviewer agent>\n</example> (Tools: All tools)\n- int-code-reviewer: Use this agent when you need a comprehensive code review of recent changes to ensure quality, maintainability, and adherence to project standards. This agent is particularly useful after completing a logical unit of work, such as a new feature, bug fix, or refactor. Examples include:\n\n<example>\nContext: The user has just finished implementing a data processing function and wants to ensure it is error-free and follows best practices.\nuser: \"I've just written the data validation logic for the import pipeline. Can you check it?\"\nassistant: \"I'll launch the internal code reviewer agent to perform a thorough analysis of your recent changes.\"\n<uses Task tool to launch int-code-reviewer agent>\n<commentary>\nThe user has explicitly requested a review of the code they just wrote, which is the primary trigger for this agent.\n</commentary>\n</example>\n\n<example>\nContext: The user is working on a feature and has made several commits but hasn't explicitly asked for a review.\nuser: \"Okay, the user authentication endpoints are now connected to the database.\"\nassistant: \"That sounds like a significant security-sensitive change. I'm going to use the code reviewer agent to verify the implementation follows security best practices.\"\n<uses Task tool to launch int-code-reviewer agent>\n<commentary>\nProactively using the agent because the code change involves critical security logic (authentication) that requires immediate validation.\n</commentary>\n</example> (Tools: All tools)\n- autonomous-fixer: Use this agent when you need to apply a fix to a codebase without the user having specified exactly what the fix should be. This agent is designed to identify problems and resolve them proactively.\n\n<example>\nContext: The user mentions they have a bug but doesn't know the cause.\nuser: \"I think there's a memory leak in the user service but I can't find it.\"\nassistant: \"I'm going to use the Task tool to launch the autonomous-fixer agent to analyze the user service code and identify potential sources of memory leaks.\"\n<commentary>\nThe user has identified a problem (memory leak) but lacks the specific solution. The autonomous-fixer agent is best suited to investigate and generate a patch.\n</commentary>\n</example>\n\n<example>\nContext: Build logs show a deprecation warning.\nuser: \"The build is passing but there are these annoying warnings.\"\nassistant: \"I'll engage the autonomous-fixer agent to suppress these warnings by updating the deprecated API calls.\"\n<commentary>\nThe user wants a resolution to a general annoyance. The autonomous-fixer can interpret this as a request to clean up the code.\n</commentary>\n</example> (Tools: All tools)\n- bug-fixer: Use this agent when a bug, error, or unexpected behavior has been identified in the codebase and needs to be resolved. This includes fixing failing tests, addressing runtime exceptions, correcting logic errors, or resolving user-reported issues.\n\nExamples:\n\n<example>\nContext: The user has identified a failing unit test and needs to fix the underlying implementation.\nuser: \"The test for calculate_discount is failing because it's returning a negative value for invalid inputs.\"\nassistant: \"I will use the bug-fixer agent to analyze the failure and implement a fix for the calculate_discount function.\"\n<commentary>\nSince a specific bug with a test failure has been identified, launch the bug-fixer agent to resolve the issue.\n</commentary>\n</example>\n\n<example>\nContext: The user encounters a runtime error while the application is running.\nuser: \"I'm getting a 404 error when I try to fetch user profile data from /api/users/123.\"\nassistant: \"I'm going to use the bug-fixer agent to investigate this API endpoint issue and implement a solution.\"\n<commentary>\nA runtime bug has been reported, so use the bug-fixer agent to diagnose and fix the problem.\n</commentary>\n</example>\n\n<example>\nContext: Code review comments indicate a potential race condition.\nuser: \"This section of code looks like it might have a race condition with the async state update.\"\nassistant: \"Let me use the bug-fixer agent to examine this code for race conditions and apply a fix if necessary.\"\n<commentary>\nA potential bug (race condition) has been identified, so proactively use the bug-fixer agent to address it.\n</commentary>\n</example> (Tools: All tools)\n\nWhen using the Task tool, you must specify a subagent_type parameter to select which agent type to use.\n\nWhen NOT to use the Task tool:\n- If you want to read a specific file path, use the Read or Glob tool instead of the Task tool, to find the match more quickly\n- If you are searching for a specific class definition like \"class Foo\", use the Glob tool instead, to find the match more quickly\n- If you are searching for code within a specific file or set of 2-3 files, use the Read tool instead of the Task tool, to find the match more quickly\n- Other tasks that are not related to the agent descriptions above\n\n\nUsage notes:\n- Launch multiple agents concurrently whenever possible, to maximize performance; to do that, use a single message with multiple tool uses\n- When the agent is done, it will return a single message back to you. The result returned by the agent is not visible to the user. To show the user the result, you should send a text message back to the user with a concise summary of the result.\n- You can optionally run agents in the background using the run_in_background parameter. When an agent runs in the background, you will need to use TaskOutput to retrieve its results once it's done. You can continue to work while background agents run - When you need their results to continue you can use TaskOutput in blocking mode to pause and wait for their results.\n- Agents can be resumed using the `resume` parameter by passing the agent ID from a previous invocation. When resumed, the agent continues with its full previous context preserved. When NOT resuming, each invocation starts fresh and you should provide a detailed task description with all necessary context.\n- When the agent is done, it will return a single message back to you along with its agent ID. You can use this ID to resume the agent later if needed for follow-up work.\n- Provide clear, detailed prompts so the agent can work autonomously and return exactly the information you need.\n- Agents with \"access to current context\" can see the full conversation history before the tool call. When using these agents, you can write concise prompts that reference earlier context (e.g., \"investigate the error discussed above\") instead of repeating information. The agent will receive all prior messages and understand the context.\n- The agent's outputs should generally be trusted\n- Clearly tell the agent whether you expect it to write code or just to do research (search, file reads, web fetches, etc.), since it is not aware of the user's intent\n- If the agent description mentions that it should be used proactively, then you should try your best to use it without the user having to ask for it first. Use your judgement.\n- If the user specifies that they want you to run agents \"in parallel\", you MUST send a single message with multiple Task tool use content blocks. For example, if you need to launch both a code-reviewer agent and a test-runner agent in parallel, send a single message with both tool calls.\n\nExample usage:\n\n<example_agent_descriptions>\n\"code-reviewer\": use this agent after you are done writing a signficant piece of code\n\"greeting-responder\": use this agent when to respond to user greetings with a friendly joke\n</example_agent_description>\n\n<example>\nuser: \"Please write a function that checks if a number is prime\"\nassistant: Sure let me write a function that checks if a number is prime\nassistant: First let me use the Write tool to write a function that checks if a number is prime\nassistant: I'm going to use the Write tool to write the following code:\n<code>\nfunction isPrime(n) {\n  if (n <= 1) return false\n  for (let i = 2; i * i <= n; i++) {\n    if (n % i === 0) return false\n  }\n  return true\n}\n</code>\n<commentary>\nSince a signficant piece of code was written and the task was completed, now use the code-reviewer agent to review the code\n</commentary>\nassistant: Now let me use the code-reviewer agent to review the code\nassistant: Uses the Task tool to launch the code-reviewer agent \n</example>\n\n<example>\nuser: \"Hello\"\n<commentary>\nSince the user is greeting, use the greeting-responder agent to respond with a friendly joke\n</commentary>\nassistant: \"I'm going to use the Task tool to launch the greeting-responder agent\"\n</example>\n",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "description",
+              "prompt",
+              "subagent_type"
+            ],
+            "properties": {
+              "description": {
+                "type": "string",
+                "description": "A short (3-5 word) description of the task"
+              },
+              "prompt": {
+                "type": "string",
+                "description": "The task for the agent to perform"
+              },
+              "subagent_type": {
+                "type": "string",
+                "description": "The type of specialized agent to use for this task"
+              },
+              "model": {
+                "type": "string",
+                "description": "Optional model to use for this agent. If not specified, inherits from parent. Prefer haiku for quick, straightforward tasks to minimize cost and latency.",
+                "enumCount": 3,
+                "enum": [
+                  "sonnet",
+                  "opus",
+                  "haiku"
+                ]
+              },
+              "resume": {
+                "type": "string",
+                "description": "Optional agent ID to resume from. If provided, the agent will continue from the previous execution transcript."
+              },
+              "run_in_background": {
+                "type": "boolean",
+                "description": "Set to true to run this agent in the background. Use TaskOutput to read the output later."
+              }
+            }
+          }
+        },
+        {
+          "name": "TaskOutput",
+          "description": "- Retrieves output from a running or completed task (background shell, agent, or remote session)\n- Takes a task_id parameter identifying the task\n- Returns the task output along with status information\n- Use block=true (default) to wait for.... - Retrieves output from a running or completed task (background shell, agent, or remote session)\n- Takes a task_id parameter identifying the task\n- Returns the task output along with status information\n- Use block=true (default) to wait for task completion\n- Use block=false for non-blocking check of current status\n- Task IDs can be found using the /tasks command\n- Works with all task types: background shells, async agents, and remote sessions",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "task_id"
+            ],
+            "properties": {
+              "task_id": {
+                "type": "string",
+                "description": "The task ID to get output from"
+              },
+              "block": {
+                "type": "boolean",
+                "description": "Whether to wait for completion"
+              },
+              "timeout": {
+                "type": "number",
+                "description": "Max wait time in ms"
+              }
+            }
+          }
+        },
+        {
+          "name": "Bash",
+          "description": "Executes a given bash command in a persistent shell session with optional timeout, ensuring proper handling and security measures.\n\nIMPORTANT: This tool is for terminal operations like git, npm, docker, etc. DO NOT use it for file operation.... Executes a given bash command in a persistent shell session with optional timeout, ensuring proper handling and security measures.\n\nIMPORTANT: This tool is for terminal operations like git, npm, docker, etc. DO NOT use it for file operations (reading, writing, editing, searching, finding files) - use the specialized tools for this instead.\n\nBefore executing the command, please follow these steps:\n\n1. Directory Verification:\n   - If the command will create new directories or files, first use `ls` to verify the parent directory exists and is the correct location\n   - For example, before running \"mkdir foo/bar\", first use `ls foo` to check that \"foo\" exists and is the intended parent directory\n\n2. Command Execution:\n   - Always quote file paths that contain spaces with double quotes (e.g., cd \"path with spaces/file.txt\")\n   - Examples of proper quoting:\n     - cd \"/Users/name/My Documents\" (correct)\n     - cd /Users/name/My Documents (incorrect - will fail)\n     - python \"/path/with spaces/script.py\" (correct)\n     - python /path/with spaces/script.py (incorrect - will fail)\n   - After ensuring proper quoting, execute the command.\n   - Capture the output of the command.\n\nUsage notes:\n  - The command argument is required.\n  - You can specify an optional timeout in milliseconds (up to 600000ms / 10 minutes). If not specified, commands will timeout after 120000ms (2 minutes).\n  - It is very helpful if you write a clear, concise description of what this command does in 5-10 words.\n  - If the output exceeds 30000 characters, output will be truncated before being returned to you.\n  - You can use the `run_in_background` parameter to run the command in the background, which allows you to continue working while the command runs. You can monitor the output using the Bash tool as it becomes available. You do not need to use '&' at the end of the command when using this parameter.\n  \n  - Avoid using Bash with the `find`, `grep`, `cat`, `head`, `tail`, `sed`, `awk`, or `echo` commands, unless explicitly instructed or when these commands are truly necessary for the task. Instead, always prefer using the dedicated tools for these commands:\n    - File search: Use Glob (NOT find or ls)\n    - Content search: Use Grep (NOT grep or rg)\n    - Read files: Use Read (NOT cat/head/tail)\n    - Edit files: Use Edit (NOT sed/awk)\n    - Write files: Use Write (NOT echo >/cat <<EOF)\n    - Communication: Output text directly (NOT echo/printf)\n  - When issuing multiple commands:\n    - If the commands are independent and can run in parallel, make multiple Bash tool calls in a single message. For example, if you need to run \"git status\" and \"git diff\", send a single message with two Bash tool calls in parallel.\n    - If the commands depend on each other and must run sequentially, use a single Bash call with '&&' to chain them together (e.g., `git add . && git commit -m \"message\" && git push`). For instance, if one operation must complete before another starts (like mkdir before cp, Write before Bash for git operations, or git add before git commit), run these operations sequentially instead.\n    - Use ';' only when you need to run commands sequentially but don't care if earlier commands fail\n    - DO NOT use newlines to separate commands (newlines are ok in quoted strings)\n  - Try to maintain your current working directory throughout the session by using absolute paths and avoiding usage of `cd`. You may use `cd` if the User explicitly requests it.\n    <good-example>\n    pytest /foo/bar/tests\n    </good-example>\n    <bad-example>\n    cd /foo/bar && pytest tests\n    </bad-example>\n\n# Committing changes with git\n\nOnly create commits when requested by the user. If unclear, ask first. When the user asks you to create a new git commit, follow these steps carefully:\n\nGit Safety Protocol:\n- NEVER update the git config\n- NEVER run destructive/irreversible git commands (like push --force, hard reset, etc) unless the user explicitly requests them \n- NEVER skip hooks (--no-verify, --no-gpg-sign, etc) unless the user explicitly requests it\n- NEVER run force push to main/master, warn the user if they request it\n- Avoid git commit --amend.  ONLY use --amend when either (1) user explicitly requested amend OR (2) adding edits from pre-commit hook (additional instructions below) \n- Before amending: ALWAYS check authorship (git log -1 --format='%an %ae')\n- NEVER commit changes unless the user explicitly asks you to. It is VERY IMPORTANT to only commit when explicitly asked, otherwise the user will feel that you are being too proactive.\n\n1. You can call multiple tools in a single response. When multiple independent pieces of information are requested and all commands are likely to succeed, run multiple tool calls in parallel for optimal performance. run the following bash commands in parallel, each using the Bash tool:\n  - Run a git status command to see all untracked files.\n  - Run a git diff command to see both staged and unstaged changes that will be committed.\n  - Run a git log command to see recent commit messages, so that you can follow this repository's commit message style.\n2. Analyze all staged changes (both previously staged and newly added) and draft a commit message:\n  - Summarize the nature of the changes (eg. new feature, enhancement to an existing feature, bug fix, refactoring, test, docs, etc.). Ensure the message accurately reflects the changes and their purpose (i.e. \"add\" means a wholly new feature, \"update\" means an enhancement to an existing feature, \"fix\" means a bug fix, etc.).\n  - Do not commit files that likely contain secrets (.env, credentials.json, etc). Warn the user if they specifically request to commit those files\n  - Draft a concise (1-2 sentences) commit message that focuses on the \"why\" rather than the \"what\"\n  - Ensure it accurately reflects the changes and their purpose\n3. You can call multiple tools in a single response. When multiple independent pieces of information are requested and all commands are likely to succeed, run multiple tool calls in parallel for optimal performance. run the following commands:\n   - Add relevant untracked files to the staging area.\n   - Create the commit with a message ending with:\n   🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\n   Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\n   - Run git status after the commit completes to verify success.\n   Note: git status depends on the commit completing, so run it sequentially after the commit.\n4. If the commit fails due to pre-commit hook changes, retry ONCE. If it succeeds but files were modified by the hook, verify it's safe to amend:\n   - Check HEAD commit: git log -1 --format='[%h] (%an <%ae>) %s'. VERIFY it matches your commit\n   - Check not pushed: git status shows \"Your branch is ahead\"\n   - If both true: amend your commit. Otherwise: create NEW commit (never amend other developers' commits)\n\nImportant notes:\n- NEVER run additional commands to read or explore code, besides git bash commands\n- NEVER use the TodoWrite or Task tools\n- DO NOT push to the remote repository unless the user explicitly asks you to do so\n- IMPORTANT: Never use git commands with the -i flag (like git rebase -i or git add -i) since they require interactive input which is not supported.\n- If there are no changes to commit (i.e., no untracked files and no modifications), do not create an empty commit\n- In order to ensure good formatting, ALWAYS pass the commit message via a HEREDOC, a la this example:\n<example>\ngit commit -m \"$(cat <<'EOF'\n   Commit message here.\n\n   🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\n   Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\n   EOF\n   )\"\n</example>\n\n# Creating pull requests\nUse the gh command via the Bash tool for ALL GitHub-related tasks including working with issues, pull requests, checks, and releases. If given a Github URL use the gh command to get the information needed.\n\nIMPORTANT: When the user asks you to create a pull request, follow these steps carefully:\n\n1. You can call multiple tools in a single response. When multiple independent pieces of information are requested and all commands are likely to succeed, run multiple tool calls in parallel for optimal performance. run the following bash commands in parallel using the Bash tool, in order to understand the current state of the branch since it diverged from the main branch:\n   - Run a git status command to see all untracked files\n   - Run a git diff command to see both staged and unstaged changes that will be committed\n   - Check if the current branch tracks a remote branch and is up to date with the remote, so you know if you need to push to the remote\n   - Run a git log command and `git diff [base-branch]...HEAD` to understand the full commit history for the current branch (from the time it diverged from the base branch)\n2. Analyze all changes that will be included in the pull request, making sure to look at all relevant commits (NOT just the latest commit, but ALL commits that will be included in the pull request!!!), and draft a pull request summary\n3. You can call multiple tools in a single response. When multiple independent pieces of information are requested and all commands are likely to succeed, run multiple tool calls in parallel for optimal performance. run the following commands in parallel:\n   - Create new branch if needed\n   - Push to remote with -u flag if needed\n   - Create PR using gh pr create with the format below. Use a HEREDOC to pass the body to ensure correct formatting.\n<example>\ngh pr create --title \"the pr title\" --body \"$(cat <<'EOF'\n## Summary\n<1-3 bullet points>\n\n## Test plan\n[Bulleted markdown checklist of TODOs for testing the pull request...]\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\nEOF\n)\"\n</example>\n\nImportant:\n- DO NOT use the TodoWrite or Task tools\n- Return the PR URL when you're done, so the user can see it\n\n# Other common operations\n- View comments on a Github PR: gh api repos/foo/bar/pulls/123/comments",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "command"
+            ],
+            "properties": {
+              "command": {
+                "type": "string",
+                "description": "The command to execute"
+              },
+              "timeout": {
+                "type": "number",
+                "description": "Optional timeout in milliseconds (max 600000)"
+              },
+              "description": {
+                "type": "string",
+                "description": "Clear, concise description of what this command does in 5-10 words, in active voice. Examples:\nInput: ls\nOutput: List files in current direc.... Clear, concise description of what this command does in 5-10 words, in active voice. Examples:\nInput: ls\nOutput: List files in current directory\n\nInput: git status\nOutput: Show working tree status\n\nInput: npm install\nOutput: Install package dependencies\n\nInput: mkdir foo\nOutput: Create directory 'foo'"
+              },
+              "run_in_background": {
+                "type": "boolean",
+                "description": "Set to true to run this command in the background. Use TaskOutput to read the output later."
+              },
+              "dangerouslyDisableSandbox": {
+                "type": "boolean",
+                "description": "Set this to true to dangerously override sandbox mode and run commands without sandboxing."
+              }
+            }
+          }
+        },
+        {
+          "name": "Glob",
+          "description": "- Fast file pattern matching tool that works with any codebase size\n- Supports glob patterns like \"**/*.js\" or \"src/**/*.ts\"\n- Returns matching file paths sorted by modification time\n- Use this tool when you need to find files by name patte.... - Fast file pattern matching tool that works with any codebase size\n- Supports glob patterns like \"**/*.js\" or \"src/**/*.ts\"\n- Returns matching file paths sorted by modification time\n- Use this tool when you need to find files by name patterns\n- When you are doing an open ended search that may require multiple rounds of globbing and grepping, use the Agent tool instead\n- You can call multiple tools in a single response. It is always better to speculatively perform multiple searches in parallel if they are potentially useful.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "pattern"
+            ],
+            "properties": {
+              "pattern": {
+                "type": "string",
+                "description": "The glob pattern to match files against"
+              },
+              "path": {
+                "type": "string",
+                "description": "The directory to search in. If not specified, the current working directory will be used. IMPORTANT: Omit this field to use the default dire.... The directory to search in. If not specified, the current working directory will be used. IMPORTANT: Omit this field to use the default directory. DO NOT enter \"undefined\" or \"null\" - simply omit it for the default behavior. Must be a valid directory path if provided."
+              }
+            }
+          }
+        },
+        {
+          "name": "Grep",
+          "description": "A powerful search tool built on ripgrep\n\n  Usage:\n  - ALWAYS use Grep for search tasks. NEVER invoke `grep` or `rg` as a Bash command. The Grep tool has been optimized for correct permissions and access.\n  - Supports full regex syntax (e.g..... A powerful search tool built on ripgrep\n\n  Usage:\n  - ALWAYS use Grep for search tasks. NEVER invoke `grep` or `rg` as a Bash command. The Grep tool has been optimized for correct permissions and access.\n  - Supports full regex syntax (e.g., \"log.*Error\", \"function\\s+\\w+\")\n  - Filter files with glob parameter (e.g., \"*.js\", \"**/*.tsx\") or type parameter (e.g., \"js\", \"py\", \"rust\")\n  - Output modes: \"content\" shows matching lines, \"files_with_matches\" shows only file paths (default), \"count\" shows match counts\n  - Use Task tool for open-ended searches requiring multiple rounds\n  - Pattern syntax: Uses ripgrep (not grep) - literal braces need escaping (use `interface\\{\\}` to find `interface{}` in Go code)\n  - Multiline matching: By default patterns match within single lines only. For cross-line patterns like `struct \\{[\\s\\S]*?field`, use `multiline: true`\n",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "pattern"
+            ],
+            "properties": {
+              "pattern": {
+                "type": "string",
+                "description": "The regular expression pattern to search for in file contents"
+              },
+              "path": {
+                "type": "string",
+                "description": "File or directory to search in (rg PATH). Defaults to current working directory."
+              },
+              "glob": {
+                "type": "string",
+                "description": "Glob pattern to filter files (e.g. \"*.js\", \"*.{ts,tsx}\") - maps to rg --glob"
+              },
+              "output_mode": {
+                "type": "string",
+                "description": "Output mode: \"content\" shows matching lines (supports -A/-B/-C context, -n line numbers, head_limit), \"files_with_matches\" shows file paths .... Output mode: \"content\" shows matching lines (supports -A/-B/-C context, -n line numbers, head_limit), \"files_with_matches\" shows file paths (supports head_limit), \"count\" shows match counts (supports head_limit). Defaults to \"files_with_matches\".",
+                "enumCount": 3,
+                "enum": [
+                  "content",
+                  "files_with_matches",
+                  "count"
+                ]
+              },
+              "-B": {
+                "type": "number",
+                "description": "Number of lines to show before each match (rg -B). Requires output_mode: \"content\", ignored otherwise."
+              },
+              "-A": {
+                "type": "number",
+                "description": "Number of lines to show after each match (rg -A). Requires output_mode: \"content\", ignored otherwise."
+              },
+              "-C": {
+                "type": "number",
+                "description": "Number of lines to show before and after each match (rg -C). Requires output_mode: \"content\", ignored otherwise."
+              },
+              "-n": {
+                "type": "boolean",
+                "description": "Show line numbers in output (rg -n). Requires output_mode: \"content\", ignored otherwise. Defaults to true."
+              },
+              "-i": {
+                "type": "boolean",
+                "description": "Case insensitive search (rg -i)"
+              },
+              "type": {
+                "type": "string",
+                "description": "File type to search (rg --type). Common types: js, py, rust, go, java, etc. More efficient than include for standard file types."
+              },
+              "head_limit": {
+                "type": "number",
+                "description": "Limit output to first N lines/entries, equivalent to \"| head -N\". Works across all output modes: content (limits output lines), files_with_m.... Limit output to first N lines/entries, equivalent to \"| head -N\". Works across all output modes: content (limits output lines), files_with_matches (limits file paths), count (limits count entries). Defaults to 0 (unlimited)."
+              },
+              "offset": {
+                "type": "number",
+                "description": "Skip first N lines/entries before applying head_limit, equivalent to \"| tail -n +N | head -N\". Works across all output modes. Defaults to 0."
+              },
+              "multiline": {
+                "type": "boolean",
+                "description": "Enable multiline mode where . matches newlines and patterns can span lines (rg -U --multiline-dotall). Default: false."
+              }
+            }
+          }
+        },
+        {
+          "name": "ExitPlanMode",
+          "description": "Use this tool when you are in plan mode and have finished writing your plan to the plan file and are ready for user approval.\n\n## How This Tool Works\n- You should have already written your plan to the plan file specified in the plan mode sy.... Use this tool when you are in plan mode and have finished writing your plan to the plan file and are ready for user approval.\n\n## How This Tool Works\n- You should have already written your plan to the plan file specified in the plan mode system message\n- This tool does NOT take the plan content as a parameter - it will read the plan from the file you wrote\n- This tool simply signals that you're done planning and ready for the user to review and approve\n- The user will see the contents of your plan file when they review it\n\n## When to Use This Tool\nIMPORTANT: Only use this tool when the task requires planning the implementation steps of a task that requires writing code. For research tasks where you're gathering information, searching files, reading files or in general trying to understand the codebase - do NOT use this tool.\n\n## Handling Ambiguity in Plans\nBefore using this tool, ensure your plan is clear and unambiguous. If there are multiple valid approaches or unclear requirements:\n1. Use the AskUserQuestion tool to clarify with the user\n2. Ask about specific implementation choices (e.g., architectural patterns, which library to use)\n3. Clarify any assumptions that could affect the implementation\n4. Edit your plan file to incorporate user feedback\n5. Only proceed with ExitPlanMode after resolving ambiguities and updating the plan file\n\n## Examples\n\n1. Initial task: \"Search for and understand the implementation of vim mode in the codebase\" - Do not use the exit plan mode tool because you are not planning the implementation steps of a task.\n2. Initial task: \"Help me implement yank mode for vim\" - Use the exit plan mode tool after you have finished planning the implementation steps of the task.\n3. Initial task: \"Add a new feature to handle user authentication\" - If unsure about auth method (OAuth, JWT, etc.), use AskUserQuestion first, then use exit plan mode tool after clarifying the approach.\n",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "launchSwarm": {
+                "type": "boolean",
+                "description": "Whether to launch a swarm to implement the plan"
+              },
+              "teammateCount": {
+                "type": "number",
+                "description": "Number of teammates to spawn in the swarm"
+              }
+            }
+          }
+        },
+        {
+          "name": "Read",
+          "description": "Reads a file from the local filesystem. You can access any file directly by using this tool.\nAssume this tool is able to read all files on the machine. If the User provides a path to a file assume that path is valid. It is okay to read a fi.... Reads a file from the local filesystem. You can access any file directly by using this tool.\nAssume this tool is able to read all files on the machine. If the User provides a path to a file assume that path is valid. It is okay to read a file that does not exist; an error will be returned.\n\nUsage:\n- The file_path parameter must be an absolute path, not a relative path\n- By default, it reads up to 2000 lines starting from the beginning of the file\n- You can optionally specify a line offset and limit (especially handy for long files), but it's recommended to read the whole file by not providing these parameters\n- Any lines longer than 2000 characters will be truncated\n- Results are returned using cat -n format, with line numbers starting at 1\n- This tool allows Claude Code to read images (eg PNG, JPG, etc). When reading an image file the contents are presented visually as Claude Code is a multimodal LLM.\n- This tool can read PDF files (.pdf). PDFs are processed page by page, extracting both text and visual content for analysis.\n- This tool can read Jupyter notebooks (.ipynb files) and returns all cells with their outputs, combining code, text, and visualizations.\n- This tool can only read files, not directories. To read a directory, use an ls command via the Bash tool.\n- You can call multiple tools in a single response. It is always better to speculatively read multiple potentially useful files in parallel.\n- You will regularly be asked to read screenshots. If the user provides a path to a screenshot, ALWAYS use this tool to view the file at the path. This tool will work with all temporary file paths.\n- If you read a file that exists but has empty contents you will receive a system reminder warning in place of file contents.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "file_path"
+            ],
+            "properties": {
+              "file_path": {
+                "type": "string",
+                "description": "The absolute path to the file to read"
+              },
+              "offset": {
+                "type": "number",
+                "description": "The line number to start reading from. Only provide if the file is too large to read at once"
+              },
+              "limit": {
+                "type": "number",
+                "description": "The number of lines to read. Only provide if the file is too large to read at once."
+              }
+            }
+          }
+        },
+        {
+          "name": "Edit",
+          "description": "Performs exact string replacements in files. \n\nUsage:\n- You must use your `Read` tool at least once in the conversation before editing. This tool will error if you attempt an edit without reading the file. \n- When editing text from Read too.... Performs exact string replacements in files. \n\nUsage:\n- You must use your `Read` tool at least once in the conversation before editing. This tool will error if you attempt an edit without reading the file. \n- When editing text from Read tool output, ensure you preserve the exact indentation (tabs/spaces) as it appears AFTER the line number prefix. The line number prefix format is: spaces + line number + tab. Everything after that tab is the actual file content to match. Never include any part of the line number prefix in the old_string or new_string.\n- ALWAYS prefer editing existing files in the codebase. NEVER write new files unless explicitly required.\n- Only use emojis if the user explicitly requests it. Avoid adding emojis to files unless asked.\n- The edit will FAIL if `old_string` is not unique in the file. Either provide a larger string with more surrounding context to make it unique or use `replace_all` to change every instance of `old_string`. \n- Use `replace_all` for replacing and renaming strings across the file. This parameter is useful if you want to rename a variable for instance.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "file_path",
+              "old_string",
+              "new_string"
+            ],
+            "properties": {
+              "file_path": {
+                "type": "string",
+                "description": "The absolute path to the file to modify"
+              },
+              "old_string": {
+                "type": "string",
+                "description": "The text to replace"
+              },
+              "new_string": {
+                "type": "string",
+                "description": "The text to replace it with (must be different from old_string)"
+              },
+              "replace_all": {
+                "type": "boolean",
+                "description": "Replace all occurences of old_string (default false)"
+              }
+            }
+          }
+        },
+        {
+          "name": "Write",
+          "description": "Writes a file to the local filesystem.\n\nUsage:\n- This tool will overwrite the existing file if there is one at the provided path.\n- If this is an existing file, you MUST use the Read tool first to read the file's contents. This tool will fa.... Writes a file to the local filesystem.\n\nUsage:\n- This tool will overwrite the existing file if there is one at the provided path.\n- If this is an existing file, you MUST use the Read tool first to read the file's contents. This tool will fail if you did not read the file first.\n- ALWAYS prefer editing existing files in the codebase. NEVER write new files unless explicitly required.\n- NEVER proactively create documentation files (*.md) or README files. Only create documentation files if explicitly requested by the User.\n- Only use emojis if the user explicitly requests it. Avoid writing emojis to files unless asked.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "file_path",
+              "content"
+            ],
+            "properties": {
+              "file_path": {
+                "type": "string",
+                "description": "The absolute path to the file to write (must be absolute, not relative)"
+              },
+              "content": {
+                "type": "string",
+                "description": "The content to write to the file"
+              }
+            }
+          }
+        },
+        {
+          "name": "NotebookEdit",
+          "description": "Completely replaces the contents of a specific cell in a Jupyter notebook (.ipynb file) with new source. Jupyter notebooks are interactive documents that combine code, text, and visualizations, commonly used for data analysis and scientific.... Completely replaces the contents of a specific cell in a Jupyter notebook (.ipynb file) with new source. Jupyter notebooks are interactive documents that combine code, text, and visualizations, commonly used for data analysis and scientific computing. The notebook_path parameter must be an absolute path, not a relative path. The cell_number is 0-indexed. Use edit_mode=insert to add a new cell at the index specified by cell_number. Use edit_mode=delete to delete the cell at the index specified by cell_number.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "notebook_path",
+              "new_source"
+            ],
+            "properties": {
+              "notebook_path": {
+                "type": "string",
+                "description": "The absolute path to the Jupyter notebook file to edit (must be absolute, not relative)"
+              },
+              "cell_id": {
+                "type": "string",
+                "description": "The ID of the cell to edit. When inserting a new cell, the new cell will be inserted after the cell with this ID, or at the beginning if not specified."
+              },
+              "new_source": {
+                "type": "string",
+                "description": "The new source for the cell"
+              },
+              "cell_type": {
+                "type": "string",
+                "description": "The type of the cell (code or markdown). If not specified, it defaults to the current cell type. If using edit_mode=insert, this is required.",
+                "enumCount": 2,
+                "enum": [
+                  "code",
+                  "markdown"
+                ]
+              },
+              "edit_mode": {
+                "type": "string",
+                "description": "The type of edit to make (replace, insert, delete). Defaults to replace.",
+                "enumCount": 3,
+                "enum": [
+                  "replace",
+                  "insert",
+                  "delete"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "name": "WebFetch",
+          "description": "\n- Fetches content from a specified URL and processes it using an AI model\n- Takes a URL and a prompt as input\n- Fetches the URL content, converts HTML to markdown\n- Processes the content with the prompt using a small, fast model\n- Returns .... \n- Fetches content from a specified URL and processes it using an AI model\n- Takes a URL and a prompt as input\n- Fetches the URL content, converts HTML to markdown\n- Processes the content with the prompt using a small, fast model\n- Returns the model's response about the content\n- Use this tool when you need to retrieve and analyze web content\n\nUsage notes:\n  - IMPORTANT: If an MCP-provided web fetch tool is available, prefer using that tool instead of this one, as it may have fewer restrictions.\n  - The URL must be a fully-formed valid URL\n  - HTTP URLs will be automatically upgraded to HTTPS\n  - The prompt should describe what information you want to extract from the page\n  - This tool is read-only and does not modify any files\n  - Results may be summarized if the content is very large\n  - Includes a self-cleaning 15-minute cache for faster responses when repeatedly accessing the same URL\n  - When a URL redirects to a different host, the tool will inform you and provide the redirect URL in a special format. You should then make a new WebFetch request with the redirect URL to fetch the content.\n",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "url",
+              "prompt"
+            ],
+            "properties": {
+              "url": {
+                "type": "string",
+                "description": "The URL to fetch content from"
+              },
+              "prompt": {
+                "type": "string",
+                "description": "The prompt to run on the fetched content"
+              }
+            }
+          }
+        },
+        {
+          "name": "TodoWrite",
+          "description": "Use this tool to create and manage a structured task list for your current coding session. This helps you track progress, organize complex tasks, and demonstrate thoroughness to the user.\nIt also helps the user understand the progress of th.... Use this tool to create and manage a structured task list for your current coding session. This helps you track progress, organize complex tasks, and demonstrate thoroughness to the user.\nIt also helps the user understand the progress of the task and overall progress of their requests.\n\n## When to Use This Tool\nUse this tool proactively in these scenarios:\n\n1. Complex multi-step tasks - When a task requires 3 or more distinct steps or actions\n2. Non-trivial and complex tasks - Tasks that require careful planning or multiple operations\n3. User explicitly requests todo list - When the user directly asks you to use the todo list\n4. User provides multiple tasks - When users provide a list of things to be done (numbered or comma-separated)\n5. After receiving new instructions - Immediately capture user requirements as todos\n6. When you start working on a task - Mark it as in_progress BEFORE beginning work. Ideally you should only have one todo as in_progress at a time\n7. After completing a task - Mark it as completed and add any new follow-up tasks discovered during implementation\n\n## When NOT to Use This Tool\n\nSkip using this tool when:\n1. There is only a single, straightforward task\n2. The task is trivial and tracking it provides no organizational benefit\n3. The task can be completed in less than 3 trivial steps\n4. The task is purely conversational or informational\n\nNOTE that you should not use this tool if there is only one trivial task to do. In this case you are better off just doing the task directly.\n\n## Examples of When to Use the Todo List\n\n<example>\nUser: I want to add a dark mode toggle to the application settings. Make sure you run the tests and build when you're done!\nAssistant: I'll help add a dark mode toggle to your application settings. Let me create a todo list to track this implementation.\n*Creates todo list with the following items:*\n1. Creating dark mode toggle component in Settings page\n2. Adding dark mode state management (context/store)\n3. Implementing CSS-in-JS styles for dark theme\n4. Updating existing components to support theme switching\n5. Running tests and build process, addressing any failures or errors that occur\n*Begins working on the first task*\n\n<reasoning>\nThe assistant used the todo list because:\n1. Adding dark mode is a multi-step feature requiring UI, state management, and styling changes\n2. The user explicitly requested tests and build be run afterward\n3. The assistant inferred that tests and build need to pass by adding \"Ensure tests and build succeed\" as the final task\n</reasoning>\n</example>\n\n<example>\nUser: Help me rename the function getCwd to getCurrentWorkingDirectory across my project\nAssistant: Let me first search through your codebase to find all occurrences of 'getCwd'.\n*Uses grep or search tools to locate all instances of getCwd in the codebase*\nAssistant: I've found 15 instances of 'getCwd' across 8 different files. Let me create a todo list to track these changes.\n*Creates todo list with specific items for each file that needs updating*\n\n<reasoning>\nThe assistant used the todo list because:\n1. First, the assistant searched to understand the scope of the task\n2. Upon finding multiple occurrences across different files, it determined this was a complex task with multiple steps\n3. The todo list helps ensure every instance is tracked and updated systematically\n4. This approach prevents missing any occurrences and maintains code consistency\n</reasoning>\n</example>\n\n\n<example>\nUser: I need to implement these features for my e-commerce site: user registration, product catalog, shopping cart, and checkout flow.\nAssistant: I'll help implement these features. First, let's add all the features to the todo list.\n*Creates a todo list breaking down each feature into specific tasks based on the project architecture*\nAssistant: Let's start with user registration. This will involve creating database models, API endpoints, and frontend forms that integrate with your existing authentication system.\n\n<reasoning>\nThe assistant used the todo list because:\n1. The user provided multiple complex features to implement in a comma separated list\n2. The todo list helps organize these large features into manageable tasks\n3. This approach allows for tracking progress across the entire implementation\n</reasoning>\n</example>\n\n<example>\nUser: Can you help optimize my React application? It's rendering slowly and has performance issues.</user>\nAssistant: I'll help optimize your React application. First, let me examine your codebase to identify potential performance bottlenecks.\n*Reviews component structure, render patterns, state management, and data fetching*\nAssistant: After analyzing your codebase, I've identified several performance issues. Let me create a todo list to track our optimization efforts.\n*Creates todo list with items like: 1) Implementing memoization for expensive calculations in ProductList, 2) Adding virtualization for long lists in Dashboard, 3) Optimizing image loading in Gallery component, 4) Fixing state update loops in ShoppingCart, 5) Reviewing bundle size and implementing code splitting*\nLet's start by implementing memoization for the expensive calculations in your ProductList component.</assistant>\n\n<reasoning>\nThe assistant used the todo list because:\n1. First, the assistant examined the codebase to identify specific performance issues\n2. Based on this analysis, it identified multiple optimization opportunities\n3. Performance optimization is a non-trivial task requiring multiple steps\n4. The todo list helps methodically track improvements across different components\n5. This systematic approach ensures all performance bottlenecks are addressed\n</reasoning>\n</example>\n\n## Examples of When NOT to Use the Todo List\n\n<example>\nUser: How do I print 'Hello World' in Python?\nAssistant: In Python, you can print \"Hello World\" with this simple code:\n\npython\nprint(\"Hello World\")\n\nThis will output the text \"Hello World\" to the console when executed.</assistant>\n\n<reasoning>\nThe assistant did not use the todo list because this is a single, trivial task that can be completed in one step. There's no need to track multiple tasks or steps for such a straightforward request.\n</reasoning>\n</example>\n\n<example>\nUser: What does the git status command do?\nAssistant: The git status command shows the current state of your working directory and staging area. It displays which changes have been staged, which haven't, and which files aren't being tracked by Git. This is a fundamental command for understanding the current state of your repository before making commits.\n\n<reasoning>\nThe assistant did not use the todo list because this is an informational request with no actual coding task to complete. The user is simply asking for an explanation, not for the assistant to perform multiple steps or tasks.\n</reasoning>\n</example>\n\n<example>\nUser: Can you add a comment to the calculateTotal function to explain what it does?\nAssistant: Sure, let me add a comment to the calculateTotal function to explain what it does.\n* Uses the Edit tool to add a comment to the calculateTotal function *\n\n<reasoning>\nThe assistant did not use the todo list because this is a single, straightforward task confined to one location in the code. Adding a comment doesn't require tracking multiple steps or systematic organization.\n</reasoning>\n</example>\n\n<example>\nUser: Run npm install for me and tell me what happens.\nAssistant: I'll run the npm install command for you.\n\n*Executes: npm install*\n\nThe command completed successfully. Here's the output:\n[Output of npm install command]\n\nAll dependencies have been installed according to your package.json file.\n\n<reasoning>\nThe assistant did not use the todo list because this is a single command execution with immediate results. There are no multiple steps to track or organize, making the todo list unnecessary for this straightforward task.\n</reasoning>\n</example>\n\n## Task States and Management\n\n1. **Task States**: Use these states to track progress:\n   - pending: Task not yet started\n   - in_progress: Currently working on (limit to ONE task at a time)\n   - completed: Task finished successfully\n\n   **IMPORTANT**: Task descriptions must have two forms:\n   - content: The imperative form describing what needs to be done (e.g., \"Run tests\", \"Build the project\")\n   - activeForm: The present continuous form shown during execution (e.g., \"Running tests\", \"Building the project\")\n\n2. **Task Management**:\n   - Update task status in real-time as you work\n   - Mark tasks complete IMMEDIATELY after finishing (don't batch completions)\n   - Exactly ONE task must be in_progress at any time (not less, not more)\n   - Complete current tasks before starting new ones\n   - Remove tasks that are no longer relevant from the list entirely\n\n3. **Task Completion Requirements**:\n   - ONLY mark a task as completed when you have FULLY accomplished it\n   - If you encounter errors, blockers, or cannot finish, keep the task as in_progress\n   - When blocked, create a new task describing what needs to be resolved\n   - Never mark a task as completed if:\n     - Tests are failing\n     - Implementation is partial\n     - You encountered unresolved errors\n     - You couldn't find necessary files or dependencies\n\n4. **Task Breakdown**:\n   - Create specific, actionable items\n   - Break complex tasks into smaller, manageable steps\n   - Use clear, descriptive task names\n   - Always provide both forms:\n     - content: \"Fix authentication bug\"\n     - activeForm: \"Fixing authentication bug\"\n\nWhen in doubt, use this tool. Being proactive with task management demonstrates attentiveness and ensures you complete all requirements successfully.\n",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "todos"
+            ],
+            "properties": {
+              "todos": {
+                "type": "array",
+                "description": "The updated todo list",
+                "itemsType": "object"
+              }
+            }
+          }
+        },
+        {
+          "name": "WebSearch",
+          "description": "\n- Allows Claude to search the web and use the results to inform responses\n- Provides up-to-date information for current events and recent data\n- Returns search result information formatted as search result blocks, including links as markdo.... \n- Allows Claude to search the web and use the results to inform responses\n- Provides up-to-date information for current events and recent data\n- Returns search result information formatted as search result blocks, including links as markdown hyperlinks\n- Use this tool for accessing information beyond Claude's knowledge cutoff\n- Searches are performed automatically within a single API call\n\nCRITICAL REQUIREMENT - You MUST follow this:\n  - After answering the user's question, you MUST include a \"Sources:\" section at the end of your response\n  - In the Sources section, list all relevant URLs from the search results as markdown hyperlinks: [Title](URL)\n  - This is MANDATORY - never skip including sources in your response\n  - Example format:\n\n    [Your answer here]\n\n    Sources:\n    - [Source Title 1](https://example.com/1)\n    - [Source Title 2](https://example.com/2)\n\nUsage notes:\n  - Domain filtering is supported to include or block specific websites\n  - Web search is only available in the US\n\nIMPORTANT - Use the correct year in search queries:\n  - Today's date is 2026-03-15. You MUST use this year when searching for recent information, documentation, or current events.\n  - Example: If today is 2025-07-15 and the user asks for \"latest React docs\", search for \"React documentation 2025\", NOT \"React documentation 2024\"\n",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "query"
+            ],
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "The search query to use"
+              },
+              "allowed_domains": {
+                "type": "array",
+                "description": "Only include search results from these domains",
+                "itemsType": "string"
+              },
+              "blocked_domains": {
+                "type": "array",
+                "description": "Never include search results from these domains",
+                "itemsType": "string"
+              }
+            }
+          }
+        },
+        {
+          "name": "KillShell",
+          "description": "\n- Kills a running background bash shell by its ID\n- Takes a shell_id parameter identifying the shell to kill\n- Returns a success or failure status \n- Use this tool when you need to terminate a long-running shell\n- Shell IDs can be found us.... \n- Kills a running background bash shell by its ID\n- Takes a shell_id parameter identifying the shell to kill\n- Returns a success or failure status \n- Use this tool when you need to terminate a long-running shell\n- Shell IDs can be found using the /tasks command\n",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "shell_id"
+            ],
+            "properties": {
+              "shell_id": {
+                "type": "string",
+                "description": "The ID of the background shell to kill"
+              }
+            }
+          }
+        },
+        {
+          "name": "AskUserQuestion",
+          "description": "Use this tool when you need to ask the user questions during execution. This allows you to:\n1. Gather user preferences or requirements\n2. Clarify ambiguous instructions\n3. Get decisions on implementation choices as you work\n4. Offer choices.... Use this tool when you need to ask the user questions during execution. This allows you to:\n1. Gather user preferences or requirements\n2. Clarify ambiguous instructions\n3. Get decisions on implementation choices as you work\n4. Offer choices to the user about what direction to take.\n\nUsage notes:\n- Users will always be able to select \"Other\" to provide custom text input\n- Use multiSelect: true to allow multiple answers to be selected for a question\n- If you recommend a specific option, make that the first option in the list and add \"(Recommended)\" at the end of the label\n",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "questions"
+            ],
+            "properties": {
+              "questions": {
+                "type": "array",
+                "description": "Questions to ask the user (1-4 questions)",
+                "itemsType": "object"
+              },
+              "answers": {
+                "type": "object",
+                "description": "User answers collected by the permission component"
+              }
+            }
+          }
+        },
+        {
+          "name": "Skill",
+          "description": "Execute a skill within the main conversation\n\n<skills_instructions>\nWhen users ask you to perform tasks, check if any of the available skills below can help complete the task more effectively. Skills provide specialized capabilities and dom.... Execute a skill within the main conversation\n\n<skills_instructions>\nWhen users ask you to perform tasks, check if any of the available skills below can help complete the task more effectively. Skills provide specialized capabilities and domain knowledge.\n\nHow to invoke:\n- Use this tool with the skill name only (no arguments)\n- Examples:\n  - `skill: \"pdf\"` - invoke the pdf skill\n  - `skill: \"xlsx\"` - invoke the xlsx skill\n  - `skill: \"ms-office-suite:pdf\"` - invoke using fully qualified name\n\nImportant:\n- When a skill is relevant, you must invoke this tool IMMEDIATELY as your first action\n- NEVER just announce or mention a skill in your text response without actually calling this tool\n- This is a BLOCKING REQUIREMENT: invoke the relevant Skill tool BEFORE generating any other response about the task\n- Only use skills listed in <available_skills> below\n- Do not invoke a skill that is already running\n- Do not use this tool for built-in CLI commands (like /help, /clear, etc.)\n</skills_instructions>\n\n<available_skills>\n<skill>\n<name>\nfrontend-design\n</name>\n<description>\nCreate distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications (examples include websites, landing pages, dashboards, React components, HTML/CSS layouts, or when styling/beautifying any web UI). Generates creative, polished code and UI design that avoids generic AI aesthetics. (project)\n</description>\n<location>\nmanaged\n</location>\n</skill>\n</available_skills>\n",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "skill"
+            ],
+            "properties": {
+              "skill": {
+                "type": "string",
+                "description": "The skill name (no arguments). E.g., \"pdf\" or \"xlsx\""
+              }
+            }
+          }
+        },
+        {
+          "name": "SlashCommand",
+          "description": "Execute a slash command within the main conversation\n\nHow slash commands work:\nWhen you use this tool or when a user types a slash command, you will see <command-message>{name} is running…</command-message> followed by the expanded prompt. .... Execute a slash command within the main conversation\n\nHow slash commands work:\nWhen you use this tool or when a user types a slash command, you will see <command-message>{name} is running…</command-message> followed by the expanded prompt. For example, if .claude/commands/foo.md contains \"Print today's date\", then /foo expands to that prompt in the next message.\n\nUsage:\n- `command` (required): The slash command to execute, including any arguments\n- Example: `command: \"/review-pr 123\"`\n\nIMPORTANT: Only use this tool for custom slash commands that appear in the Available Commands list below. Do NOT use for:\n- Built-in CLI commands (like /help, /clear, etc.)\n- Commands not shown in the list\n- Commands you think might exist but aren't listed\n\nNotes:\n- When a user requests multiple slash commands, execute each one sequentially and check for <command-message>{name} is running…</command-message> to verify each has been processed\n- Do not invoke a command that is already running. For example, if you see <command-message>foo is running…</command-message>, do NOT use this tool with \"/foo\" - process the expanded prompt in the following message\n- Only custom slash commands with descriptions are listed in Available Commands. If a user's command is not listed, ask them to check the slash command file and consult the docs.\n",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "command"
+            ],
+            "properties": {
+              "command": {
+                "type": "string",
+                "description": "The slash command to execute with its arguments, e.g., \"/review-pr 123\""
+              }
+            }
+          }
+        },
+        {
+          "name": "EnterPlanMode",
+          "description": "Use this tool proactively when you're about to start a non-trivial implementation task. Getting user sign-off on your approach before writing code prevents wasted effort and ensures alignment. This tool transitions you into plan mode where .... Use this tool proactively when you're about to start a non-trivial implementation task. Getting user sign-off on your approach before writing code prevents wasted effort and ensures alignment. This tool transitions you into plan mode where you can explore the codebase and design an implementation approach for user approval.\n\n## When to Use This Tool\n\n**Prefer using EnterPlanMode** for implementation tasks unless they're simple. Use it when ANY of these conditions apply:\n\n1. **New Feature Implementation**: Adding meaningful new functionality\n   - Example: \"Add a logout button\" - where should it go? What should happen on click?\n   - Example: \"Add form validation\" - what rules? What error messages?\n\n2. **Multiple Valid Approaches**: The task can be solved in several different ways\n   - Example: \"Add caching to the API\" - could use Redis, in-memory, file-based, etc.\n   - Example: \"Improve performance\" - many optimization strategies possible\n\n3. **Code Modifications**: Changes that affect existing behavior or structure\n   - Example: \"Update the login flow\" - what exactly should change?\n   - Example: \"Refactor this component\" - what's the target architecture?\n\n4. **Architectural Decisions**: The task requires choosing between patterns or technologies\n   - Example: \"Add real-time updates\" - WebSockets vs SSE vs polling\n   - Example: \"Implement state management\" - Redux vs Context vs custom solution\n\n5. **Multi-File Changes**: The task will likely touch more than 2-3 files\n   - Example: \"Refactor the authentication system\"\n   - Example: \"Add a new API endpoint with tests\"\n\n6. **Unclear Requirements**: You need to explore before understanding the full scope\n   - Example: \"Make the app faster\" - need to profile and identify bottlenecks\n   - Example: \"Fix the bug in checkout\" - need to investigate root cause\n\n7. **User Preferences Matter**: The implementation could reasonably go multiple ways\n   - If you would use AskUserQuestion to clarify the approach, use EnterPlanMode instead\n   - Plan mode lets you explore first, then present options with context\n\n## When NOT to Use This Tool\n\nOnly skip EnterPlanMode for simple tasks:\n- Single-line or few-line fixes (typos, obvious bugs, small tweaks)\n- Adding a single function with clear requirements\n- Tasks where the user has given very specific, detailed instructions\n- Pure research/exploration tasks (use the Task tool with explore agent instead)\n\n## What Happens in Plan Mode\n\nIn plan mode, you'll:\n1. Thoroughly explore the codebase using Glob, Grep, and Read tools\n2. Understand existing patterns and architecture\n3. Design an implementation approach\n4. Present your plan to the user for approval\n5. Use AskUserQuestion if you need to clarify approaches\n6. Exit plan mode with ExitPlanMode when ready to implement\n\n## Examples\n\n### GOOD - Use EnterPlanMode:\nUser: \"Add user authentication to the app\"\n- Requires architectural decisions (session vs JWT, where to store tokens, middleware structure)\n\nUser: \"Optimize the database queries\"\n- Multiple approaches possible, need to profile first, significant impact\n\nUser: \"Implement dark mode\"\n- Architectural decision on theme system, affects many components\n\nUser: \"Add a delete button to the user profile\"\n- Seems simple but involves: where to place it, confirmation dialog, API call, error handling, state updates\n\nUser: \"Update the error handling in the API\"\n- Affects multiple files, user should approve the approach\n\n### BAD - Don't use EnterPlanMode:\nUser: \"Fix the typo in the README\"\n- Straightforward, no planning needed\n\nUser: \"Add a console.log to debug this function\"\n- Simple, obvious implementation\n\nUser: \"What files handle routing?\"\n- Research task, not implementation planning\n\n## Important Notes\n\n- This tool REQUIRES user approval - they must consent to entering plan mode\n- If unsure whether to use it, err on the side of planning - it's better to get alignment upfront than to redo work\n- Users appreciate being consulted before significant changes are made to their codebase\n",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "mcp__pencil__batch_design",
+          "description": "Execute multiple insert/copy/update/replace/move/delete/image operations in a single call.\n\n## Usage\n\n- Keep each batch_design call to **maximum 25 operations** for optimal performance.\n- For larger designs, split work into multiple batch_d.... Execute multiple insert/copy/update/replace/move/delete/image operations in a single call.\n\n## Usage\n\n- Keep each batch_design call to **maximum 25 operations** for optimal performance.\n- For larger designs, split work into multiple batch_design calls by logical sections (e.g., screen structure first, then sidebar content, then main content).\n- Avoid creating large operation objects like an insert with multiple descendants. Prefer breaking it down into many separate operations instead.\n- If one of the operations fails, all previously executed operations in that block will be rolled back.\n- Important: always create new binding names for every operation list, DO NOT reuse binding names across operation lists.\n- A list of potential issues will be returned in the response message. Try to fix them in the next batch_design call.\n\n## Working with Component Instances\n\nWhen you insert a component instance and want to modify its descendants:\n\n1. **Update properties** → Use U() with the instance path:\n``` javascript\ncard=I(body, {type: \"ref\", ref: \"CardComp\"})\nU(card+\"/titleText\", {content: \"New Title\"})\n```\n\n2. **Replace a descendant entirely** → R() with the instance path:\n\n``` javascript\ncard=I(body, {type: \"ref\", ref: \"CardComp\"})\nnewTitle=R(card+\"/headerSlot\", {type: \"text\", content: \"Custom Title\"})\n```\n\n3. **Add new children** → Use I() on regular frames or document root:\n\n``` javascript\ncontainer=I(body, {type: \"frame\", layout: \"vertical\"})\nitem=I(container, {type: \"text\", content: \"New item\"})\n```\n\n## Operation list format\n\nYou can create a list of operations in the following syntax:\n\n- Every single operation must follow the Javascript syntax described below.\n- ONLY these operation functions are supported.\n- Every single operation line must be a single operation call with a possible binding assignment and nothing else.\n- For node data, always follow the .pen schema.\n- This parent node will be used for the operations inserted/copied/moved. For these operations defining a parent is REQUIRED.\n- The \"document\" binding is a predefined binding and it references the root node of the document, ONLY use this, when creating screens and container frames. DO NOT create \"document\" as binding name.\n\n## Working with Existing Frames\n\n- Use the frame's ID directly as the parent: `existingFrameId`\n- If you update a frame's layout/placeholder properties, insert children INTO that same frame using its ID\n- To insert into a slot (a non-unique node with overridden children), use the slot's canonicalized path: `instanceId/slotId`\n\n## Using bindings for paths and node ids\n\n- You can use a binding variable name instead of an inline string an operation call\n- If you want to combine it with some other binding or a string use the \"+\" operator\n- IMPORTANT: DO NOT try to Update (U) a node's descendant that you just copied (C), since copying will recreate the descendant nodes and it will assign new IDs to those children nodes.\n\nFor example:\n\n``` javascript\nfoo=I({ type: \"ref\", ref: \"caSd2fv\" })\nU(foo+\"/Csawf3\", {content: \"+240%\"})\nD(foo)\n```\n\nExample - Adding content to existing frame \"MmNEt\":\n\n``` javascript\nU(\"MmNEt\", {placeholder: true, layout: \"horizontal\", gap: 16})\nsidebar=I(\"MmNEt\", {type: \"ref\", ref: \"JRlf7\", width: 240})\ncontent=I(\"MmNEt\", {type: \"frame\", layout: \"vertical\"})\nheader=C(\"A2sa3f\", content, {width: \"fill_container\", height: \"fill_container\"})\n```\n\nExample - Inserting into a slot inside a component instance \"cardInstance\" with slot \"contentSlot\" with a quote inside:\n\n``` javascript\nitem=I(\"cardInstance/contentSlot\", {type: \"text\", content: \"&quot;Example quote in slot content&quot;\"})\n```\n\n### Examples\n\n**Example: Dashboard layout structure (8 ops)**\n\nAdd Sidebar and main content structure to a dashboard frame. Prefer adding components directly into an existing frame.\n\n``` javascript\nsidebar=I(\"29c0s\", {type: \"ref\", ref: \"JRlf7\", x: 0, y: 0, width: 240, height: \"fill_container\"})\nmainContent=I(\"29c0s\", {type: \"frame\", layout: \"vertical\", gap: 24, padding: 32})\nstats=I(mainContent, {type: \"frame\", layout: \"vertical\", gap: 16})\ncard1=I(stats, {type: \"ref\", ref: \"QMBKc\", width: \"fill_container\", height: 120})\ncard2=I(stats, {type: \"ref\", ref: \"QMBKc\", width: \"fill_container\", height: 120})\ncard3=I(stats, {type: \"ref\", ref: \"QMBKc\", width: \"fill_container\", height: 120})\nU(\"FVge3x/vdS2egl\", {width: \"fill_container\", height: \"fill_container\"})\nU(\"FVge3x/gDsgE6S\", {content: \"Submit\"})\n```\n\n**Example: Form inputs section (8 ops)**\n\nAdd form inputs with labels to an existing content area.\n\n``` javascript\nlabel1=I(\"mainContent\", {type: \"ref\", ref: \"NKYzH\"})\nU(label1+\"/ZopUS/jEYMs\", {content: \"First Name\"})\ninput1=I(\"mainContent\", {type: \"ref\", ref: \"FmgD2\", width: \"fill_container\"})\nU(input1+\"/CvD2R\", {content: \"First Name\"})\ninput2=I(\"mainContent\", {type: \"ref\", ref: \"FmgD2\", width: \"fill_container\"})\nU(input2+\"/CvD2R\", {content: \"Last Name\"})\ncontact=R(\"FmgD2/vfRs3a\", {ref: \"1YtpE\", type: \"ref\", width: \"fill_container\"})\nU(contact+\"/oknii\", {content: \"Full Name\"})\n```\n\nThis example inserts a component directly into an existing frame.\n\n``` javascript\nsidebar=I(\"d3902\", {type: \"ref\", ref: \"JRlf7\", x: 0, y: 0, width: 240, height: \"fill_container(500)\"})\n```\n\nCopying a non-reusable frame (e.g., duplicating a screen). This copies the dashboard created above and tweaks it as another variation:\n\n``` javascript\ndashboardV2=C(\"Xk9f2\", document, {name: \"Dashboard V2\", positionDirection: \"right\", positionPadding: 100})\nD(dashboardV2+\"/sidebar\")\nU(dashboardV2+\"/stats/card1\", {fill: \"#E8F5E9\"})\nU(dashboardV2+\"/stats/card2\", {fill: \"#FFF3E0\"})\nnewContent=R(dashboardV2+\"/stats/card3\", {\"type\": \"text\", \"content\": \"New Content\"})\n```\n\nTo insert a component instance with their children overridden:\n\n``` javascript\nfoo=I(\"pcCAt2f\", {\"type\": \"ref\", \"ref\": \"CMXky\", \"children\": [{\"type\": \"text\", \"content\": \"0 m/h\", \"fontSize\": 14}]})\n```\n\n### Response\n\nA list of created nodes with children (depth 2).\n\n### Insert (I)\n\nDefinition: insertedNodeId=I(parent: string, nodeData: Schema.Child)\n\n- Important: \"id\"s are always created automatically for nodes, never create \"id\" properties in new node data.\n- An insert can only be a single node, if you want to add children to it, use bindings and do it in a new Inert (I) operation.\n- When working with components (reusable: true), insert their instances as refs with their properties overridden. If you want to override properties of subcomponents use subsequent Update (U) operations.\n- Use the Replace (R) operation to override children inside a component instance, e.g. 'R(\"myInstance/childId\", {\"type\": \"text\", ...})'\n- Returns the inserted node ID as string\n\n### Copy (C)\n\nDefinition: copiedNodeId=C(path: string, parent: string, copyNodeData: Schema.Child & { positionPadding?: number; positionDirection?: string })\n\n- When copying a node and modifying its descendants, you MUST use the \"descendants\" property in the Copy operation itself. DO NOT use separate Update operations for descendants of copied nodes, as this will fail due to ID mismatches. The copied node and its descendants receive new IDs, so Update operations referencing the original descendant IDs will fail.\n- \"path\": The ID of the existing node to copy. If you want to customize some properties of the copied node, just add them next to the 'path' property. If you want to customize nested nodes _under_ the copied one, use the same kind of 'descendants' map that 'ref' nodes use!\n- \"descendants\": Optional, used for components. An object which keys are node IDs or paths to descendant objects inside the component used to customize the properties of descendant objects.\n- Example of correct usage: 'label1=C(\"NKYzH\", container, {\"descendants\": {\"ZopUS/jEYMs\": { \"content\": \"First Name\" }}})'\n- \"positionPadding\": The minimum padding distance from other element when positioning if needed.\n- \"positionDirection\": The direction to search for empty space relative to the node, to position the copied node if needed. Possible values are: \"top\", \"right\", \"bottom\", \"left\"\n- Copying a reusable node creates a connected instance (a 'ref' node).\n- Returns the copied node ID as string\n\n### Update (U)\n\nDefinition: U(path: string, updateData: Schema.Child)\n\n- Update the properties of existing nodes, without listing their children.\n- Use this operation to create small incremental updates to the properties of existing nodes.\n- DO NOT use this operation to update the node's \"children\", use Replace (R) operation for that.\n- This operation CANNOT change the 'id', 'type' or 'ref' properties of any node!\n- \"path\": The valid ID of the existing node to update (DO NOT use bindings in \"path\"), or if you want to update a nested node inside a component, use the ID of the nested node must be prefixed with the ID of the component instance and a slash (/). E.g. consider this component:\n{\n\t\"id\": \"button\",\n\t\"type\": \"frame\",\n\t\"reusable\": true,\n\t\"children\": [{ \"id\": \"container\", \"type\": \"frame\", \"children\": [{\"id\": \"label\", \"type\": \"text\", \"content\": \"Button text\"}] }]\n}\nAnd then an instance of this component like this: {\"id\": \"submit-button\", \"type\": \"ref\", \"ref\": \"button\"}\nThe label text of 'submit-button' can be changed by passing the following as the \"nodes\" parameter:\n\n``` javascript\nU(\"submit-button/label\", {content: \"Submit\"})\n```\n\nThis slash-separated instance ID scheme works for any number of nesting levels, not just two.\n\n- \"updateData\": The node data to update\n\n### Replace (R)\n\nDefinition: replacedNodeId=R(path: string, nodeData: Schema.Child)\n\n- Replace a node in the .pen file.\n- This tool is ideal for swapping out parts of a component instance with new nodes.\n- Important: \"id\"s are always created automatically for nodes, never create \"id\" properties in new node data.\n- Returns the replaced node ID as string\n- \"path\": The path of the node which will be replaced\n- \"nodeData\": The properties of the new node\n\n### Move (M)\n\nDefinition: M(nodeId: string, parent: string | undefined, index?: number)\n\n- Move a nodes to a different location in the node tree in a .pen file.\n- \"path\": The id of the moved node. ALWAYS use a valid node id, NOT a path or binding.\n- \"parent\": Optional parent node Id or binding\n- \"index\": Optional new position of the moved node among its siblings. If omitted, the node is placed at the end.\n\n### Delete (D)\n\nDefinition: D(nodeId: string)\n\n- Delete a node from a .pen file.\n- \"nodeId\": The ID of the node to delete. ALWAYS use a valid node id, NOT a path or binding.\n\n### Generate/Get Stock Image (G)\n\nDefinition: G(nodeId: string, type: \"ai\" | \"stock\", prompt: string)\n\n- IMPORTANT: There is NO \"image\" node type! Images are applied as FILLS to frame/rectangle nodes.\n- Do not generate random URLs for image fills, always use the G operation to get an image from a stock or AI service.\n- To display an image: first Insert a frame or rectangle, then use G to apply the image as a fill.\n- \"nodeId\": The ID of the frame/rectangle node to apply the image fill to. Can be a valid node ID or a binding name (e.g., \"myFrame\") created earlier in this operation list.\n- \"type\": Either \"ai\" for AI-generated images or \"stock\" for stock photos from Unsplash.\n- \"prompt\": The text prompt describing the image to generate (for \"ai\" type) or search keywords for finding the stock image (for \"stock\" type).\n\nExamples:\n- First create a frame, then apply an ai generated image:\n\n``` javascript\nheroImg=I(\"parentId\", {\"type\": \"frame\", \"name\": \"Hero Image\", \"width\": 400, height: 300})\nG(heroImg, \"ai\", \"modern office workspace bright\")\n```\n\n- AI-generated image on existing node:\n\n``` javascript\nG(\"logo-frame\", \"ai\", \"minimalist coffee shop logo, flat design\")\n```\n\n## Key Points\n\n- Every Insert (I), Copy (C) and Replace (R) operation MUST have a binding name. To reference a parent node in later operations, use the binding name from an earlier Insert, Copy or Replace operation in the same operation list.\n- Not all bindings need to be used as parents later - it's okay to have \"unused\" bindings. The requirement exists to enforce deliberate structure.\n- Bindings only work within the same batch_design call for parent references\n- Operations execute sequentially; on error, all operations in the list will be rolled back.\n- The 'placeholder:true' property marks a frame as a container for child content. Use that frame's ID as the parent target for operations that add children.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "filePath",
+              "operations"
+            ],
+            "properties": {
+              "filePath": {
+                "type": "string",
+                "description": "An optional file path to access a .pen file."
+              },
+              "operations": {
+                "type": "string",
+                "description": "List of insert/copy/update/replace/move/delete/image operations to execute based on the format in the tool description. Aim for maximum 25 operations per call."
+              }
+            }
+          }
+        },
+        {
+          "name": "mcp__pencil__batch_get",
+          "description": "Retrieve nodes by searching for matching patterns and by node ids in batches.\n\n- IMPORTANT: Combine multiple search patterns and node ID searches into one call.\n- IMPORTANT: When you want to perform multiple searches and node id reads after.... Retrieve nodes by searching for matching patterns and by node ids in batches.\n\n- IMPORTANT: Combine multiple search patterns and node ID searches into one call.\n- IMPORTANT: When you want to perform multiple searches and node id reads after another, combine them into one call.\n- If neither patterns nor nodeIds is specified, returns the top-level children of the document.\n- When using design system components, AVOID reading each component one-by-one. Instead list all of the available components in a single tool call.\n- To list components of a design system, search for reusable nodes inside the design systems frame.\n- Use this tool in the beginning to list components of a design system or design kit to understand its available components.\n- This tool will return the searched nodes and its direct children. Use searchDepth to define how many levels to search in.\n- Be careful using readDepth > 3, because it can return large amounts of data overflowing the context. Prefer using low numbers.\n- Path geometry is abbreviated by default; set includePathGeometry=true for full geometry data\n- Set resolveVariables=true to see computed values instead of variable references\n\nTraversing large documents:\n1. Start by reading top-level nodes, or nodes you already know the IDs of to understand overall structure\n2. Decide if the nodes you have already read are sufficient for your task\n2. If you need more data and you see \"...\" for children, make new read calls with those specific child IDs\n\n## Example\n\nTo search for the reusable components in the design system:\n{\n  \"filePath\": \"designs/forms.pen\",\n  \"patterns\": [{ \"reusable\": true }],\n  \"readDepth\": 2,\n  \"searchDepth\": 3\n}\n",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "filePath"
+            ],
+            "properties": {
+              "filePath": {
+                "type": "string",
+                "description": "An optional file path to access a .pen file."
+              },
+              "includePathGeometry": {
+                "type": "boolean",
+                "description": "By default the `geometry` property of `path` nodes is replaced with \"...\". To see the path geometry in full, pass `true` for this flag."
+              },
+              "nodeIds": {
+                "type": "array",
+                "description": "Array of node IDs to read. Prefer reading multiple node IDs to read at once rather than separately.",
+                "itemsType": "string"
+              },
+              "parentId": {
+                "type": "string",
+                "description": "Parent node ID to search within. If omitted, will search the whole document."
+              },
+              "patterns": {
+                "type": "array",
+                "description": "List of search patterns",
+                "itemsType": "object"
+              },
+              "readDepth": {
+                "type": "number",
+                "description": "Limit how deep to descend in the node tree for a read node. If omitted, set to 1, meaning only the node itself is returned and its direct ch.... Limit how deep to descend in the node tree for a read node. If omitted, set to 1, meaning only the node itself is returned and its direct children. When maxDepth is reached, omitted children are replaced with \"...\"."
+              },
+              "resolveInstances": {
+                "type": "boolean",
+                "description": "If you pass `true` for this flag, then `ref` nodes won't appear in the output; component instances will be fully expanded. This can be used .... If you pass `true` for this flag, then `ref` nodes won't appear in the output; component instances will be fully expanded. This can be used to examine the full structure of a component instance. The `id`s of resolved shadow nodes will be their full ID paths, which can be used to customize them via update_properties."
+              },
+              "resolveVariables": {
+                "type": "boolean",
+                "description": "Node properties can be bound to variables, whose value depends on the theme settings of the node. If you want to see the currently visible v.... Node properties can be bound to variables, whose value depends on the theme settings of the node. If you want to see the currently visible values of such properties, pass `true` for this flag."
+              },
+              "searchDepth": {
+                "type": "number",
+                "description": "Limit how deep the search should descend in the node tree. If omitted, the search is unlimited in depth."
+              }
+            }
+          }
+        },
+        {
+          "name": "mcp__pencil__find_empty_space_on_canvas",
+          "description": "Find empty space in a .pen file for a given direction and desired size.\n\nIf nodeId is provided, finds space around that specific node.\nIf nodeId is omitted, finds space around the entire canvas content.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "filePath",
+              "width",
+              "height",
+              "padding",
+              "direction"
+            ],
+            "properties": {
+              "direction": {
+                "type": "string",
+                "description": "The direction to search for empty space relative to the node",
+                "enumCount": 4,
+                "enum": [
+                  "top",
+                  "right",
+                  "bottom",
+                  "left"
+                ]
+              },
+              "filePath": {
+                "type": "string",
+                "description": "An optional file path to access a .pen file."
+              },
+              "height": {
+                "type": "number",
+                "description": "The height of the required empty space"
+              },
+              "nodeId": {
+                "type": "string",
+                "description": "Optional starting point node ID to find space around. If omitted, the empty space will be found around the canvas content."
+              },
+              "padding": {
+                "type": "number",
+                "description": "The minimum padding distance from other element"
+              },
+              "width": {
+                "type": "number",
+                "description": "The width of the required empty space"
+              }
+            }
+          }
+        },
+        {
+          "name": "mcp__pencil__get_editor_state",
+          "description": "Get the currently active canvas editor, the current user selection and other essential design information to get started on a design task.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "include_schema"
+            ],
+            "properties": {
+              "include_schema": {
+                "type": "boolean",
+                "description": "Set this flag to true if you want the .pen file schema to be included. If you are aware of the .pen file schema already, set this to false"
+              }
+            }
+          }
+        },
+        {
+          "name": "mcp__pencil__get_guidelines",
+          "description": "This tool returns the design guidelines and rules for working with .pen files.\n\nUsage:\n- IMPORTANT: Follow the guidelines and design rules to solve your design tasks.\n- Call this tool multiple times with different topics to retrieve the rel.... This tool returns the design guidelines and rules for working with .pen files.\n\nUsage:\n- IMPORTANT: Follow the guidelines and design rules to solve your design tasks.\n- Call this tool multiple times with different topics to retrieve the relevant guidelines based on what you will work on next.\n- This tool provides essential information about the .pen file schema, components, layout, positioning, typography, and other design rules.\n\nAvailable topics:\n- tailwind: Tailwind v4 specific implementation guidelines. Use when implementing designs with Tailwind CSS.\n- landing-page: Guidelines for designing high-conversion landing page websites from scratch. Use this when asked to design landing pages, websites, or promotional web pages.\n- mobile-app: Guidelines for designing mobile apps from scratch. Use this when asked to design mobile apps or mobile websites.\n- web-app: Guidelines for designing web apps from scratch. Use this when asked to design web apps or web websites.\n- slides: Guidelines for designing slides for presentations. Use this when asked to design slides for presentations.\n- design-system: Guidelines for composing screens and dashboards using design system components. Use this when building SaaS apps, dashboards, or screens with existing reusable components.\n- code: Coding guidelines to generate code from .pen files. Use this tool when your task involves generating code or implementations from .pen files.\n- table: Guidelines to work with tables in .pen files. Use this when asked to insert, update or move tables or dashboards.\n",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "topic"
+            ],
+            "properties": {
+              "topic": {
+                "type": "string",
+                "description": "A topic to return the design guidelines for. You can only pick a single one at a time.",
+                "enumCount": 8,
+                "enum": [
+                  "code",
+                  "table",
+                  "tailwind",
+                  "landing-page",
+                  "design-system",
+                  "slides",
+                  "mobile-app",
+                  "web-app"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "name": "mcp__pencil__get_screenshot",
+          "description": "\nThis tool returns a screenshot of a node in a .pen file.\n\nUsage:\n- IMPORTANT: Always analyze the returned screenshot image to make sure that the generated result looks correct, satisfies the design requirements and doesn't contain any visu.... \nThis tool returns a screenshot of a node in a .pen file.\n\nUsage:\n- IMPORTANT: Always analyze the returned screenshot image to make sure that the generated result looks correct, satisfies the design requirements and doesn't contain any visual errors, glitches or misalignment.\n- IMPORTANT: Think carefully after you received a screenshot to detect any possible design issues or inconsistencies in the generated design.\n- Use this tool to get a screenshot image representation of specific nodes, frames or other elements based on their IDs. This is useful to verify and compare the generated layout with the original design.\n- You can also use this tool to check elements and design system components, to verify their layout and look.\n",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "filePath",
+              "nodeId"
+            ],
+            "properties": {
+              "filePath": {
+                "type": "string",
+                "description": "An optional file path to access a .pen file."
+              },
+              "nodeId": {
+                "type": "string",
+                "description": "The ID of the node to get a screenshot of"
+              }
+            }
+          }
+        },
+        {
+          "name": "mcp__pencil__get_style_guide",
+          "description": "This tool returns a style guide for design inspiration based on a set of tags.\n\nUsage:\n- USE for any design task that benefits from creative direction or visual inspiration\n- USE when creating landing pages, marketing sites, dashboards, or .... This tool returns a style guide for design inspiration based on a set of tags.\n\nUsage:\n- USE for any design task that benefits from creative direction or visual inspiration\n- USE when creating landing pages, marketing sites, dashboards, or app screens\n- USE when the user asks for a specific aesthetic, style, or mood\n- USE when designing from scratch, on a blank canvas, or exploring new directions\n- USE when remixing, restyling, or creating variations\n- Consider SKIPPING only when the task is purely compositional (e.g., \"add a button here\") with an existing design system\n- Try to include mobile, website, or webapp tag if possible\n- ONLY use tags received from the earlier \"get_style_guide_tags\" call.\n- If a style guide name is explicitly provided, just pass the name to this tool to use it to retrieve a specific style guide by name instead of searching by tags.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Optional style guide name to retrieve a specific style guide by name instead of searching by tags"
+              },
+              "tags": {
+                "type": "array",
+                "description": "Optional: Specify 5-10 tags best fitting for the current design task based on the available set of tags returned by \"get_style_guide_tags\"",
+                "itemsType": "string"
+              }
+            }
+          }
+        },
+        {
+          "name": "mcp__pencil__get_style_guide_tags",
+          "description": "This tool returns all the available style guide tags available.\n\nUsage:\n- USE for any design task that benefits from creative direction or visual inspiration\n- USE when creating landing pages, marketing sites, dashboards, or app screens\n- U.... This tool returns all the available style guide tags available.\n\nUsage:\n- USE for any design task that benefits from creative direction or visual inspiration\n- USE when creating landing pages, marketing sites, dashboards, or app screens\n- USE when the user asks for a specific aesthetic, style, or mood\n- USE when designing from scratch or on a blank canvas\n- USE when remixing, restyling, or exploring variations\n- Consider SKIPPING only when the task is purely compositional (e.g., \"add a button here\") with an existing design system\n- Call this tool first, then use the tags or style guide name in \"get_style_guide\".",
+          "input_schema": {
+            "type": "object"
+          }
+        },
+        {
+          "name": "mcp__pencil__get_variables",
+          "description": "Get the variables and themes defined in this .pen file.\n\n- Use the result of this tool to create global CSS rules to use in a codebase.\n- When generating code from a design, use this tool to get the global styling rules associated with the .... Get the variables and themes defined in this .pen file.\n\n- Use the result of this tool to create global CSS rules to use in a codebase.\n- When generating code from a design, use this tool to get the global styling rules associated with the design.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "filePath"
+            ],
+            "properties": {
+              "filePath": {
+                "type": "string",
+                "description": "An optional file path to access a .pen file."
+              }
+            }
+          }
+        },
+        {
+          "name": "mcp__pencil__open_document",
+          "description": "Use this tool in the following two scenarios ONLY:\n- if there is no active editor opened currently, pass \"new\" to open new document or\n- if user requests to open a specific .pen file, pass the absolute file path to open it.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "filePathOrTemplate"
+            ],
+            "properties": {
+              "filePathOrTemplate": {
+                "type": "string",
+                "description": "File path to an existing .pen file, OR 'new' for a new document. No other template names are valid."
+              }
+            }
+          }
+        },
+        {
+          "name": "mcp__pencil__replace_all_matching_properties",
+          "description": "Recursively replace all matching properties on the entire node tree on provided parent ids.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "filePath",
+              "parents",
+              "properties"
+            ],
+            "properties": {
+              "filePath": {
+                "type": "string",
+                "description": "An optional file path to access a .pen file."
+              },
+              "parents": {
+                "type": "array",
+                "description": "IDs of all parent nodes to search",
+                "itemsType": "string"
+              },
+              "properties": {
+                "type": "object",
+                "description": "List of replacements for each property.",
+                "propertyKeys": [
+                  "cornerRadius",
+                  "fillColor",
+                  "fontFamily",
+                  "fontSize",
+                  "fontWeight",
+                  "gap",
+                  "padding",
+                  "strokeColor",
+                  "strokeThickness",
+                  "textColor"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "name": "mcp__pencil__search_all_unique_properties",
+          "description": "Recursively search for all unique properties on the entire node tree on provided parent ids.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "filePath",
+              "parents",
+              "properties"
+            ],
+            "properties": {
+              "filePath": {
+                "type": "string",
+                "description": "An optional file path to access a .pen file."
+              },
+              "parents": {
+                "type": "array",
+                "description": "IDs of all parent nodes to search",
+                "itemsType": "string"
+              },
+              "properties": {
+                "type": "array",
+                "description": "List of properties to search for",
+                "itemsType": "string"
+              }
+            }
+          }
+        },
+        {
+          "name": "mcp__pencil__set_variables",
+          "description": "Update the variables and themes defined in this .pen file.\n\n- Don't specify themes separately! If a variable is using theming, theme axes and values that aren't yet present in the document will be automatically registered.\n- IMPORTANT: vari.... Update the variables and themes defined in this .pen file.\n\n- Don't specify themes separately! If a variable is using theming, theme axes and values that aren't yet present in the document will be automatically registered.\n- IMPORTANT: variable names are arbitrary strings. They don't have to begin with a dollar sign!",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "filePath",
+              "variables"
+            ],
+            "properties": {
+              "filePath": {
+                "type": "string",
+                "description": "An optional file path to access a .pen file."
+              },
+              "replace": {
+                "type": "boolean",
+                "description": "By default, the variables are merged into the document's existing variable definitions. If you want to completely replace the document's exi.... By default, the variables are merged into the document's existing variable definitions. If you want to completely replace the document's existing variable definitions, pass `true` for this flag."
+              },
+              "variables": {
+                "type": "object",
+                "description": "Follow the variable definition in the .pen file schema. If you are not familiar with the .pen file schema, you can retrieve it by getting th.... Follow the variable definition in the .pen file schema. If you are not familiar with the .pen file schema, you can retrieve it by getting the `general` guidelines.",
+                "propertyKeys": []
+              }
+            }
+          }
+        },
+        {
+          "name": "mcp__pencil__snapshot_layout",
+          "description": "Check the current layout structure of an .pen file.\n\n- Be careful with omitting the maxDepth parameter, as large maxDepth values can result in a lot of data.\n- If you're only interested in overlapping elements, clipped elements, etc. then u.... Check the current layout structure of an .pen file.\n\n- Be careful with omitting the maxDepth parameter, as large maxDepth values can result in a lot of data.\n- If you're only interested in overlapping elements, clipped elements, etc. then use the problemsOnly parameter.\n\nExample:\n- maxDepth=0 means only the top level nodes layout will be returned. Useful for finding space for a new frame on the canvas.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "filePath"
+            ],
+            "properties": {
+              "filePath": {
+                "type": "string",
+                "description": "An optional file path to access a .pen file."
+              },
+              "maxDepth": {
+                "type": "number",
+                "description": "Limit how deep to descend in the node tree. If omitted, the search is limited to the node and its direct children. When maxDepth is reached,.... Limit how deep to descend in the node tree. If omitted, the search is limited to the node and its direct children. When maxDepth is reached, omitted children are replaced with \"...\". Unlimited depth can result in a lot of data, prefer specifying a maxDepth."
+              },
+              "parentId": {
+                "type": "string",
+                "description": "Only return the layout rectangles in this node's subtree. If omitted returns the layout of the whole document."
+              },
+              "problemsOnly": {
+                "type": "boolean",
+                "description": "Only return nodes that have some kind of problem with their layout, e.g. they are clipped by their parents. If omitted, the value is `false`."
+              }
+            }
+          }
+        },
+        {
+          "name": "mcp__ide__getDiagnostics",
+          "description": "Get language diagnostics from VS Code",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "description": "Optional file URI to get diagnostics for. If not provided, gets diagnostics for all files."
+              }
+            }
+          }
+        },
+        {
+          "name": "mcp__ide__executeCode",
+          "description": "Execute python code in the Jupyter kernel for the current notebook file.\n    \n    All code will be executed in the current Jupyter kernel.\n    \n    Avoid declaring variables or modifying the state of the kernel unless the user\n    explicitl.... Execute python code in the Jupyter kernel for the current notebook file.\n    \n    All code will be executed in the current Jupyter kernel.\n    \n    Avoid declaring variables or modifying the state of the kernel unless the user\n    explicitly asks for it.\n    \n    Any code executed will persist across calls to this tool, unless the kernel\n    has been restarted.",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "code"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "description": "The code to be executed on the kernel."
+              }
+            }
+          }
+        }
+      ],
+      "requestToolCallCount": 1,
+      "requestToolCalls": [
+        {
+          "messageIndex": 3,
+          "id": "call_e20b0a05564c4d7293b8036c",
+          "name": "Task",
+          "input": {
+            "type": "object",
+            "keys": [
+              "description",
+              "prompt",
+              "subagent_type"
+            ]
+          }
+        }
+      ],
+      "requestToolResultCount": 1,
+      "requestToolResults": [
+        {
+          "messageIndex": 4,
+          "tool_call_id": "call_e20b0a05564c4d7293b8036c",
+          "isError": false,
+          "contentPreview": ""
+        }
+      ]
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [
+        "Read",
+        "Read",
+        "Read",
+        "Read"
+      ],
+      "toolCalls": [
+        {
+          "id": "call_d5ca1ff21b084ee4890985eb",
+          "name": "Read",
+          "input": {
+            "file_path": "/Users/david/Documents/github/tmp2/tour-next/README.md"
+          }
+        },
+        {
+          "id": "call_aad812278b42434ab6e63ec1",
+          "name": "Read",
+          "input": {
+            "file_path": "/Users/david/Documents/github/tmp2/tour-next/package.json"
+          }
+        },
+        {
+          "id": "call_b85b9a8ebcc942169abcf2ad",
+          "name": "Read",
+          "input": {
+            "file_path": "/Users/david/Documents/github/tmp2/tour-next/middleware.ts"
+          }
+        },
+        {
+          "id": "call_9213bbad0a44489e93fd02ea",
+          "name": "Read",
+          "input": {
+            "file_path": "/Users/david/Documents/github/tmp2/tour-next/lib/auth.ts"
+          }
+        }
+      ],
+      "text": "Great! Now let me read the key files to verify and add any missing details:\n[tool_use:Read]\n[tool_use:Read]\n[tool_use:Read]\n[tool_use:Read]",
+      "assistantText": "Great! Now let me read the key files to verify and add any missing details:",
+      "stopReason": "tool_use",
+      "usage": {
+        "input_tokens": 1022,
+        "output_tokens": 105
+      },
+      "messageId": "msg_20260315235037028035875c0f4974",
+      "model": "glm-4.7"
+    }
+  }
+}

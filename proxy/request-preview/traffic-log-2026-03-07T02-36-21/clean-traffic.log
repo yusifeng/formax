@@ -1,0 +1,1 @@
+{"seq":1,"time":"2026-03-06T18:36:21.784Z","timeLocal":"2026-03-07T02:36:21,784","path":"/v1/messages","status":"dry_run","latencyMs":0,"model":"glm-4.7","stream":true,"maxTokens":16000,"toolCount":1,"toolNames":["ToolSearch"],"stopReason":"dry_run","rawFile":"0001_2026-03-07T02-36-21,784_REQ__v1_messages.json"}

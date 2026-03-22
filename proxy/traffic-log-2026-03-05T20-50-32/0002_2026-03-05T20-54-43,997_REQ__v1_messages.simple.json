@@ -1,0 +1,165 @@
+{
+  "sequence": 2,
+  "timestamp": "2026-03-05T12:54:43.997Z",
+  "timestampLocal": "2026-03-05T20:54:43,997",
+  "timestampLocalSafe": "2026-03-05T20-54-43,997",
+  "latencyMs": 961,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "accept": "application/json",
+      "authorization": "***REDACTED***",
+      "content-type": "application/json",
+      "user-agent": "claude-cli/2.1.69 (external, claude-vscode, agent-sdk/0.2.69)",
+      "x-stainless-arch": "arm64",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.74.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "anthropic-beta": "claude-code-20250219,adaptive-thinking-2026-01-28,prompt-caching-scope-2026-01-05,advanced-tool-use-2025-11-20,effort-2025-11-24",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "anthropic-version": "2023-06-01",
+      "x-app": "cli",
+      "connection": "keep-alive",
+      "host": "127.0.0.1:8787",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "24383"
+    },
+    "body": {
+      "model": "claude-sonnet-4-6",
+      "messages": [
+        {
+          "role": "user",
+          "content": "<available-deferred-tools>\nAgent\nAskUserQuestion\nBash\nEdit\nEnterPlanMode\nEnterWorktree\nExitPlanMode\nGlob\nGrep\nNotebookEdit\nRead\nSendMessage\nSkill\nTaskOutput\nTaskStop\nTeamCreate\nTeamDelete\nTodoWrite\nWebFetch\nWebSearch\nWrite\n</available-deferred-tools>"
+        },
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "<system-reminder>\nThe following skills are available for use with the Skill tool:\n\n- simplify: Review changed code for reuse, quality, and efficiency, then fix any issues found.\n- claude-api: Build apps with the Claude API or Anthropic SDK.\nTRIGGER when: code imports `anthropic`/`@anthropic-ai/sdk`/`claude_agent_sdk`, or user asks to use Claude API, Anthropic SDKs, or Agent SDK.\nDO NOT TRIGGER when: code imports `openai`/other AI SDK, general programming, or ML/data-science tasks.\n- frontend-design: Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications (examples include websites, landing pages, dashboards, React components, HTML/CSS layouts, or when styling/beautifying any web UI). Generates creative, polished code and UI design that avoids generic AI aesthetics.\n- status: 输出：project\n- git:status: Custom command\n</system-reminder>"
+            },
+            {
+              "type": "text",
+              "text": "<system-reminder>\nAs you answer the user's questions, you can use the following context:\n# currentDate\nToday's date is 2026-03-05.\n\n      IMPORTANT: this context may or may not be relevant to your tasks. You should not respond to this context unless it is highly relevant to your task.\n</system-reminder>\n"
+            },
+            {
+              "type": "text",
+              "text": "类似于Bash Grep， 你现在一共有哪些Tool 可以调用"
+            }
+          ]
+        },
+        {
+          "role": "assistant",
+          "content": [
+            {
+              "type": "thinking",
+              "thinking": "用户问我有哪些工具可以调用，类似于 Bash 和 Grep。让我查看一下可用的工具列表。\n\n从 available-deferred-tools 中，我可以看到以下工具：\n1. Agent - 使用专门的子代理\n2. AskUserQuestion - 向用户提问\n3. Bash - 执行 shell 命令\n4. Edit - 编辑文件\n5. EnterPlanMode - 进入计划模式\n6. EnterWorktree - 进入工作树\n7. ExitPlanMode - 退出计划模式\n8. Glob - 搜索文件\n9. Grep - 搜索文件内容\n10. NotebookEdit - 编辑 Jupyter notebook\n11. Read - 读取文件\n12. SendMessage - 发送消息\n13. Skill - 执行技能\n14. TaskOutput - 任务输出\n15. TaskStop - 停止任务\n16. TeamCreate - 创建团队\n17. TeamDelete - 删除团队\n18. TodoWrite - 写待办事项\n19. WebFetch - 获取网页内容\n20. WebSearch - 网络搜索\n21. Write - 写文件\n\n还有一个 ToolSearch 工具，用于搜索和加载延迟工具。\n\n让我用中文回答用户的问题，按类别整理这些工具。",
+              "signature": ""
+            },
+            {
+              "type": "text",
+              "text": "根据我当前可用的工具列表，我有以下工具可以调用：\n\n## 📁 文件操作\n- **Read** - 读取文件内容\n- **Write** - 创建新文件\n- **Edit** - 编辑现有文件\n- **Glob** - 按模式搜索文件（类似 `find`）\n- **Grep** - 搜索文件内容（类似 `grep`）\n- **NotebookEdit** - 编辑 Jupyter notebooks\n\n## 💻 终端与命令\n- **Bash** - 执行 shell 命令\n\n## 🌐 网络操作\n- **WebSearch** - 网络搜索\n- **WebFetch** - 获取网页内容\n\n## 🤖 智能代理\n- **Agent** - 启动专门的子代理处理复杂任务\n- **Skill** - 执行预定义技能（如 frontend-design、claude-api 等）\n- **ToolSearch** - 搜索和加载延迟工具\n\n## 📋 任务管理\n- **TodoWrite** - 管理待办事项列表\n- **TaskOutput** - 任务输出\n- **TaskStop** - 停止任务\n\n## 🔄 Git 与计划模式\n- **EnterPlanMode** - 进入计划模式\n- **ExitPlanMode** - 退出计划模式\n- **EnterWorktree** - 进入工作树\n\n## 👥 团队协作\n- **TeamCreate** - 创建团队\n- **TeamDelete** - 删除团队\n\n## 💬 交互\n- **AskUserQuestion** - 向用户提问\n- **SendMessage** - 发送消息\n\n这些工具让我能够处理文件操作、执行命令、搜索网络、管理任务等各种软件工程任务。需要了解某个工具的具体用法吗？"
+            }
+          ]
+        },
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "运行下 pwd",
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude, running within the Claude Agent SDK.",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        },
+        {
+          "type": "text",
+          "text": "\nYou are an interactive agent that helps users with software engineering tasks. Use the instructions below and the tools available to you to assist the user.\n\nIMPORTANT: Assist with authorized security testing, defensive security, CTF challenges, and educational contexts. Refuse requests for destruc....  any) is included in the conversation context and marked with ide_selection tags. This represents code or text the user has highlighted in their editor and may or may not be relevant to their request.",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        }
+      ],
+      "tools": [
+        "ToolSearch"
+      ],
+      "max_tokens": 32000,
+      "thinking": {
+        "type": "adaptive"
+      },
+      "output_config": {
+        "effort": "medium"
+      },
+      "stream": true,
+      "toolCount": 1,
+      "toolsLite": [
+        {
+          "name": "ToolSearch",
+          "description": "Search for or select deferred tools to make them available for use.\n\n**MANDATORY PREREQUISITE - THIS IS A HARD REQUIREMENT**\n\nYou MUST use this tool to load deferred tools BEFORE calling them directly.\n\nThis is a BLOCKING REQUIREMENT - defe.... Search for or select deferred tools to make them available for use.\n\n**MANDATORY PREREQUISITE - THIS IS A HARD REQUIREMENT**\n\nYou MUST use this tool to load deferred tools BEFORE calling them directly.\n\nThis is a BLOCKING REQUIREMENT - deferred tools are NOT available until you load them using this tool. Look for <available-deferred-tools> messages in the conversation for the list of tools you can discover. Both query modes (keyword search and direct selection) load the returned tools — once a tool appears in the results, it is immediately available to call.\n\n**Why this is non-negotiable:**\n- Deferred tools are not loaded until discovered via this tool\n- Calling a deferred tool without first loading it will fail\n\n**Query modes:**\n\n1. **Keyword search** - Use keywords when you're unsure which tool to use or need to discover multiple tools at once:\n   - \"list directory\" - find tools for listing directories\n   - \"notebook jupyter\" - find notebook editing tools\n   - \"slack message\" - find slack messaging tools\n   - Returns up to 5 matching tools ranked by relevance\n   - All returned tools are immediately available to call — no further selection step needed\n\n2. **Direct selection** - Use `select:<tool_name>` when you know the exact tool name:\n   - \"select:mcp__slack__read_channel\"\n   - \"select:NotebookEdit\"\n   - \"select:Read,Edit,Grep\" - load multiple tools at once with comma separation\n   - Returns the named tool(s) if they exist\n\n**IMPORTANT:** Both modes load tools equally. Do NOT follow up a keyword search with `select:` calls for tools already returned — they are already loaded.\n\n3. **Required keyword** - Prefix with `+` to require a match:\n   - \"+linear create issue\" - only tools from \"linear\", ranked by \"create\"/\"issue\"\n   - \"+slack send\" - only \"slack\" tools, ranked by \"send\"\n   - Useful when you know the service name but not the exact tool\n\n**CORRECT Usage Patterns:**\n\n<example>\nUser: I need to work with slack somehow\nAssistant: Let me search for slack tools.\n[Calls ToolSearch with query: \"slack\"]\nAssistant: Found several options including mcp__slack__read_channel.\n[Calls mcp__slack__read_channel directly — it was loaded by the keyword search]\n</example>\n\n<example>\nUser: Edit the Jupyter notebook\nAssistant: Let me load the notebook editing tool.\n[Calls ToolSearch with query: \"select:NotebookEdit\"]\n[Calls NotebookEdit]\n</example>\n\n<example>\nUser: List files in the src directory\nAssistant: I can see mcp__filesystem__list_directory in the available tools. Let me select it.\n[Calls ToolSearch with query: \"select:mcp__filesystem__list_directory\"]\n[Calls the tool]\n</example>\n\n**INCORRECT Usage Patterns - NEVER DO THESE:**\n\n<bad-example>\nUser: Read my slack messages\nAssistant: [Directly calls mcp__slack__read_channel without loading it first]\nWRONG - You must load the tool FIRST using this tool\n</bad-example>\n\n<bad-example>\nAssistant: [Calls ToolSearch with query: \"slack\", gets back mcp__slack__read_channel]\nAssistant: [Calls ToolSearch with query: \"select:mcp__slack__read_channel\"]\nWRONG - The keyword search already loaded the tool. The select call is redundant.\n</bad-example>",
+          "input_schema": {
+            "type": "object",
+            "required": [
+              "query",
+              "max_results"
+            ],
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "Query to find deferred tools. Use \"select:<tool_name>\" for direct selection, or keywords to search."
+              },
+              "max_results": {
+                "type": "number",
+                "description": "Maximum number of results to return (default: 5)"
+              }
+            }
+          }
+        }
+      ],
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [
+        "Bash"
+      ],
+      "toolCalls": [
+        {
+          "id": "call_7eca7748c48447648495baf9",
+          "name": "Bash",
+          "input": {
+            "command": "pwd"
+          }
+        }
+      ],
+      "text": "\n[tool_use:Bash]",
+      "stopReason": "tool_use",
+      "usage": {
+        "input_tokens": 51,
+        "output_tokens": 33
+      },
+      "messageId": "msg_2026030520544436b2ab90b6aa49f8",
+      "model": "glm-4.7"
+    }
+  }
+}

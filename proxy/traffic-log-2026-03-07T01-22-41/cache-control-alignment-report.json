@@ -1,0 +1,10 @@
+{
+  "kind": "formax_cache_control_alignment_report_v1",
+  "createdAt": "2026-03-06T18:18:26.331Z",
+  "targetDir": "/Users/david/Documents/github/formax/proxy/traffic-log-2026-03-07T01-22-41",
+  "includeSimple": false,
+  "totalFiles": 8,
+  "passedFiles": 8,
+  "failedFiles": 0,
+  "failures": []
+}

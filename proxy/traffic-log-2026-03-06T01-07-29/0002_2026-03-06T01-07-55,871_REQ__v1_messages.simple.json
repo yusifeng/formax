@@ -1,0 +1,82 @@
+{
+  "sequence": 2,
+  "timestamp": "2026-03-05T17:07:55.871Z",
+  "timestampLocal": "2026-03-06T01:07:55,871",
+  "timestampLocalSafe": "2026-03-06T01-07-55,871",
+  "latencyMs": 3549,
+  "path": "/v1/messages",
+  "request": {
+    "headers": {
+      "accept": "application/json",
+      "anthropic-beta": "interleaved-thinking-2025-05-14",
+      "anthropic-dangerous-direct-browser-access": "true",
+      "anthropic-version": "2023-06-01",
+      "authorization": "***REDACTED***",
+      "content-type": "application/json",
+      "user-agent": "claude-cli/2.0.67 (external, cli)",
+      "x-app": "cli",
+      "x-stainless-arch": "arm64",
+      "x-stainless-helper-method": "stream",
+      "x-stainless-lang": "js",
+      "x-stainless-os": "MacOS",
+      "x-stainless-package-version": "0.70.0",
+      "x-stainless-retry-count": "0",
+      "x-stainless-runtime": "node",
+      "x-stainless-runtime-version": "v24.3.0",
+      "x-stainless-timeout": "3000",
+      "connection": "keep-alive",
+      "host": "127.0.0.1:8787",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "929"
+    },
+    "body": {
+      "model": "claude-haiku-4-5-20251001",
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Files modified by user:\n\n\nFiles modified by other users:\n"
+            }
+          ]
+        }
+      ],
+      "system": [
+        {
+          "type": "text",
+          "text": "You are Claude Code, Anthropic's official CLI for Claude."
+        },
+        {
+          "type": "text",
+          "text": "You are an expert at analyzing git history. Given a list of files and their modification counts, return exactly five filenames that are frequently modified and represent core application logic (not auto-generated files, dependencies, or configuration). Make sure filenames are diverse, not all in the same folder, and are a mix of user and other users. Return only the filenames' basenames (without the path) separated by newlines with no explanation."
+        }
+      ],
+      "tools": [],
+      "max_tokens": 32000,
+      "stream": true,
+      "toolCount": 0,
+      "toolsLite": [],
+      "requestToolCallCount": 0,
+      "requestToolCalls": [],
+      "requestToolResultCount": 0,
+      "requestToolResults": []
+    }
+  },
+  "response": {
+    "status": 200,
+    "sseSummary": {
+      "protocol": "anthropic",
+      "toolUses": [],
+      "text": "I don't have any file modification data to analyze. The lists provided are empty - there are no files modified by the user or by other users.\n\nTo help you identify the five most frequently modified core application files, please provide:\n1. A list of files with their modification counts from your git history\n2. Information about which files were modified by which users\n\nOnce you provide this data, I can analyze it and return the five most relevant filenames.",
+      "assistantText": "I don't have any file modification data to analyze. The lists provided are empty - there are no files modified by the user or by other users.\n\nTo help you identify the five most frequently modified core application files, please provide:\n1. A list of files with their modification counts from your git history\n2. Information about which files were modified by which users\n\nOnce you provide this data, I can analyze it and return the five most relevant filenames.",
+      "stopReason": "end_turn",
+      "usage": {
+        "input_tokens": 123,
+        "output_tokens": 97
+      },
+      "messageId": "msg_01FvNWgtGcSwMJ16gsc3kZsn",
+      "model": "claude-haiku-4-5-20251001"
+    }
+  }
+}
